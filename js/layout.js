@@ -24,6 +24,8 @@ const LAYOUT_ICONS = {
   bell:     '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>',
   search:   '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
   playMini: '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
+  playCircle: '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>',
+  user:     '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
 };
 
 /* ----- Topbar ----- */
@@ -103,6 +105,27 @@ function layoutSidebarHTML(activePage, extra) {
     ${extra === "continue" ? continueMini : premiumCard}`;
 }
 
+/* ----- Mobil alsó navigáció (lebegő, lekerekített sáv) ----- */
+function layoutBottomNavHTML(activePage) {
+  const items = [
+    { page: "home",      href: "index.html",   icon: "home",  label: "Kezdőlap" },
+    { page: "anime",     href: "anime.html",   icon: "anime", label: "Animék" },
+    { page: "watch",     href: "watch.html",   icon: "playCircle", label: "Lejátszó" },
+    { page: "community", href: "team.html",    icon: "users", label: "Közösség" },
+    { page: "profile",   href: "profile.html", icon: "user",  label: "Profil" },
+  ];
+
+  return items
+    .map(
+      (i) => `
+      <a href="${i.href}"${i.page === activePage ? ' class="active"' : ""}>
+        ${LAYOUT_ICONS[i.icon]}
+        <span>${i.label}</span>
+      </a>`
+    )
+    .join("");
+}
+
 /* ----- Renderelés (a többi szkript előtt fusson le) ----- */
 document.addEventListener("DOMContentLoaded", () => {
   const topbar = document.getElementById("appTopbar");
@@ -112,4 +135,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (topbar) topbar.innerHTML = layoutTopbarHTML();
   if (sidebar) sidebar.innerHTML = layoutSidebarHTML(page, extra);
+
+  // Alsó mobil nav minden oldalra
+  const bottomNav = document.createElement("nav");
+  bottomNav.className = "bottom-nav";
+  bottomNav.innerHTML = layoutBottomNavHTML(page);
+  document.body.appendChild(bottomNav);
 });

@@ -4,7 +4,7 @@
       <stop offset="0" stop-color="#241040"/><stop offset="1" stop-color="#6b21a8"/>
     </linearGradient>
     <radialGradient id="m" cx="0.75" cy="0.2" r="0.12">
-      <stop offset="0" stop-color="#f5e6ff" stop-opacity="0.95"/><stop offset="1" stop-color="#f5e6ff" stop-opacity="0"/>
+      <stop offset="0" stop-color="#f5e6ff" stop-opacity="0.9"/><stop offset="1" stop-color="#f5e6ff" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="d" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0.4" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#07070c" stop-opacity="0.9"/>
@@ -12,7 +12,7 @@
   </defs>
   <rect width="1280" height="720" fill="url(#g)"/>
   <circle cx="960" cy="144" r="86" fill="url(#m)"/>
-  <path d="M0 620 L200 480 L340 560 L520 430 L700 540 L900 460 L1100 560 L1280 480 L1280 720 L0 720 Z" fill="#0d0716" fill-opacity="0.7"/>
+  <path d="M0 640 L180 500 L330 580 L520 450 L710 560 L900 480 L1090 580 L1280 500 L1280 720 L0 720 Z" fill="#0d0716" fill-opacity="0.65"/>
+  <path d="M0 690 L240 590 L430 650 L640 560 L850 640 L1060 570 L1280 640 L1280 720 L0 720 Z" fill="#090510" fill-opacity="0.8"/>
   <rect width="1280" height="720" fill="url(#d)"/>
-  <text x="70" y="120" font-family="Arial, sans-serif" font-size="34" font-weight="bold" fill="#ffffff" fill-opacity="0.35"></text>
 </svg>

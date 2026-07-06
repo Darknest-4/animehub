@@ -320,7 +320,7 @@
 }
 
 @media (max-width: 1350px) {
-  .team-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: minmax(0, 1fr); }
   .members-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 

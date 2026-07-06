@@ -75,9 +75,40 @@ function initTabGroups() {
   });
 }
 
+/* ----- Skeleton loader képekhez -----
+   Amíg egy kép tölt, csillogó (shimmer) hátteret kap; betöltés után
+   finoman beúszik. A dinamikusan cserélt src-re (images.js) is működik. */
+function watchImage(img) {
+  if (img.complete && img.naturalWidth > 0) return;
+
+  img.classList.add("img-loading");
+  const done = () => {
+    img.classList.remove("img-loading");
+    img.classList.add("img-fade");
+  };
+  img.addEventListener("load", done, { once: true });
+  img.addEventListener("error", () => img.classList.remove("img-loading"), { once: true });
+}
+
+function initImageSkeletons() {
+  document.querySelectorAll("img").forEach(watchImage);
+
+  // Később hozzáadott képek (JS-ből renderelt listák) figyelése
+  new MutationObserver((mutations) => {
+    for (const m of mutations) {
+      m.addedNodes.forEach((node) => {
+        if (node.nodeType !== 1) return;
+        if (node.tagName === "IMG") watchImage(node);
+        else node.querySelectorAll?.("img").forEach(watchImage);
+      });
+    }
+  }).observe(document.body, { childList: true, subtree: true });
+}
+
 /* ----- Indítás ----- */
 document.addEventListener("DOMContentLoaded", () => {
   initSearchShortcut();
   initRowScrollers();
   initTabGroups();
+  initImageSkeletons();
 });
