@@ -54,6 +54,7 @@
   max-width: 55%;
   display: flex;
   flex-direction: column;
+  align-items: flex-start; /* a badge ne nyúljon teljes szélességűre */
   justify-content: center;
   gap: 14px;
   padding: 0 40px;
@@ -280,12 +281,21 @@
 }
 
 @media (max-width: 1250px) {
-  .home-grid { grid-template-columns: 1fr; }
+  .home-grid { grid-template-columns: minmax(0, 1fr); }
   .hero-content h1 { font-size: 34px; }
 }
 
 @media (max-width: 720px) {
-  .hero { height: 320px; }
-  .hero-content { max-width: 100%; padding: 0 22px; }
-  .hero-content h1 { font-size: 28px; }
+  .hero { height: 300px; border-radius: 16px; }
+  .hero-content { max-width: 100%; padding: 0 18px; gap: 10px; }
+  .hero-content h1 { font-size: 26px; }
+  .hero-desc { font-size: 13px; -webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
+  .hero-nav { display: none; }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary { height: 38px; padding: 0 15px; font-size: 13px; }
+
+  .row-scroll { grid-auto-columns: 138px; }
+  .continue-card { grid-auto-columns: 210px; }
+
+  .section { margin-top: 24px; }
 }

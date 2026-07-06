@@ -407,7 +407,7 @@
 
 /* ----- Reszponzív ----- */
 @media (max-width: 1350px) {
-  .profile-grid { grid-template-columns: 1fr; }
+  .profile-grid { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (max-width: 1000px) {
@@ -420,9 +420,18 @@
 }
 
 @media (max-width: 640px) {
-  .profile-hero-inner { flex-direction: column; text-align: center; }
-  .profile-id h1 { justify-content: center; }
+  .profile-hero { padding: 26px 18px; }
+  .profile-hero-inner { flex-direction: column; text-align: center; gap: 16px; }
+  .profile-avatar { width: 116px; height: 116px; }
+  .profile-id h1 { justify-content: center; font-size: 26px; }
   .profile-id .joined { justify-content: center; }
+
   .fav-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .stats-row { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat-cell { padding: 15px 13px; }
+  .stat-cell .num { font-size: 18px; }
+
+  .watch-stats { padding: 16px; }
+  .chart-bars { gap: 5px; height: 150px; }
+  .chart-col .m { font-size: 9px; }
 }

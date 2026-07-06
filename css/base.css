@@ -1,7 +1,10 @@
 /* ==========================================================================
    AnimeHub – base.css
-   Közös alapok: változók, reset, topbar, sidebar, gombok, kártyák
+   Közös alapok: változók, reset, topbar, sidebar, gombok, kártyák,
+   skeleton loader, mobil alsó navigáció
    ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 
 /* ----- Változók ----- */
 :root {
@@ -471,15 +474,122 @@ ul, ol { list-style: none; }
 
 .panel-head .link-more { font-size: 12.5px; }
 
+/* ==========================================================================
+   Skeleton loader (képek betöltése közben csillogó placeholder)
+   ========================================================================== */
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+img.img-loading {
+  background: linear-gradient(100deg,
+    #14121e 38%, #251f38 50%, #14121e 62%);
+  background-size: 200% 100%;
+  animation: shimmer 1.3s linear infinite;
+  color: transparent; /* alt szöveg elrejtése betöltés közben */
+}
+
+img.img-fade {
+  animation: imgFadeIn 0.35s ease;
+}
+
+@keyframes imgFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Szöveges skeleton blokkok (általános, ha kellene) */
+.skeleton {
+  border-radius: 8px;
+  background: linear-gradient(100deg,
+    #14121e 38%, #251f38 50%, #14121e 62%);
+  background-size: 200% 100%;
+  animation: shimmer 1.3s linear infinite;
+}
+
+/* ==========================================================================
+   Mobil alsó navigáció (lebegő, lekerekített sáv)
+   ========================================================================== */
+.bottom-nav {
+  position: fixed;
+  z-index: 200;
+  left: 16px;
+  right: 16px;
+  bottom: 14px;
+  max-width: 440px;
+  margin: 0 auto;
+  display: none;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 10px;
+  background: rgba(16, 14, 24, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.6);
+}
+
+.bottom-nav a {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 7px 4px;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-radius: 16px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.bottom-nav a.active {
+  color: var(--purple-2);
+  background: rgba(139, 92, 246, 0.13);
+  box-shadow: 0 0 14px rgba(139, 92, 246, 0.2);
+}
+
+.bottom-nav a:active { transform: scale(0.94); }
+
 /* ----- Reszponzív ----- */
 @media (max-width: 1100px) {
   .sidebar { display: none; }
   .search-key { display: none; }
+  .bottom-nav { display: flex; }
+
+  /* hely az alsó navnak */
+  .main { padding-bottom: 100px; }
 }
 
 @media (max-width: 720px) {
+  :root { --topbar-h: 60px; }
+
+  .topbar { height: 60px; gap: 12px; padding: 0 14px; }
+
+  .logo { font-size: 19px; gap: 8px; }
+  .logo-mark { width: 32px; height: 32px; font-size: 13px; border-radius: 9px; }
+
   .btn-premium span { display: none; }
-  .btn-premium { padding: 0 12px; }
+  .btn-premium { padding: 0 12px; height: 38px; }
+  .btn-icon { width: 38px; height: 38px; }
+
+  .user-chip { padding: 3px; }
   .user-chip .name, .user-chip .chevron { display: none; }
-  .main { padding: 16px; }
+  .user-chip img { width: 32px; height: 32px; }
+
+  .topbar-actions { gap: 8px; }
+
+  .main { padding: 14px 14px 100px; }
+
+  .section-head h2 { font-size: 17px; }
+  .panel { padding: 16px; }
+}
+
+/* Nagyon keskeny kijelzőn a kereső külön ikonként nem fér el – elrejtjük,
+   a tartalom kereshető marad az oldalakon belüli keresőkkel */
+@media (max-width: 560px) {
+  .topbar .search { display: none; }
+  .topbar { justify-content: space-between; }
 }

@@ -96,6 +96,8 @@ function applyImage(key, url) {
   // Minden <img>, ami ezt a placeholdert használja
   document.querySelectorAll(`img[src$="${key}.svg"]`).forEach((img) => {
     img.src = url;
+    // skeleton shimmer, amíg az új kép betölt (main.js)
+    if (typeof watchImage === "function") watchImage(img);
   });
 
   // A DATA objektumban is átírjuk, hogy az újrarenderelés (pl. csapat

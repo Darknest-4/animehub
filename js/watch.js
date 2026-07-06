@@ -27,8 +27,12 @@ function renderEpisodeList() {
     )
     .join("");
 
-  // Az aktuális epizód látszódjon a lista közepén
-  list.querySelector(".ep-item.current")?.scrollIntoView({ block: "center" });
+  // Az aktuális epizód látszódjon a lista közepén – csak a listát
+  // görgetjük, az oldalt nem (a scrollIntoView az ablakot is vinné)
+  const current = list.querySelector(".ep-item.current");
+  if (current) {
+    list.scrollTop = current.offsetTop - list.clientHeight / 2 + current.clientHeight / 2;
+  }
 }
 
 /* ==========================================================================
