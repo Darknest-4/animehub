@@ -139,7 +139,7 @@ ul, ol { list-style: none; }
 }
 
 /* Topbar jobb oldal */
-.topbar-actions { display: flex; align-items: center; gap: 14px; }
+.topbar-actions { position: relative; display: flex; align-items: center; gap: 14px; }
 
 .btn-premium {
   display: flex;
@@ -473,6 +473,151 @@ ul, ol { list-style: none; }
 .panel-head h3 { flex: 1; font-size: 16px; font-weight: 700; }
 
 .panel-head .link-more { font-size: 12.5px; }
+
+/* ==========================================================================
+   Lenyíló menük (fejléc: értesítések, felhasználó; kereső találatok)
+   ========================================================================== */
+.menu-pop {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 300;
+  width: 320px;
+  max-width: calc(100vw - 28px);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.65);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 0.18s, transform 0.18s;
+}
+
+.menu-pop.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.menu-pop .menu-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.menu-pop .menu-head .count {
+  margin-left: auto;
+  padding: 2px 9px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--purple-2);
+  background: rgba(139, 92, 246, 0.14);
+  border-radius: 99px;
+}
+
+/* Értesítés elemek */
+.notif-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px 16px;
+  transition: background 0.15s;
+  cursor: pointer;
+}
+
+.notif-item:hover { background: var(--bg-hover); }
+.notif-item + .notif-item { border-top: 1px solid var(--border-soft); }
+
+.notif-item .ic {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  color: var(--purple-2);
+  background: rgba(139, 92, 246, 0.12);
+  border-radius: 10px;
+}
+
+.notif-item p { flex: 1; font-size: 13px; line-height: 1.5; color: var(--text-soft); }
+.notif-item p strong { color: var(--text); font-weight: 600; }
+.notif-item .when { font-size: 11px; color: var(--text-muted); white-space: nowrap; }
+
+/* Felhasználói menü */
+.user-menu-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.user-menu-head img { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--purple); }
+.user-menu-head .n { font-size: 15px; font-weight: 700; }
+.user-menu-head .h { font-size: 12.5px; color: var(--text-muted); margin-top: 2px; }
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-soft);
+  transition: background 0.15s, color 0.15s;
+  text-align: left;
+}
+
+.menu-item:hover { background: var(--bg-hover); color: var(--text); }
+.menu-item svg { color: var(--text-muted); }
+.menu-item.danger { color: var(--red); }
+.menu-item.danger svg { color: var(--red); }
+
+.menu-sep { height: 1px; background: var(--border-soft); }
+
+/* Kereső találati lista */
+.search { position: relative; }
+
+.search-results {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 300;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.65);
+  overflow: hidden;
+  display: none;
+}
+
+.search-results.open { display: block; }
+
+.search-hit {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  transition: background 0.15s;
+}
+
+.search-hit:hover, .search-hit.sel { background: var(--bg-hover); }
+.search-hit + .search-hit { border-top: 1px solid var(--border-soft); }
+
+.search-hit img { width: 38px; height: 50px; object-fit: cover; border-radius: 7px; flex-shrink: 0; }
+.search-hit .t { flex: 1; min-width: 0; }
+.search-hit .t h4 { font-size: 13.5px; font-weight: 600; }
+.search-hit .t .rating { font-size: 12px; margin-top: 3px; }
+.search-hit .go { color: var(--text-muted); }
+
+.search-empty { padding: 16px; font-size: 13px; color: var(--text-muted); text-align: center; }
 
 /* ==========================================================================
    Skeleton loader (képek betöltése közben csillogó placeholder)

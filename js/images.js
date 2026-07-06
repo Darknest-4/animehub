@@ -61,6 +61,14 @@ const IMAGE_SOURCES = {
   "avatar-hinata":    { type: "character", q: "Hinata Hyuuga" },
   "avatar-gaara":     { type: "character", q: "Gaara" },
   "avatar-neji":      { type: "character", q: "Neji Hyuuga" },
+  "avatar-rocklee":   { type: "character", q: "Rock Lee" },
+  "avatar-tenten":    { type: "character", q: "Tenten" },
+  "avatar-ino":       { type: "character", q: "Ino Yamanaka" },
+  "avatar-choji":     { type: "character", q: "Chouji Akimichi" },
+  "avatar-temari":    { type: "character", q: "Temari" },
+  "avatar-kankuro":   { type: "character", q: "Kankurou" },
+  "avatar-kiba":      { type: "character", q: "Kiba Inuzuka" },
+  "avatar-shino":     { type: "character", q: "Shino Aburame" },
 
   /* ----- Epizód thumbnailek (Naruto Shippuden epizód videók) ----- */
   "thumb-ep454": { type: "episode", index: 0 },

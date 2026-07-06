@@ -79,10 +79,11 @@
 
       <!-- Lejátszó -->
       <section class="player">
-        <!-- Videó helye: cseréld ki a <video> forrását valódi fájlra,
-             a .frame kép csak placeholder háttér. -->
+        <!-- Placeholder háttér: akkor látszik, ha a videó nem érhető el -->
         <img class="frame" src="assets/img/backdrop-sasuke.svg" alt="">
-        <!-- <video src="assets/video/naruto-456.mp4" poster="assets/img/backdrop-sasuke.svg"></video> -->
+        <!-- A videó forrását a js/data.js CONFIG.videoSrc adja – cseréld
+             saját fájlra, pl. "assets/video/ep456.mp4" -->
+        <video id="video" class="frame" preload="metadata" playsinline></video>
 
         <div class="player-top">
           <a class="player-back" href="anime.html" aria-label="Vissza">
@@ -90,22 +91,22 @@
           </a>
           <div class="player-title">
             <h1>Naruto Shippuden</h1>
-            <p>456. epizód – Itachi története</p>
+            <p id="playerEpTitle">456. epizód – Itachi története</p>
           </div>
           <div class="right">
-            <button class="player-back" aria-label="Átküldés">
+            <button class="player-back" id="pipBtn" aria-label="Kép a képben">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
             </button>
             <button class="player-back" aria-label="Beállítások">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
             </button>
-            <button class="player-back" aria-label="Teljes képernyő">
+            <button class="player-back" id="fsBtn" aria-label="Teljes képernyő">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
             </button>
           </div>
         </div>
 
-        <p class="player-subtitle">Az igazi erő nem a testben rejlik,<br>hanem a szívben.</p>
+        <p class="player-subtitle" id="subtitle">Az igazi erő nem a testben rejlik,<br>hanem a szívben.</p>
 
         <div class="player-controls">
           <div class="seek-row">
@@ -119,7 +120,7 @@
 
           <div class="controls-row">
             <button class="ctrl-btn play-pause" id="playPause" aria-label="Lejátszás / szünet"></button>
-            <button class="ctrl-btn" aria-label="Előző epizód">
+            <button class="ctrl-btn" id="prevEp" aria-label="Előző epizód">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zM9.5 12l8.5 6V6z"/></svg>
             </button>
             <button class="ctrl-btn" id="back10" aria-label="Vissza 10 mp">
@@ -135,14 +136,20 @@
             </div>
 
             <div class="right">
-              <button class="pill-btn accent">1080p
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
-              </button>
-              <button class="pill-btn">CC</button>
-              <button class="pill-btn">Aあ</button>
-              <button class="pill-btn"><span class="muted">Sebesség</span> 1x
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-              </button>
+              <div class="pill-wrap">
+                <button class="pill-btn accent" id="qualityBtn"><span id="qualityLabel">1080p</span>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+                </button>
+                <div class="player-menu" id="qualityMenu"></div>
+              </div>
+              <button class="pill-btn active" id="ccBtn">CC</button>
+              <button class="pill-btn" id="fontBtn">Aあ</button>
+              <div class="pill-wrap">
+                <button class="pill-btn" id="speedBtn"><span class="muted">Sebesség</span> <span id="speedLabel">1x</span>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="player-menu" id="speedMenu"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -215,9 +222,9 @@
           <h5>Következő epizód</h5>
           <p>457. epizód</p>
         </div>
-        <a class="go" href="watch.html" aria-label="Következő epizód indítása">
+        <button class="go" id="nextEpBtn" aria-label="Következő epizód indítása">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-        </a>
+        </button>
       </div>
     </aside>
 

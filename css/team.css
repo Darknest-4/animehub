@@ -227,6 +227,9 @@
   border-color: transparent;
 }
 
+.page-btn:disabled { opacity: 0.35; cursor: default; }
+.page-btn:disabled:hover { background: var(--bg-card); color: var(--text-soft); }
+
 /* ==========================================================================
    Jobb oldali oszlop
    ========================================================================== */

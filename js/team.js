@@ -7,6 +7,8 @@ const teamState = {
   filter: "all",   // all | admin | translator | editor | other
   query: "",
   sort: "name",    // name | contribs
+  page: 1,
+  pageSize: 8,
 };
 
 /* ----- Tagkártya HTML ----- */
@@ -39,11 +41,8 @@ function roleColor(roleClass) {
   return colors[roleClass] || "#a78bfa";
 }
 
-/* ----- Szűrés + rendezés + renderelés ----- */
-function renderMembers() {
-  const grid = document.getElementById("membersGrid");
-  if (!grid) return;
-
+/* ----- Szűrés + rendezés + lapozás + renderelés ----- */
+function filteredMembers() {
   let members = DATA.members.slice();
 
   if (teamState.filter !== "all") {
@@ -63,9 +62,46 @@ function renderMembers() {
       : a.name.localeCompare(b.name, "hu")
   );
 
-  grid.innerHTML = members.length
-    ? members.map(memberCardHTML).join("")
+  return members;
+}
+
+function renderMembers() {
+  const grid = document.getElementById("membersGrid");
+  if (!grid) return;
+
+  const members = filteredMembers();
+  const pages = Math.max(1, Math.ceil(members.length / teamState.pageSize));
+  teamState.page = Math.min(teamState.page, pages);
+
+  const start = (teamState.page - 1) * teamState.pageSize;
+  const pageItems = members.slice(start, start + teamState.pageSize);
+
+  grid.innerHTML = pageItems.length
+    ? pageItems.map(memberCardHTML).join("")
     : '<div class="empty-state">Nincs találat a keresésre. 🔍</div>';
+
+  renderPagination(pages);
+}
+
+function renderPagination(pages) {
+  const wrap = document.getElementById("pagination");
+  if (!wrap) return;
+
+  if (pages <= 1) { wrap.innerHTML = ""; return; }
+
+  const prevDisabled = teamState.page === 1 ? " disabled" : "";
+  const nextDisabled = teamState.page === pages ? " disabled" : "";
+
+  wrap.innerHTML = `
+    <button class="page-btn" data-nav="-1" aria-label="Előző oldal"${prevDisabled}>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    ${Array.from({ length: pages }, (_, i) =>
+      `<button class="page-btn${i + 1 === teamState.page ? " active" : ""}" data-page="${i + 1}">${i + 1}</button>`
+    ).join("")}
+    <button class="page-btn" data-nav="1" aria-label="Következő oldal"${nextDisabled}>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>`;
 }
 
 /* ----- Vezérlők bekötése ----- */
@@ -75,12 +111,14 @@ function initTeamControls() {
     const btn = e.target.closest("button[data-filter]");
     if (!btn) return;
     teamState.filter = btn.dataset.filter;
+    teamState.page = 1;
     renderMembers();
   });
 
   // Keresés
   document.getElementById("teamSearch")?.addEventListener("input", (e) => {
     teamState.query = e.target.value.trim();
+    teamState.page = 1;
     renderMembers();
   });
 
@@ -91,6 +129,19 @@ function initTeamControls() {
     sortBtn.querySelector("span").textContent =
       teamState.sort === "name" ? "Rendezés: Név szerint" : "Rendezés: Közreműködés";
     renderMembers();
+  });
+
+  // Lapozó
+  document.getElementById("pagination")?.addEventListener("click", (e) => {
+    const btn = e.target.closest("button");
+    if (!btn || btn.disabled) return;
+
+    if (btn.dataset.page) teamState.page = Number(btn.dataset.page);
+    else if (btn.dataset.nav) teamState.page += Number(btn.dataset.nav);
+
+    renderMembers();
+    document.getElementById("membersGrid")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 }
 
