@@ -47,6 +47,140 @@ function initSearchShortcut() {
   });
 }
 
+/* ==========================================================================
+   Élő kereső – a DATA-ból épített indexben keres, találati listával
+   ========================================================================== */
+function buildSearchIndex() {
+  const seen = new Map();
+  const add = (item) => {
+    if (item?.title && !seen.has(item.title)) {
+      seen.set(item.title, { title: item.title, rating: item.rating, image: item.image });
+    }
+  };
+  if (typeof DATA === "undefined") return [];
+  [DATA.popular, DATA.fresh, DATA.topNow, DATA.favorites, DATA.continueWatching, DATA.continuing]
+    .filter(Boolean)
+    .forEach((list) => list.forEach(add));
+  return [...seen.values()];
+}
+
+function initLiveSearch() {
+  const search = document.querySelector(".topbar .search, .watch-topbar .search");
+  const input = search?.querySelector("input");
+  if (!search || !input) return;
+
+  const index = buildSearchIndex();
+
+  const box = document.createElement("div");
+  box.className = "search-results";
+  search.appendChild(box);
+
+  function render(query) {
+    const q = query.trim().toLowerCase();
+    if (!q) { box.classList.remove("open"); return; }
+
+    const hits = index.filter((a) => a.title.toLowerCase().includes(q)).slice(0, 6);
+    box.innerHTML = hits.length
+      ? hits.map((a) => `
+          <a class="search-hit" href="anime.html">
+            <img src="${a.image}" alt="${a.title}">
+            <div class="t">
+              <h4>${a.title}</h4>
+              ${a.rating ? ratingHTML(a.rating) : ""}
+            </div>
+            <span class="go">${ICONS.chevronRight}</span>
+          </a>`).join("")
+      : '<div class="search-empty">Nincs találat 😔</div>';
+    box.classList.add("open");
+  }
+
+  input.addEventListener("input", () => render(input.value));
+  input.addEventListener("focus", () => render(input.value));
+  document.addEventListener("click", (e) => {
+    if (!search.contains(e.target)) box.classList.remove("open");
+  });
+}
+
+/* ==========================================================================
+   Fejléc lenyíló menük: értesítések + felhasználói menü
+   ========================================================================== */
+function initHeaderMenus() {
+  const actions = document.querySelector(".topbar-actions");
+  if (!actions) return;
+
+  /* -- Értesítések -- */
+  const bellBtn = actions.querySelector('[aria-label="Értesítések"]');
+  const notifMenu = document.createElement("div");
+  notifMenu.className = "menu-pop";
+  const notifs = (typeof DATA !== "undefined" && DATA.notifications) || [];
+  const notifIcons = { play: ICONS.play, star: ICONS.star, save: ICONS.save };
+  notifMenu.innerHTML = `
+    <div class="menu-head">Értesítések <span class="count">${notifs.length} új</span></div>
+    ${notifs.map((n) => `
+      <div class="notif-item">
+        <span class="ic">${notifIcons[n.type] || ICONS.bell}</span>
+        <p>${n.text}</p>
+        <span class="when">${n.when}</span>
+      </div>`).join("")}`;
+  actions.appendChild(notifMenu);
+
+  /* -- Felhasználói menü -- */
+  const userChip = actions.querySelector(".user-chip");
+  const userMenu = document.createElement("div");
+  userMenu.className = "menu-pop";
+  userMenu.innerHTML = `
+    <div class="user-menu-head">
+      <img src="assets/img/avatar-akatsuki.svg" alt="Akatsuki">
+      <div>
+        <div class="n">Akatsuki</div>
+        <div class="h">@akatsuki · Szint 23</div>
+      </div>
+    </div>
+    <a class="menu-item" href="profile.html">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Profilom
+    </a>
+    <a class="menu-item" href="profile.html">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+      Műsorlistám
+    </a>
+    <button class="menu-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Beállítások
+    </button>
+    <div class="menu-sep"></div>
+    <button class="menu-item danger">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      Kijelentkezés
+    </button>`;
+  actions.appendChild(userMenu);
+
+  /* -- Nyitás / zárás -- */
+  function toggle(menu, others) {
+    others.forEach((m) => m.classList.remove("open"));
+    menu.classList.toggle("open");
+  }
+
+  bellBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggle(notifMenu, [userMenu]);
+  });
+
+  userChip?.addEventListener("click", (e) => {
+    e.preventDefault(); // ne navigáljon azonnal – a menüből lehet
+    e.stopPropagation();
+    toggle(userMenu, [notifMenu]);
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!actions.contains(e.target)) {
+      notifMenu.classList.remove("open");
+      userMenu.classList.remove("open");
+    }
+  });
+}
+
 /* ----- Vízszintes kártyasor görgetése nyilakkal ----- */
 function initRowScrollers() {
   document.querySelectorAll("[data-scroll-row]").forEach((section) => {
@@ -108,6 +242,8 @@ function initImageSkeletons() {
 /* ----- Indítás ----- */
 document.addEventListener("DOMContentLoaded", () => {
   initSearchShortcut();
+  initLiveSearch();
+  initHeaderMenus();
   initRowScrollers();
   initTabGroups();
   initImageSkeletons();

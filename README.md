@@ -33,11 +33,12 @@ Anime streaming weboldal – statikus HTML + CSS + JS, keretrendszer nélkül.
 
 ## Képek és videók cseréje
 
-- A `assets/img/` mappában lévő SVG-k **placeholderek** – cseréld le őket valódi
-  képekre (jpg/png/webp), és írd át az útvonalakat a `js/data.js`-ben, illetve
-  a HTML-ekben (`poster-*.svg`, `backdrop-*.svg`, `avatar-*.svg`, `thumb-*.svg`).
-- Videóhoz: a `watch.html`-ben van egy kikommentezett `<video>` tag – tedd a
-  videófájlt pl. `assets/video/` alá és aktiváld.
+- **Képek:** a valódi anime képeket futásidőben a Jikan API-ból tölti a
+  `js/images.js` (localStorage cache-sel). Az `assets/img/` SVG-k csak
+  fallback placeholderek, ha nincs internet.
+- **Videó:** a lejátszó igazi `<video>` elem – a forrását a `js/data.js`
+  tetején lévő `CONFIG.videoSrc` adja. Alapból egy nyílt forrású demóvideó
+  fut benne; cseréld saját fájlra, pl. `assets/video/ep456.mp4`.
 
 ## Futtatás
 

@@ -64,9 +64,9 @@
                     <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                     Folytatás
                   </a>
-                  <button class="btn-secondary">
+                  <button class="btn-secondary" id="favBtn">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
-                    Kedvencekhez
+                    <span>Kedvencekhez</span>
                   </button>
                   <button class="btn-dots" aria-label="Több opció">⋮</button>
                 </div>
@@ -116,51 +116,9 @@
               </a>
             </div>
 
-            <div class="season-tabs" data-tab-group>
-              <button class="season-tab active">1. évad</button>
-              <button class="season-tab">2. évad</button>
-              <button class="season-tab">...</button>
-              <button class="season-tab">21. évad</button>
-              <button class="season-tab">22. évad</button>
-            </div>
-
-            <div class="episode-list">
-              <a class="episode-item watching" href="watch.html">
-                <div class="episode-thumb">
-                  <img src="assets/img/thumb-ep456.svg" alt="456. epizód">
-                  <span class="play"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-                </div>
-                <div class="episode-info">
-                  <div class="num">456. epizód</div>
-                  <h4>Itachi története <span class="badge-now">Most nézed</span></h4>
-                </div>
-                <span class="duration">23:55</span>
-              </a>
-
-              <a class="episode-item" href="watch.html">
-                <div class="episode-thumb">
-                  <img src="assets/img/thumb-ep457.svg" alt="457. epizód">
-                  <span class="play"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-                </div>
-                <div class="episode-info">
-                  <div class="num">457. epizód</div>
-                  <h4>Testvéri kötelék</h4>
-                </div>
-                <span class="duration">23:55</span>
-              </a>
-
-              <a class="episode-item" href="watch.html">
-                <div class="episode-thumb">
-                  <img src="assets/img/thumb-ep458.svg" alt="458. epizód">
-                  <span class="play"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-                </div>
-                <div class="episode-info">
-                  <div class="num">458. epizód</div>
-                  <h4>Az igazság</h4>
-                </div>
-                <span class="duration">23:55</span>
-              </a>
-            </div>
+            <!-- Évad fülek + epizódlista (anime.js rendereli és kezeli) -->
+            <div class="season-tabs" id="seasonTabs"></div>
+            <div class="episode-list" id="episodeList"></div>
           </section>
 
         </div>
@@ -283,6 +241,7 @@
   <script src="js/data.js"></script>
   <script src="js/layout.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/anime.js"></script>
   <script src="js/images.js"></script>
 </body>
 </html>

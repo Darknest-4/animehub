@@ -235,6 +235,63 @@
 .stats-total .num small { font-size: 14px; font-weight: 600; color: var(--text-muted); }
 .stats-total .trend { display: flex; align-items: center; gap: 5px; font-size: 12.5px; color: var(--green); margin-top: 8px; }
 
+/* Hónap részletező (oszlopra kattintva) */
+.month-detail {
+  margin-top: 16px;
+  padding: 11px 14px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--text-soft);
+  background: var(--bg-card-2);
+  border: 1px solid var(--border);
+  border-radius: 11px;
+}
+
+.month-detail strong { color: var(--purple-2); }
+
+/* Statisztika kártyák kattinthatók */
+.stat-cell { cursor: pointer; transition: background 0.2s; }
+.stat-cell:hover { background: var(--bg-hover); }
+
+/* Fül tartalmak */
+.tab-count { font-size: 13px; color: var(--text-muted); }
+
+.fav-card .sub { margin-top: 4px; }
+.watched-mark { font-size: 12px; font-weight: 600; color: var(--green); }
+
+.rating-list {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  padding: 8px;
+}
+
+.rating-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s;
+}
+
+.rating-row:hover { background: var(--bg-hover); }
+.rating-row + .rating-row { border-top: 1px solid var(--border-soft); }
+
+.rating-row img { width: 46px; height: 62px; object-fit: cover; border-radius: 8px; flex-shrink: 0; }
+.rating-row .t { flex: 1; min-width: 0; }
+.rating-row .t h4 { font-size: 14px; font-weight: 600; }
+.rating-row .t p { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+
+.rating-row .score {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--purple-2);
+}
+
 /* Oszlopdiagram */
 .chart { position: relative; }
 

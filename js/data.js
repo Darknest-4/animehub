@@ -5,6 +5,13 @@
    valódi képekre, csak az útvonalakat kell átírni.
    ========================================================================== */
 
+/* ----- Globális beállítások ----- */
+const CONFIG = {
+  /* A lejátszóban futó videó – cseréld ki saját fájlra, pl. "assets/video/ep456.mp4".
+     Alapból a Blender nyílt forrású animációs filmje (Sintel) fut benne demónak. */
+  videoSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+};
+
 const DATA = {
 
   /* ----- Kezdőlap: hero carousel ----- */
@@ -97,6 +104,45 @@ const DATA = {
     { num: 460, title: "Madara megjelenése",  image: "assets/img/thumb-ep460.svg" },
   ],
 
+  /* ----- Lejátszó: feliratsorok (CC) – másodperc alapú időzítés ----- */
+  subtitles: [
+    { start: 0,   end: 6,   text: "Az igazi erő nem a testben rejlik,\nhanem a szívben." },
+    { start: 6,   end: 12,  text: "Aki a társaiért harcol,\nsosem veszíthet igazán." },
+    { start: 12,  end: 18,  text: "A fájdalom tesz minket erősebbé." },
+    { start: 18,  end: 25,  text: "Egy shinobi útja sosem egyenes." },
+    { start: 25,  end: 32,  text: "A béke áldozatok nélkül csak illúzió." },
+  ],
+
+  /* ----- Anime adatlap: évadok és epizódjaik ----- */
+  seasons: {
+    "1. évad": [
+      { num: 1, title: "Hazatérés",              duration: "23:55" },
+      { num: 2, title: "Az Akatsuki mozgolódik", duration: "23:55" },
+      { num: 3, title: "Az edzés gyümölcse",     duration: "23:55" },
+      { num: 4, title: "Az új Kakashi-csapat",   duration: "23:55" },
+    ],
+    "2. évad": [
+      { num: 33, title: "Az új célpont",          duration: "23:55" },
+      { num: 34, title: "A formula titka",        duration: "23:55" },
+      { num: 35, title: "Egy nyugtalanító sejtés",duration: "23:55" },
+      { num: 36, title: "A hamis mosoly",         duration: "23:55" },
+    ],
+    "21. évad": [
+      { num: 430, title: "Naruto halála?!",       duration: "23:55" },
+      { num: 431, title: "A végtelen Tsukuyomi",  duration: "23:55" },
+      { num: 432, title: "A rivális",             duration: "23:55" },
+      { num: 433, title: "Az álomvilág",          duration: "23:55" },
+    ],
+    "22. évad": [
+      { num: 454, title: "A sötétség kezdete",   duration: "23:55" },
+      { num: 455, title: "Az árnyék mélyén",     duration: "23:55" },
+      { num: 456, title: "Itachi története",     duration: "23:55", watching: true },
+      { num: 457, title: "Testvéri kötelék",     duration: "23:55" },
+      { num: 458, title: "Az igazság",           duration: "23:55" },
+    ],
+  },
+  defaultSeason: "22. évad",
+
   /* ----- Profil: kedvenc animék ----- */
   favorites: [
     { rank: 1, title: "Naruto Shippuden", rating: 9.3, image: "assets/img/poster-naruto-shippuden.svg" },
@@ -122,13 +168,34 @@ const DATA = {
     { type: "play", text: "Megnézted a(z) <strong>Jujutsu Kaisen</strong> 2. évad 17. epizódját",        when: "3 napja" },
   ],
 
-  /* ----- Profil: nézési statisztika (perc / hónap) ----- */
+  /* ----- Profil: nézési statisztika (perc / hónap, évenként) ----- */
   watchMinutes: {
-    year: 2024,
     months: ["Jan", "Feb", "Márc", "Ápr", "Máj", "Jún", "Júl", "Aug", "Szep", "Okt", "Nov", "Dec"],
-    values: [180, 320, 470, 210, 392, 392, 290, 460, 300, 410, 305, 110],
+    years: {
+      2023: { values: [120, 210, 260, 180, 300, 240, 190, 320, 280, 330, 250, 90], trend: "+9% az előző évhez képest" },
+      2024: { values: [180, 320, 470, 210, 392, 392, 290, 460, 300, 410, 305, 110], trend: "+18% az előző évhez képest" },
+    },
+    defaultYear: 2024,
     highlight: 5, // Június
   },
+
+  /* ----- Profil: saját értékelések ----- */
+  myRatings: [
+    { title: "Naruto Shippuden", score: 10, when: "2024. 05. 12.", image: "assets/img/poster-naruto-shippuden.svg" },
+    { title: "Demon Slayer: Hashira Training Arc", score: 9, when: "2024. 05. 03.", image: "assets/img/poster-demon-slayer.svg" },
+    { title: "Attack on Titan Final Season", score: 9, when: "2024. 04. 27.", image: "assets/img/poster-attack-on-titan.svg" },
+    { title: "Jujutsu Kaisen Season 2", score: 9, when: "2024. 04. 15.", image: "assets/img/poster-jujutsu-kaisen.svg" },
+    { title: "Chainsaw Man", score: 8, when: "2024. 03. 30.", image: "assets/img/poster-chainsaw-man.svg" },
+    { title: "Tokyo Ghoul", score: 8, when: "2024. 03. 11.", image: "assets/img/poster-tokyo-ghoul.svg" },
+  ],
+
+  /* ----- Fejléc: értesítések ----- */
+  notifications: [
+    { type: "play", text: "Új epizód érhető el: <strong>Solo Leveling</strong> 2. évad 8. epizód", when: "5 perce" },
+    { type: "star", text: "A(z) <strong>Frieren</strong> bekerült a Top 10-be", when: "1 órája" },
+    { type: "save", text: "A műsorlistádon lévő <strong>Kaiju No. 8</strong> ma 17:00-kor folytatódik", when: "3 órája" },
+    { type: "play", text: "Megjelent a(z) <strong>Wind Breaker</strong> 2. évad 7. epizód előzetese", when: "1 napja" },
+  ],
 
   /* ----- Csapat tagok ----- */
   members: [
@@ -171,6 +238,46 @@ const DATA = {
       name: "Neji", role: "Moderátor", roleClass: "role-moderator", group: "other",
       desc: "Közösségi tartalmak felügyelete.",
       comments: 55, contribs: 24, avatar: "assets/img/avatar-neji.svg",
+    },
+    {
+      name: "Rock Lee", role: "Szerkesztő", roleClass: "role-editor", group: "editor",
+      desc: "Feliratok formázása és minőség-ellenőrzése.",
+      comments: 47, contribs: 21, avatar: "assets/img/avatar-rocklee.svg",
+    },
+    {
+      name: "Tenten", role: "Fordító", roleClass: "role-translator", group: "translator",
+      desc: "Heti megjelenésű sorozatok fordítása.",
+      comments: 29, contribs: 16, avatar: "assets/img/avatar-tenten.svg",
+    },
+    {
+      name: "Ino", role: "Adminisztrátor", roleClass: "role-admin", group: "admin",
+      desc: "Közösségi események szervezése.",
+      comments: 61, contribs: 18, avatar: "assets/img/avatar-ino.svg",
+    },
+    {
+      name: "Choji", role: "Szerkesztő", roleClass: "role-editor", group: "editor",
+      desc: "Epizódok vágása és technikai előkészítése.",
+      comments: 22, contribs: 14, avatar: "assets/img/avatar-choji.svg",
+    },
+    {
+      name: "Temari", role: "Fordító", roleClass: "role-translator", group: "translator",
+      desc: "Filmek és OVA-k fordítása.",
+      comments: 44, contribs: 25, avatar: "assets/img/avatar-temari.svg",
+    },
+    {
+      name: "Kankuro", role: "Lektor", roleClass: "role-lector", group: "translator",
+      desc: "Fordítások nyelvi ellenőrzése.",
+      comments: 18, contribs: 9, avatar: "assets/img/avatar-kankuro.svg",
+    },
+    {
+      name: "Kiba", role: "Moderátor", roleClass: "role-moderator", group: "other",
+      desc: "Fórum és kommentszekció moderálása.",
+      comments: 83, contribs: 12, avatar: "assets/img/avatar-kiba.svg",
+    },
+    {
+      name: "Shino", role: "Kódoló", roleClass: "role-coder", group: "other",
+      desc: "Automatizálás és bot fejlesztés.",
+      comments: 15, contribs: 28, avatar: "assets/img/avatar-shino.svg",
     },
   ],
 };
