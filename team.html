@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Csapat tagok – AnimeHub</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/team.css">
+</head>
+<body data-page="community">
+
+  <!-- ===== Topbar (layout.js tölti fel) ===== -->
+  <header id="appTopbar" class="topbar"></header>
+
+  <div class="layout">
+
+    <!-- ===== Sidebar (layout.js tölti fel) ===== -->
+    <aside id="appSidebar" class="sidebar"></aside>
+
+    <!-- ===== Fő tartalom ===== -->
+    <main class="main">
+      <div class="team-grid">
+
+        <!-- ===== Bal oszlop ===== -->
+        <div>
+
+          <!-- Fejléc -->
+          <header class="team-head">
+            <div class="title-row">
+              <span class="icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </span>
+              <h1>Csapat tagok</h1>
+            </div>
+            <p class="subtitle">Ismerd meg a KATSU csapatának tagjait és szerepköreiket.</p>
+
+            <div class="team-toolbar">
+              <div class="team-search">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" id="teamSearch" placeholder="Tag keresése..." aria-label="Tag keresése">
+              </div>
+              <button class="team-sort" id="teamSort">
+                <span>Rendezés: Név szerint</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+            </div>
+
+            <nav class="team-tabs" id="teamTabs" data-tab-group>
+              <button class="team-tab active" data-filter="all">Összes tag</button>
+              <button class="team-tab" data-filter="admin">Adminisztrátorok</button>
+              <button class="team-tab" data-filter="translator">Fordítók</button>
+              <button class="team-tab" data-filter="editor">Szerkesztők</button>
+              <button class="team-tab" data-filter="other">Egyéb</button>
+            </nav>
+          </header>
+
+          <!-- Tagkártyák (team.js tölti fel) -->
+          <div class="members-grid" id="membersGrid"></div>
+
+          <!-- Lapozó -->
+          <nav class="pagination">
+            <button class="page-btn" aria-label="Előző oldal">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn" aria-label="Következő oldal">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </nav>
+
+        </div>
+
+        <!-- ===== Jobb oszlop ===== -->
+        <aside>
+
+          <!-- Csapat információ -->
+          <section class="panel">
+            <div class="panel-head">
+              <span class="icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </span>
+              <h3>Csapat információ</h3>
+            </div>
+            <p class="team-info-text">
+              A KATSU egy lelkes animerajongókból álló csapat, akik elkötelezettek
+              a minőségi fordítások és tartalmak mellett.
+            </p>
+            <div class="info-row">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span class="lbl">Alapítás dátuma</span>
+              <span class="val">2021. március 15.</span>
+            </div>
+            <div class="info-row">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              <span class="lbl">Összes tag</span>
+              <span class="val">18 fő</span>
+            </div>
+            <div class="info-row">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <span class="lbl">Aktív tagok</span>
+              <span class="val">12 fő</span>
+            </div>
+            <div class="info-row">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              <span class="lbl">Összes projekt</span>
+              <span class="val">48</span>
+            </div>
+            <button class="btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+              Csatlakozz a csapathoz
+            </button>
+          </section>
+
+          <!-- Szerepkörök leírása -->
+          <section class="panel">
+            <div class="panel-head">
+              <span class="icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </span>
+              <h3>Szerepkörök leírása</h3>
+            </div>
+
+            <div class="role-desc-item">
+              <span class="ic founder">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M5 16L3 6l5.5 4L12 4l3.5 6L21 6l-2 10H5zm14 3a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-1h14v1z"/></svg>
+              </span>
+              <div>
+                <h4>Alapító</h4>
+                <p>A csapat vezetője, döntéshozó és az oldal irányításáért felelős.</p>
+              </div>
+            </div>
+
+            <div class="role-desc-item">
+              <span class="ic admin">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </span>
+              <div>
+                <h4>Adminisztrátor</h4>
+                <p>A csapat koordinációjáért és a felhasználók támogatásáért felelős.</p>
+              </div>
+            </div>
+
+            <div class="role-desc-item">
+              <span class="ic translator">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </span>
+              <div>
+                <h4>Főfordító</h4>
+                <p>Fordítások készítése és ellenőrzése, nyelvtani és stilisztikai javítások.</p>
+              </div>
+            </div>
+
+            <div class="role-desc-item">
+              <span class="ic editor">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </span>
+              <div>
+                <h4>Szerkesztő</h4>
+                <p>Feliratok időzítése, formázása és technikai szerkesztések.</p>
+              </div>
+            </div>
+
+            <div class="role-desc-item">
+              <span class="ic moderator">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </span>
+              <div>
+                <h4>Moderátor</h4>
+                <p>A közösségi tartalmak és felhasználók felügyelete, szabályok betartatása.</p>
+              </div>
+            </div>
+
+            <a class="roles-all" href="#">Összes szerepkör megtekintése
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </section>
+
+        </aside>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ===== Szkriptek ===== -->
+  <script src="js/data.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/team.js"></script>
+  <script src="js/images.js"></script>
+</body>
+</html>
