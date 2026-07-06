@@ -1,0 +1,291 @@
+/* ==========================================================================
+   AnimeHub – home.css
+   Kezdőlap: hero, folytatás, népszerű animék, jobb oldali panelek
+   ========================================================================== */
+
+.home-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ==========================================================================
+   Hero carousel
+   ========================================================================== */
+.hero {
+  position: relative;
+  height: 380px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.hero-slide.active { opacity: 1; pointer-events: auto; }
+
+.hero-slide > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(8, 7, 13, 0.94) 0%, rgba(8, 7, 13, 0.55) 45%, transparent 75%),
+              linear-gradient(0deg, rgba(8, 7, 13, 0.8) 0%, transparent 40%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  max-width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  padding: 0 40px;
+}
+
+.hero-content h1 {
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.05;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  font-size: 14px;
+  color: var(--text-soft);
+}
+
+.hero-meta .rating { font-size: 14px; }
+.hero-meta .sep { color: var(--text-muted); }
+
+.hero-desc {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-soft);
+  max-width: 420px;
+}
+
+.hero-actions { display: flex; gap: 12px; margin-top: 6px; }
+
+/* Hero navigáció */
+.hero-nav {
+  position: absolute;
+  z-index: 3;
+  right: 24px;
+  bottom: 24px;
+  display: flex;
+  gap: 8px;
+}
+
+.hero-dots {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 7px;
+}
+
+.hero-dots button {
+  width: 22px;
+  height: 5px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.25);
+  transition: background 0.25s, width 0.25s;
+}
+
+.hero-dots button.active { background: var(--purple-2); width: 34px; }
+
+/* ==========================================================================
+   Vízszintes kártyasorok
+   ========================================================================== */
+.section { margin-top: 32px; }
+
+.row-scroll {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 178px;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 6px;
+  scrollbar-width: none;
+}
+
+.row-scroll::-webkit-scrollbar { display: none; }
+
+/* Folytatás kártya (16:9) */
+.continue-card { grid-auto-columns: 250px; }
+.continue-card .card { aspect-ratio: 16 / 10; }
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 3px;
+  padding: 12px 14px;
+  background: linear-gradient(0deg, rgba(5, 4, 9, 0.92) 0%, rgba(5, 4, 9, 0.25) 55%, transparent 100%);
+}
+
+.card-overlay h3 { font-size: 14.5px; font-weight: 700; line-height: 1.3; }
+.card-overlay p { font-size: 12.5px; color: var(--text-soft); }
+.card-overlay .progress { margin-top: 8px; }
+
+.card-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%) scale(0.8);
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: rgba(139, 92, 246, 0.9);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.card:hover .card-play { opacity: 1; transform: translate(-50%, -60%) scale(1); }
+
+/* Poszter kártya (álló) */
+.poster-card .card { aspect-ratio: 2 / 3; }
+
+.poster-card .badge-new {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+}
+
+.poster-foot { padding: 10px 4px 0; }
+.poster-foot h3 { font-size: 14px; font-weight: 600; line-height: 1.35; }
+.poster-foot .rating { margin-top: 5px; font-size: 13px; }
+
+/* ==========================================================================
+   Jobb oldali oszlop
+   ========================================================================== */
+
+/* Népszerű most */
+.top-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s;
+}
+
+.top-item:hover { background: var(--bg-hover); }
+
+.top-item .rank {
+  width: 22px;
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--purple-2);
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.top-item img {
+  width: 52px;
+  height: 68px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.top-item .info { min-width: 0; }
+.top-item .info h4 { font-size: 13.5px; font-weight: 600; line-height: 1.35; }
+.top-item .info .rating { margin-top: 4px; font-size: 12.5px; }
+
+/* Mai ütemezés */
+.schedule-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 8px;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s;
+}
+
+.schedule-item:hover { background: var(--bg-hover); }
+
+.schedule-item + .schedule-item { border-top: 1px solid var(--border-soft); }
+
+.schedule-item .time {
+  width: 44px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-soft);
+  flex-shrink: 0;
+}
+
+.schedule-item img {
+  width: 46px;
+  height: 46px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.schedule-item .info { flex: 1; min-width: 0; }
+.schedule-item .info h4 { font-size: 13.5px; font-weight: 600; }
+.schedule-item .info p { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+.schedule-item .bell { color: var(--purple-2); opacity: 0; transition: opacity 0.2s; }
+.schedule-item:hover .bell { opacity: 1; }
+
+.schedule-all {
+  width: 100%;
+  margin-top: 14px;
+  height: 42px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-soft);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.schedule-all:hover { background: var(--bg-hover); color: var(--text); }
+
+/* ----- Reszponzív ----- */
+@media (max-width: 1400px) {
+  .home-grid { grid-template-columns: minmax(0, 1fr) 300px; }
+}
+
+@media (max-width: 1250px) {
+  .home-grid { grid-template-columns: 1fr; }
+  .hero-content h1 { font-size: 34px; }
+}
+
+@media (max-width: 720px) {
+  .hero { height: 320px; }
+  .hero-content { max-width: 100%; padding: 0 22px; }
+  .hero-content h1 { font-size: 28px; }
+}

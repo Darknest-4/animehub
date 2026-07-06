@@ -1,0 +1,337 @@
+/* ==========================================================================
+   AnimeHub – team.css
+   Csapat oldal: tagkártyák, szűrők, csapat infó, szerepkörök
+   ========================================================================== */
+
+.team-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 356px;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ----- Fejléc ----- */
+.team-head { margin-bottom: 20px; }
+
+.team-head .title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.team-head .title-row .icon { color: var(--purple-2); }
+
+.team-head h1 { font-size: 27px; font-weight: 800; }
+
+.team-head .subtitle { font-size: 14px; color: var(--text-soft); margin-top: 6px; }
+
+/* ----- Eszköztár: keresés + rendezés ----- */
+.team-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 0 4px;
+  flex-wrap: wrap;
+}
+
+.team-search {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  height: 42px;
+  padding: 0 14px;
+  min-width: 220px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  transition: border-color 0.2s;
+}
+
+.team-search:focus-within { border-color: var(--purple); }
+.team-search svg { color: var(--text-muted); }
+.team-search input { flex: 1; font-size: 13.5px; }
+.team-search input::placeholder { color: var(--text-muted); }
+
+.team-sort {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 15px;
+  font-size: 13.5px;
+  color: var(--text-soft);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  transition: background 0.2s;
+}
+
+.team-sort:hover { background: var(--bg-hover); }
+
+/* ----- Szűrő fülek ----- */
+.team-tabs {
+  display: flex;
+  gap: 4px;
+  margin-top: 14px;
+  border-bottom: 1px solid var(--border-soft);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.team-tabs::-webkit-scrollbar { display: none; }
+
+.team-tab {
+  padding: 12px 17px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.team-tab:hover { color: var(--text); }
+.team-tab.active { color: var(--purple-2); border-color: var(--purple); }
+
+/* ==========================================================================
+   Tagkártyák
+   ========================================================================== */
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.member-card {
+  padding: 26px 20px 20px;
+  text-align: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.member-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(139, 92, 246, 0.45);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.member-card .avatar {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  margin: 0 auto 14px;
+}
+
+.member-card .avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+}
+
+.member-card:hover .avatar img { border-color: var(--purple); }
+
+.member-card h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.member-card h3 .shield { flex-shrink: 0; }
+
+.role-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 9px;
+  padding: 5px 13px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid;
+}
+
+/* Szerepkör-színek */
+.role-founder    { color: #c084fc; background: rgba(192, 132, 252, 0.1);  border-color: rgba(192, 132, 252, 0.4); }
+.role-cofounder  { color: #a78bfa; background: rgba(167, 139, 250, 0.1);  border-color: rgba(167, 139, 250, 0.4); }
+.role-admin      { color: #818cf8; background: rgba(129, 140, 248, 0.1);  border-color: rgba(129, 140, 248, 0.4); }
+.role-translator { color: #34d399; background: rgba(52, 211, 153, 0.1);   border-color: rgba(52, 211, 153, 0.4); }
+.role-editor     { color: #fbbf24; background: rgba(251, 191, 36, 0.1);   border-color: rgba(251, 191, 36, 0.4); }
+.role-lector     { color: #38bdf8; background: rgba(56, 189, 248, 0.1);   border-color: rgba(56, 189, 248, 0.4); }
+.role-coder      { color: #fb923c; background: rgba(251, 146, 60, 0.1);   border-color: rgba(251, 146, 60, 0.4); }
+.role-moderator  { color: #f472b6; background: rgba(244, 114, 182, 0.1);  border-color: rgba(244, 114, 182, 0.4); }
+
+.member-card .desc {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--text-soft);
+  margin-top: 12px;
+  min-height: 39px;
+}
+
+.member-stats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 26px;
+  margin-top: 16px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-soft);
+}
+
+.member-stat {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.member-stat strong { font-size: 14px; color: var(--text); }
+.member-stat svg { color: var(--purple-2); }
+
+/* ----- Lapozó ----- */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.page-btn {
+  min-width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-soft);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.page-btn:hover { background: var(--bg-hover); color: var(--text); }
+
+.page-btn.active {
+  color: #fff;
+  background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+  border-color: transparent;
+}
+
+/* ==========================================================================
+   Jobb oldali oszlop
+   ========================================================================== */
+.team-info-text {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--text-soft);
+  margin-bottom: 18px;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 11px 0;
+  font-size: 13.5px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.info-row:last-of-type { border-bottom: none; }
+
+.info-row svg { color: var(--text-muted); flex-shrink: 0; }
+.info-row .lbl { flex: 1; color: var(--text-soft); }
+.info-row .val { font-weight: 700; }
+
+.panel .btn-primary { width: 100%; margin-top: 16px; }
+
+/* Szerepkörök leírása */
+.role-desc-item {
+  display: flex;
+  gap: 13px;
+  padding: 12px 0;
+}
+
+.role-desc-item + .role-desc-item { border-top: 1px solid var(--border-soft); }
+
+.role-desc-item .ic {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+}
+
+.role-desc-item .ic.founder    { color: #c084fc; background: rgba(192, 132, 252, 0.12); }
+.role-desc-item .ic.admin      { color: #818cf8; background: rgba(129, 140, 248, 0.12); }
+.role-desc-item .ic.translator { color: #34d399; background: rgba(52, 211, 153, 0.12); }
+.role-desc-item .ic.editor     { color: #fbbf24; background: rgba(251, 191, 36, 0.12); }
+.role-desc-item .ic.moderator  { color: #f472b6; background: rgba(244, 114, 182, 0.12); }
+
+.role-desc-item h4 { font-size: 14px; font-weight: 700; }
+
+.role-desc-item .ic.founder    + div h4 { color: #c084fc; }
+.role-desc-item .ic.admin      + div h4 { color: #818cf8; }
+.role-desc-item .ic.translator + div h4 { color: #34d399; }
+.role-desc-item .ic.editor     + div h4 { color: #fbbf24; }
+.role-desc-item .ic.moderator  + div h4 { color: #f472b6; }
+
+.role-desc-item p {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--text-soft);
+  margin-top: 4px;
+}
+
+.roles-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--purple-2);
+}
+
+.roles-all:hover { color: var(--text); }
+
+/* Üres állapot (kereséskor) */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+  font-size: 14.5px;
+}
+
+/* ----- Reszponzív ----- */
+@media (max-width: 1500px) {
+  .members-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 1350px) {
+  .team-grid { grid-template-columns: 1fr; }
+  .members-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (max-width: 1050px) {
+  .members-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 800px) {
+  .members-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 520px) {
+  .members-grid { grid-template-columns: 1fr; }
+}
