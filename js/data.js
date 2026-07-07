@@ -285,4 +285,211 @@ const DATA = {
       comments: 15, contribs: 28, avatar: "assets/img/avatar-shino.svg",
     },
   ],
+
+  /* ======================================================================
+     Keresés oldal
+     ====================================================================== */
+  searchAnime: [
+    { title: "Naruto",                        type: "TV",   year: 2002, rating: 9.1, image: "assets/img/poster-naruto.svg" },
+    { title: "Naruto Shippuden",              type: "TV",   year: 2007, rating: 9.1, image: "assets/img/poster-naruto-shippuden.svg" },
+    { title: "Boruto: Naruto Next Generations", type: "TV", year: 2017, rating: 8.2, image: "assets/img/poster-boruto.svg" },
+    { title: "The Last: Naruto the Movie",    type: "Film", year: 2014, rating: 7.8, image: "assets/img/poster-naruto-movie.svg" },
+    { title: "Naruto Shippuden the Movie",    type: "Film", year: 2007, rating: 7.6, image: "assets/img/poster-naruto-movie.svg" },
+  ],
+
+  searchEpisodes: [
+    { ep: "1. évad 1. epizód", title: "Uzumaki Naruto!",                    date: "2002. okt. 3.",  image: "assets/img/thumb-ep454.svg" },
+    { ep: "1. évad 2. epizód", title: "My Name is Konohamaru!",             date: "2002. okt. 10.", image: "assets/img/thumb-ep455.svg" },
+    { ep: "1. évad 3. epizód", title: "Sasuke and Sakura: Friends or Foes?", date: "2002. okt. 17.", image: "assets/img/thumb-ep456.svg" },
+    { ep: "1. évad 4. epizód", title: "Pass or Fail: Survival Test!",       date: "2002. okt. 24.", image: "assets/img/thumb-ep457.svg" },
+  ],
+
+  popularSearches: [
+    "demon slayer", "attack on titan", "jujutsu kaisen", "one piece",
+    "my hero academia", "solo leveling", "tokyo revengers", "chainsaw man",
+    "naruto shippuden", "black clover",
+  ],
+
+  /* ======================================================================
+     Ütemező oldal – heti rács (nap: 0=Hétfő ... 6=Vasárnap)
+     ====================================================================== */
+  weekLabel: "2024. május 20. – május 26.",
+  weekDays: [
+    { name: "Hétfő", date: "05.20." }, { name: "Kedd", date: "05.21." },
+    { name: "Szerda", date: "05.22.", today: true }, { name: "Csütörtök", date: "05.23." },
+    { name: "Péntek", date: "05.24." }, { name: "Szombat", date: "05.25." },
+    { name: "Vasárnap", date: "05.26." },
+  ],
+  weekSchedule: {
+    "12:00": [
+      { day: 1, title: "Boruto: Two Blue Vortex", ep: "Ep. 12",   time: "12:00", image: "assets/img/poster-boruto.svg" },
+      { day: 2, title: "One Piece",               ep: "Ep. 1103", time: "12:00", image: "assets/img/poster-one-piece.svg" },
+      { day: 4, title: "Jujutsu Kaisen Season 2", ep: "Ep. 18",   time: "12:00", image: "assets/img/poster-jujutsu-kaisen.svg" },
+      { day: 6, title: "My Hero Academia",        ep: "Ep. 135",  time: "12:00", image: "assets/img/poster-my-hero-academia.svg" },
+    ],
+    "15:00": [
+      { day: 0, title: "Wind Breaker",  ep: "Ep. 7",   time: "15:30", image: "assets/img/poster-wind-breaker.svg" },
+      { day: 3, title: "Kaiju No. 8",   ep: "Ep. 8",   time: "15:00", image: "assets/img/poster-kaiju-8.svg" },
+      { day: 5, title: "Black Clover",  ep: "Ep. 171", time: "15:30", image: "assets/img/poster-black-clover.svg" },
+    ],
+    "18:00": [
+      { day: 0, title: "Demon Slayer: Hashira Training Arc", ep: "Ep. 6", time: "18:00", image: "assets/img/poster-demon-slayer.svg" },
+      { day: 1, title: "The Irregular at Magic High School", ep: "Ep. 6", time: "18:30", image: "assets/img/poster-irregular-magic.svg" },
+      { day: 3, title: "Tokyo Revengers Season 3", ep: "Ep. 6", time: "18:00", image: "assets/img/poster-tokyo-revengers.svg" },
+      { day: 4, title: "Chainsaw Man",             ep: "Ep. 7", time: "18:00", image: "assets/img/poster-chainsaw-man.svg" },
+      { day: 6, title: "Attack on Titan Final Season", ep: "Ep. 88", time: "18:05", image: "assets/img/poster-attack-on-titan.svg", highlight: true },
+    ],
+    "21:00": [
+      { day: 0, title: "Solo Leveling",     ep: "Ep. 8", time: "21:00", image: "assets/img/poster-solo-leveling.svg" },
+      { day: 2, title: "Re:Zero Season 3",  ep: "Ep. 7", time: "21:30", image: "assets/img/poster-tokyo-revengers.svg" },
+      { day: 4, title: "Frieren: Beyond Journey's End", ep: "Ep. 7", time: "21:00", image: "assets/img/poster-frieren.svg" },
+      { day: 5, title: "Bleach: Thousand-Year Blood War", ep: "Ep. 7", time: "21:30", image: "assets/img/poster-bleach.svg" },
+    ],
+    "00:00": [
+      { day: 1, title: "The Misfit of Demon King Academy", ep: "Ep. 7", time: "00:00", image: "assets/img/poster-dandadan.svg" },
+      { day: 4, title: "Date A Live V",  ep: "Ep. 7", time: "00:30", image: "assets/img/poster-spy-family.svg" },
+    ],
+    "03:00": [
+      { day: 5, title: "Overlord IV", ep: "Ep. 7", time: "03:00", image: "assets/img/poster-vinland-saga.svg" },
+    ],
+  },
+
+  upcomingEpisodes: [
+    { title: "Jujutsu Kaisen Season 2", ep: "Ep. 18", when: "Ma",     time: "12:00", image: "assets/img/poster-jujutsu-kaisen.svg" },
+    { title: "One Piece",               ep: "Ep. 1103", when: "Ma",   time: "12:00", image: "assets/img/poster-one-piece.svg" },
+    { title: "Kaiju No. 8",             ep: "Ep. 8",  when: "Holnap", time: "15:00", image: "assets/img/poster-kaiju-8.svg" },
+    { title: "Tokyo Revengers Season 3", ep: "Ep. 6", when: "Holnap", time: "18:00", image: "assets/img/poster-tokyo-revengers.svg" },
+    { title: "Re:Zero Season 3",        ep: "Ep. 7",  when: "Holnap", time: "21:30", image: "assets/img/poster-vinland-saga.svg" },
+  ],
+
+  calendar: {
+    label: "2024. május",
+    firstDayOffset: 2,   // május 1. = szerda (H=0)
+    daysInMonth: 31,
+    prevMonthDays: [29, 30],
+    today: 22,
+    hasEpisode: [1, 3, 6, 8, 10, 13, 15, 17, 20, 21, 22, 23, 24, 25, 26, 29, 31],
+  },
+
+  /* ======================================================================
+     Közösség oldal
+     ====================================================================== */
+  communityPosts: [
+    {
+      author: "ItachiUchiha", avatar: "assets/img/avatar-itachi.svg", when: "2 órája",
+      category: "Megbeszélés", title: "Mit gondoltok a Jujutsu Kaisen Season 2-ről?",
+      body: "Szerintem elképesztő volt a Shibuya Incident arc animációja! 🔥 A MAPPA most is odatette magát.",
+      votes: 256, comments: 89, followers: 12, hot: true,
+    },
+    {
+      author: "Luffy98", avatar: "assets/img/avatar-kiba.svg", when: "5 órája",
+      category: "Fanart", title: "Gum-Gum Red Hawk! 🔥",
+      body: "Kicsit megkésve, de itt van a kedvenc jelenetem One Piece-ből! Remélem tetszik nektek!",
+      votes: 412, comments: 37, followers: 8, image: "assets/img/poster-one-piece.svg",
+    },
+    {
+      author: "SasukeFan", avatar: "assets/img/avatar-sasuke.svg", when: "1 napja",
+      category: "Kérdés", title: "Melyik a legjobb Naruto filler epizód?",
+      body: "Szerintetek melyik filler epizód érte meg a legjobban? Én a Kakashi Anbu arcot nagyon szerettem.",
+      votes: 128, comments: 64, followers: 6,
+    },
+    {
+      author: "MikasaAckerman", avatar: "assets/img/avatar-hinata.svg", when: "2 napja",
+      category: "Megbeszélés", title: "Attack on Titan befejezés – megérte a várakozást?",
+      body: "Most néztem végig újra az egész sorozatot. A finálé szerintem méltó lezárás volt, de kíváncsi vagyok a ti véleményetekre!",
+      votes: 198, comments: 112, followers: 15,
+    },
+  ],
+
+  popularTopics: [
+    { tag: "Megbeszélés", title: "Demon Slayer: Hashira Training Arc", comments: 124, image: "assets/img/poster-demon-slayer.svg" },
+    { tag: "Fanart",      title: "One Piece fanart gyűjtemény",        comments: 98,  image: "assets/img/poster-one-piece.svg" },
+    { tag: "Megbeszélés", title: "Attack on Titan befejezése",         comments: 87,  image: "assets/img/poster-attack-on-titan.svg" },
+    { tag: "Elmélet",     title: "Jujutsu Kaisen elméletek",           comments: 76,  image: "assets/img/poster-jujutsu-kaisen.svg" },
+    { tag: "Fanart",      title: "Saját anime karaktereitek",          comments: 63,  image: "assets/img/poster-dandadan.svg" },
+  ],
+
+  recommendedCommunities: [
+    { name: "AnimeHub Hivatalos",   members: "12.4K tag", link: "team.html" },
+    { name: "One Piece Magyarország", members: "8.7K tag", link: "#" },
+    { name: "Naruto Fanok",         members: "6.1K tag", link: "#" },
+    { name: "Anime Zenék",          members: "4.3K tag", link: "#" },
+    { name: "Manga Magyarul",       members: "3.8K tag", link: "#" },
+  ],
+
+  /* ======================================================================
+     Hírek oldal
+     ====================================================================== */
+  news: [
+    {
+      category: "Anime hírek", badge: "ANIME HÍREK", when: "2 órája",
+      title: "Demon Slayer: Hashira Training Arc – Új kulcskép érkezett!",
+      body: "Megérkezett a Hashira Training Arc vadonatúj kulcsképe! A premier dátuma 2024. június 12-én lesz Japánban.",
+      likes: "1.2K", comments: 342, image: "assets/img/poster-demon-slayer.svg",
+    },
+    {
+      category: "Bejelentések", badge: "BEJELENTÉS", when: "5 órája",
+      title: "One Piece – Új film érkezik 2025 elején!",
+      body: "A Toei Animation bejelentette, hogy egy teljesen új One Piece film készül, melynek címe: One Piece: Dawn of the New Era.",
+      likes: "2.3K", comments: 567, image: "assets/img/poster-one-piece.svg",
+    },
+    {
+      category: "Anime hírek", badge: "ANIME HÍREK", when: "1 napja",
+      title: "Chainsaw Man Movie – Reze Arc hivatalosan bejelentve!",
+      body: "A Chainsaw Man következő mozifilmje a Reze Arc történetét dolgozza fel. További részletek hamarosan!",
+      likes: "3.1K", comments: 721, image: "assets/img/poster-chainsaw-man.svg",
+    },
+    {
+      category: "Iparági hírek", badge: "IPARÁGI HÍREK", when: "2 napja",
+      title: "Új Jujutsu Kaisen videojáték készül!",
+      body: "A Bandai Namco bejelentette a Jujutsu Kaisen Cursed Clash 2 érkezését, mely 2025-ben jelenik meg PC-re és konzolokra.",
+      likes: "1.6K", comments: 310, image: "assets/img/poster-jujutsu-kaisen.svg",
+    },
+    {
+      category: "Események", badge: "ESEMÉNYEK", when: "3 napja",
+      title: "AnimeJapan 2024 – Összefoglaló",
+      body: "Véget ért az idei AnimeJapan! Összegyűjtöttük a legfontosabb bejelentéseket és trailereket egy helyen.",
+      likes: "892", comments: 156, image: "assets/img/poster-frieren.svg",
+    },
+    {
+      category: "Bejelentések", badge: "BEJELENTÉS", when: "4 napja",
+      title: "Solo Leveling 2. évad – Hivatalos premier dátum!",
+      body: "Az A-1 Pictures megerősítette: a Solo Leveling második évada 2025 januárjában érkezik.",
+      likes: "2.8K", comments: 634, image: "assets/img/poster-solo-leveling.svg",
+    },
+  ],
+
+  newsCategories: [
+    { name: "Összes hír",    count: 124 },
+    { name: "Bejelentések",  count: 28 },
+    { name: "Anime hírek",   count: 54 },
+    { name: "Iparági hírek", count: 26 },
+    { name: "Események",     count: 16 },
+  ],
+
+  /* ======================================================================
+     Támogatás oldal
+     ====================================================================== */
+  faq: [
+    {
+      q: "Hogyan hozhatok létre fiókot?",
+      a: "Kattints a jobb felső sarokban a profil ikonra, majd válaszd a Regisztráció lehetőséget. Add meg az e-mail címed, válassz felhasználónevet és jelszót – kész is!",
+    },
+    {
+      q: "Miért nem tölt be egy anime / epizód?",
+      a: "Először frissítsd az oldalt (Ctrl+F5). Ha továbbra sem működik, ellenőrizd az internetkapcsolatod, vagy próbáld ki másik böngészőben. Ha a hiba nem szűnik meg, jelezd nekünk a Visszajelzés menüponton keresztül.",
+    },
+    {
+      q: "Hogyan tudok listát készíteni?",
+      a: "Minden anime adatlapján találsz egy „Kedvencekhez\" gombot, illetve a Műsorlista menüpontban rendezheted a megnézendő és a már látott sorozataidat.",
+    },
+    {
+      q: "Hogyan érhetem el a prémium előfizetés előnyeit?",
+      a: "A fejlécben lévő Prémium előfizetés gombra kattintva választhatsz csomagot. A prémium hirdetésmentes élményt, exkluzív tartalmakat és korai hozzáférést ad.",
+    },
+    {
+      q: "Biztonságos az AnimeHub használata?",
+      a: "Igen! Az adataidat titkosítva tároljuk, harmadik félnek nem adjuk ki, és az oldal HTTPS-en keresztül kommunikál.",
+    },
+  ],
 };

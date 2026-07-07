@@ -87,9 +87,9 @@ function layoutSidebarHTML(activePage, extra) {
     ${item("home", "index.html", "home", "Kezdőlap")}
     ${item("anime", "anime.html", "anime", "Animék")}
     ${item("watchlist", "#", "list", "Műsorlista")}
-    ${item("schedule", "#", "calendar", "Ütemező")}
-    ${item("community", "team.html", "users", "Közösség")}
-    ${item("news", "#", "news", "Hírek")}
+    ${item("schedule", "schedule.html", "calendar", "Ütemező")}
+    ${item("community", "community.html", "users", "Közösség")}
+    ${item("news", "news.html", "news", "Hírek")}
 
     <div class="sidebar-label">Gyűjteményed</div>
     ${item("favorites", "#", "heart", "Kedvencek")}
@@ -99,7 +99,7 @@ function layoutSidebarHTML(activePage, extra) {
 
     <div class="sidebar-label">Egyéb</div>
     ${item("settings", "#", "settings", "Beállítások")}
-    ${item("support", "#", "help", "Támogatás")}
+    ${item("support", "support.html", "help", "Támogatás")}
     ${item("feedback", "#", "feedback", "Visszajelzés")}
 
     ${extra === "continue" ? continueMini : premiumCard}`;
@@ -111,7 +111,7 @@ function layoutBottomNavHTML(activePage) {
     { page: "home",      href: "index.html",   icon: "home",  label: "Kezdőlap" },
     { page: "anime",     href: "anime.html",   icon: "anime", label: "Animék" },
     { page: "watch",     href: "watch.html",   icon: "playCircle", label: "Lejátszó" },
-    { page: "community", href: "team.html",    icon: "users", label: "Közösség" },
+    { page: "community", href: "community.html", icon: "users", label: "Közösség" },
     { page: "profile",   href: "profile.html", icon: "user",  label: "Profil" },
   ];
 

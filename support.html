@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Támogatás – AnimeHub</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="css/base.css?v=4">
+  <link rel="stylesheet" href="css/support.css?v=4">
+</head>
+<body data-page="support">
+
+  <!-- ===== Topbar (layout.js tölti fel) ===== -->
+  <header id="appTopbar" class="topbar"></header>
+
+  <div class="layout">
+
+    <!-- ===== Sidebar (layout.js tölti fel) ===== -->
+    <aside id="appSidebar" class="sidebar"></aside>
+
+    <!-- ===== Fő tartalom ===== -->
+    <main class="main">
+      <div class="support-grid">
+
+        <!-- ===== Bal oszlop ===== -->
+        <div>
+
+          <header class="support-head">
+            <h1>Támogatás</h1>
+            <p class="subtitle">Segítünk, ha kérdésed van, vagy problémád merült fel.</p>
+          </header>
+
+          <!-- Infó kártyák -->
+          <div class="info-cards">
+            <button class="info-card">
+              <span class="ic">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </span>
+              <h3>GYIK</h3>
+              <p>Válaszok a leggyakoribb kérdésekre.</p>
+            </button>
+            <button class="info-card">
+              <span class="ic">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+              </span>
+              <h3>Hibaelhárítás</h3>
+              <p>Problémák megoldása lépésről lépésre.</p>
+            </button>
+            <button class="info-card">
+              <span class="ic">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </span>
+              <h3>Kapcsolatfelvétel</h3>
+              <p>Írj nekünk, válaszolunk amilyen gyorsan csak tudunk.</p>
+            </button>
+            <button class="info-card">
+              <span class="ic">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg>
+              </span>
+              <h3>Visszajelzés küldése</h3>
+              <p>Mondd el a véleményed, hogy fejlődhessünk!</p>
+            </button>
+          </div>
+
+          <!-- GYIK -->
+          <section class="faq-panel">
+            <div class="head">
+              <h2>Gyakran ismételt kérdések</h2>
+              <a class="link-more" href="#">Továbbiak</a>
+            </div>
+            <div id="faqList"></div>
+          </section>
+
+          <!-- Támogatói sáv -->
+          <section class="donate-panel">
+            <div class="content">
+              <h2>Támogasd az AnimeHub-ot ❤️</h2>
+              <p>A támogatásoddal segítesz minket abban, hogy még több animét, jobb minőséggel és új funkciókkal hozhassunk el!</p>
+              <div class="donate-perks">
+                <span class="perk">
+                  <span class="ic">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+                  </span>
+                  Hirdetésmentes élmény
+                </span>
+                <span class="perk">
+                  <span class="ic">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                  </span>
+                  Korai hozzáférés az újdonságokhoz
+                </span>
+                <span class="perk">
+                  <span class="ic">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/></svg>
+                  </span>
+                  Exkluzív profilkeret
+                </span>
+                <span class="perk">
+                  <span class="ic">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+                  </span>
+                  Kiemelt támogatói szerep a közösségben
+                </span>
+              </div>
+              <button class="btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                Támogatás most
+              </button>
+            </div>
+            <img class="donate-mascot" src="assets/img/mascot.svg" alt="AnimeHub kabala">
+          </section>
+
+        </div>
+
+        <!-- ===== Jobb oszlop ===== -->
+        <aside>
+
+          <!-- Kapcsolat űrlap -->
+          <section class="panel">
+            <div class="panel-head"><h3>Írj nekünk</h3></div>
+            <form class="contact-form" id="contactForm" novalidate>
+              <div class="form-field">
+                <label for="topicField">Tárgy</label>
+                <select id="topicField" required>
+                  <option value="">Válassz egy témát</option>
+                  <option>Technikai probléma</option>
+                  <option>Fiókkal kapcsolatos kérdés</option>
+                  <option>Prémium előfizetés</option>
+                  <option>Tartalom kérés</option>
+                  <option>Egyéb</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="emailField">E-mail cím</label>
+                <input type="email" id="emailField" placeholder="email@example.com" required>
+              </div>
+              <div class="form-field">
+                <label for="msgField">Üzenet</label>
+                <textarea id="msgField" placeholder="Írd le a problémád vagy kérdésed részletesen..." required></textarea>
+                <div class="char-count" id="charCount">0 / 1000</div>
+              </div>
+              <button type="submit" class="btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                Üzenet elküldése
+              </button>
+              <div class="form-success" id="formSuccess"></div>
+            </form>
+          </section>
+
+          <!-- Hasznos linkek -->
+          <section class="panel">
+            <div class="panel-head"><h3>Hasznos linkek</h3></div>
+            <a class="useful-link" href="#">Felhasználási feltételek
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a class="useful-link" href="#">Adatvédelmi irányelvek
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a class="useful-link" href="#">Szerzői jogi tájékoztató
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a class="useful-link" href="community.html">Közösségi irányelvek
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a class="useful-link" href="#">Állapot oldal
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </section>
+
+        </aside>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ===== Szkriptek ===== -->
+  <script src="js/data.js?v=4"></script>
+  <script src="js/layout.js?v=4"></script>
+  <script src="js/main.js?v=4"></script>
+  <script src="js/support.js?v=4"></script>
+  <script src="js/images.js?v=4"></script>
+</body>
+</html>

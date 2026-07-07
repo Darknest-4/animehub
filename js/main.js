@@ -80,7 +80,11 @@ function initLiveSearch() {
     if (!q) { box.classList.remove("open"); return; }
 
     const hits = index.filter((a) => a.title.toLowerCase().includes(q)).slice(0, 6);
-    box.innerHTML = hits.length
+    const allLink = `
+      <a class="search-hit all" href="search.html?q=${encodeURIComponent(query.trim())}">
+        <div class="t"><h4 style="color:var(--purple-2)">Összes találat megjelenítése →</h4></div>
+      </a>`;
+    box.innerHTML = (hits.length
       ? hits.map((a) => `
           <a class="search-hit" href="anime.html">
             <img src="${a.image}" alt="${a.title}">
@@ -90,12 +94,20 @@ function initLiveSearch() {
             </div>
             <span class="go">${ICONS.chevronRight}</span>
           </a>`).join("")
-      : '<div class="search-empty">Nincs találat 😔</div>';
+      : '<div class="search-empty">Nincs találat 😔</div>') + allLink;
     box.classList.add("open");
   }
 
   input.addEventListener("input", () => render(input.value));
   input.addEventListener("focus", () => render(input.value));
+
+  /* Enter → keresési eredmények oldal */
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && input.value.trim() && !document.body.dataset.page.includes("search")) {
+      location.href = `search.html?q=${encodeURIComponent(input.value.trim())}`;
+    }
+  });
+
   document.addEventListener("click", (e) => {
     if (!search.contains(e.target)) box.classList.remove("open");
   });

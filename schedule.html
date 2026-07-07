@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ütemező – AnimeHub</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="css/base.css?v=4">
+  <link rel="stylesheet" href="css/schedule.css?v=4">
+</head>
+<body data-page="schedule">
+
+  <!-- ===== Topbar (layout.js tölti fel) ===== -->
+  <header id="appTopbar" class="topbar"></header>
+
+  <div class="layout">
+
+    <!-- ===== Sidebar (layout.js tölti fel) ===== -->
+    <aside id="appSidebar" class="sidebar"></aside>
+
+    <!-- ===== Fő tartalom ===== -->
+    <main class="main">
+      <div class="schedule-grid">
+
+        <!-- ===== Bal oszlop ===== -->
+        <div>
+
+          <header class="sched-head">
+            <h1>Ütemező</h1>
+            <p class="subtitle">Kövesd nyomon, mikor érkeznek az új epizódok kedvenc animéidhez.</p>
+            <nav class="sched-tabs" data-tab-group>
+              <button class="sched-tab active">Heti ütemező</button>
+              <button class="sched-tab">Naptár nézet</button>
+            </nav>
+          </header>
+
+          <!-- Hét navigáció -->
+          <div class="week-nav">
+            <button class="arrow-btn" id="weekPrev" aria-label="Előző hét">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="arrow-btn" id="weekNext" aria-label="Következő hét">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+            <span class="label" id="weekLabel">2024. május 20. – május 26.</span>
+            <button class="tz-select">Időzóna: Europe/Budapest
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+          </div>
+
+          <!-- Heti rács (schedule.js rendereli) -->
+          <div class="week-table" id="weekTable"></div>
+
+          <div class="sched-foot">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            Az időpontok tájékoztató jellegűek, változhatnak.
+            <span class="spacer"></span>
+            <button class="filter-select" style="height:38px">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              Testreszabás
+            </button>
+          </div>
+
+        </div>
+
+        <!-- ===== Jobb oszlop ===== -->
+        <aside>
+
+          <!-- Naptár -->
+          <section class="panel">
+            <div class="cal-head">
+              <button class="arrow-btn" aria-label="Előző hónap">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <span class="label">2024. május</span>
+              <button class="arrow-btn" aria-label="Következő hónap">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+            <div class="cal-grid" id="calGrid"></div>
+            <div class="cal-legend">
+              <span><i></i> Ma</span>
+              <span class="l2"><i></i> Van új epizód</span>
+              <span class="l3"><i></i> Nincs új epizód</span>
+            </div>
+          </section>
+
+          <!-- Következő epizódok -->
+          <section class="panel">
+            <div class="panel-head">
+              <h3>Következő epizódok</h3>
+              <a class="link-more" href="#">Összes (12)</a>
+            </div>
+            <div id="upcomingList"></div>
+            <button class="view-all">Összes megtekintése
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </section>
+
+        </aside>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ===== Szkriptek ===== -->
+  <script src="js/data.js?v=4"></script>
+  <script src="js/layout.js?v=4"></script>
+  <script src="js/main.js?v=4"></script>
+  <script src="js/schedule.js?v=4"></script>
+  <script src="js/images.js?v=4"></script>
+</body>
+</html>
