@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beállítások – AnimeHub</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="css/base.css?v=7">
+  <link rel="stylesheet" href="css/settings.css?v=7">
+</head>
+<body data-page="settings">
+
+  <!-- ===== Topbar (layout.js tölti fel) ===== -->
+  <header id="appTopbar" class="topbar"></header>
+
+  <div class="layout">
+
+    <!-- ===== Sidebar (layout.js tölti fel) ===== -->
+    <aside id="appSidebar" class="sidebar"></aside>
+
+    <!-- ===== Fő tartalom ===== -->
+    <main class="main">
+      <div class="settings-grid">
+
+        <!-- ===== Bal oszlop ===== -->
+        <div>
+
+          <header class="settings-head">
+            <h1>Beállítások</h1>
+            <p class="subtitle">Szabályozd az AnimeHub élményedet.</p>
+            <div class="settings-tabs" id="settingsTabs"></div>
+          </header>
+
+          <!-- Profil információk (csak a Fiók fülön) -->
+          <section class="profile-info" id="profileInfo">
+            <h2>Profil információk</h2>
+            <div class="row">
+              <div class="pi-avatar">
+                <img src="assets/img/avatar-akatsuki.svg" alt="Akatsuki avatár">
+                <span class="cam">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                </span>
+              </div>
+              <div class="pi-fields">
+                <label for="usernameField">Felhasználónév</label>
+                <input type="text" id="usernameField" value="Akatsuki">
+                <label for="emailShow">E-mail cím</label>
+                <div class="pi-email">
+                  <input type="email" id="emailShow" value="akatsuki@example.com">
+                  <span class="verified">Ellenőrzött
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg>
+                  </span>
+                </div>
+              </div>
+              <button class="btn-primary">Profil szerkesztése</button>
+            </div>
+          </section>
+
+          <!-- Beállítás csoportok (settings.js rendereli a fül szerint) -->
+          <div id="settingsBody"></div>
+
+          <p class="settings-note">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            Az adataid biztonsága fontos számunkra. Tudj meg többet az <a href="support.html">adatvédelmi elveinkről</a>.
+          </p>
+
+        </div>
+
+        <!-- ===== Jobb oszlop ===== -->
+        <aside>
+
+          <!-- Prémium tagság -->
+          <section class="panel premium-panel">
+            <div class="head-row">
+              <span class="crown">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M5 16L3 6l5.5 4L12 4l3.5 6L21 6l-2 10H5zm14 3a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-1h14v1z"/></svg>
+              </span>
+              <h3>Prémium tagság</h3>
+              <span class="badge-active">Aktív</span>
+            </div>
+            <p class="lead">Élvezd a prémium előnyöket!</p>
+            <div class="perk-row">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Hirdetésmentes élmény
+            </div>
+            <div class="perk-row">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Exkluzív anime tartalmak
+            </div>
+            <div class="perk-row">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Korai hozzáférés az újdonságokhoz
+            </div>
+            <div class="perk-row">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Magasabb minőségű lejátszás
+            </div>
+            <button class="btn-secondary">Előfizetés kezelése</button>
+          </section>
+
+          <!-- Gyors beállítások -->
+          <section class="panel">
+            <div class="panel-head"><h3>Gyors beállítások</h3></div>
+            <div id="quickSettings"></div>
+          </section>
+
+          <!-- Kijelentkezés -->
+          <section class="panel logout-panel">
+            <div class="panel-head"><h3>Kijelentkezés</h3></div>
+            <p>Jelentkezz ki a fiókodból az eszközön.</p>
+            <button class="btn-danger">
+              Kijelentkezés
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            </button>
+          </section>
+
+        </aside>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ===== Szkriptek ===== -->
+  <script src="js/data.js?v=7"></script>
+  <script src="js/layout.js?v=7"></script>
+  <script src="js/main.js?v=7"></script>
+  <script src="js/settings.js?v=7"></script>
+  <script src="js/images.js?v=7"></script>
+</body>
+</html>

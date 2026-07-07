@@ -87,22 +87,22 @@ function layoutSidebarHTML(activePage, extra) {
 
   return `
     ${item("home", "index.html", "home", "Kezdőlap")}
-    ${item("anime", "anime.html", "anime", "Animék")}
-    ${item("watchlist", "#", "list", "Műsorlista")}
+    ${item("anime", "animes.html", "anime", "Animék")}
+    ${item("watchlist", "watchlist.html", "list", "Műsorlista")}
     ${item("schedule", "schedule.html", "calendar", "Ütemező")}
     ${item("community", "community.html", "users", "Közösség")}
     ${item("news", "news.html", "news", "Hírek")}
 
     <div class="sidebar-label">Gyűjteményed</div>
-    ${item("favorites", "#", "heart", "Kedvencek")}
+    ${item("favorites", "favorites.html", "heart", "Kedvencek")}
     ${item("watch-later", "#", "clock", "Megnézendő")}
     ${item("watched", "#", "check", "Megnézett")}
     ${item("ratings", "#", "star", "Értékelések")}
 
     <div class="sidebar-label">Egyéb</div>
-    ${item("settings", "#", "settings", "Beállítások")}
+    ${item("settings", "settings.html", "settings", "Beállítások")}
     ${item("support", "support.html", "help", "Támogatás")}
-    ${item("feedback", "#", "feedback", "Visszajelzés")}
+    ${item("feedback", "feedback.html", "feedback", "Visszajelzés")}
 
     ${extra === "continue" ? continueMini : premiumCard}`;
 }
@@ -112,7 +112,7 @@ function layoutSidebarHTML(activePage, extra) {
    így telefonon is minden oldal elérhető. */
 const BOTTOM_NAV_ITEMS = [
   { page: "home",      href: "index.html",     icon: "home",     label: "Kezdőlap" },
-  { page: "anime",     href: "anime.html",     icon: "anime",    label: "Animék" },
+  { page: "anime",     href: "animes.html",    icon: "anime",    label: "Animék" },
   { page: "schedule",  href: "schedule.html",  icon: "calendar", label: "Ütemező" },
   { page: "community", href: "community.html", icon: "users",    label: "Közösség" },
 ];

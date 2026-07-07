@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Műsorlista – AnimeHub</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="css/base.css?v=7">
+  <link rel="stylesheet" href="css/watchlist.css?v=7">
+</head>
+<body data-page="watchlist">
+
+  <!-- ===== Topbar (layout.js tölti fel) ===== -->
+  <header id="appTopbar" class="topbar"></header>
+
+  <div class="layout">
+
+    <!-- ===== Sidebar (layout.js tölti fel) ===== -->
+    <aside id="appSidebar" class="sidebar"></aside>
+
+    <!-- ===== Fő tartalom ===== -->
+    <main class="main">
+      <div class="watchlist-grid">
+
+        <!-- ===== Bal oszlop ===== -->
+        <div>
+
+          <header class="wl-head">
+            <h1>Műsorlista</h1>
+            <div class="wl-toolbar">
+              <span id="wlTabs" style="display:contents"></span>
+              <span class="spacer"></span>
+              <span class="sort-label">Rendezés</span>
+              <button class="filter-select">Legutóbb frissített
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+            </div>
+          </header>
+
+          <!-- Lista (watchlist.js rendereli) -->
+          <div class="wl-list" id="wlList"></div>
+          <p class="wl-count" id="wlCount"></p>
+
+        </div>
+
+        <!-- ===== Jobb oszlop ===== -->
+        <aside>
+
+          <!-- Statisztikák -->
+          <section class="panel wl-stats">
+            <div class="panel-head">
+              <span class="icon">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              </span>
+              <h3>Műsorlista statisztikák</h3>
+            </div>
+            <div class="big-row" id="wlBig"></div>
+            <div id="wlBreakdown"></div>
+            <div class="wl-total" id="wlTotal"></div>
+          </section>
+
+          <!-- Szűrők -->
+          <section class="panel">
+            <div class="panel-head"><h3>Szűrők</h3></div>
+
+            <div class="wl-filter-field">
+              <label for="wlStatusSelect">Állapot</label>
+              <select id="wlStatusSelect">
+                <option>Összes</option>
+                <option>Jelenleg nézem</option>
+                <option>Várólistán</option>
+                <option>Szüneteltetett</option>
+                <option>Befejezettek</option>
+                <option>Eldobott</option>
+              </select>
+            </div>
+
+            <div class="wl-filter-field">
+              <label>Év</label>
+              <div class="wl-year-pair">
+                <input type="text" placeholder="Tól" inputmode="numeric">
+                <input type="text" placeholder="Ig" inputmode="numeric">
+              </div>
+            </div>
+
+            <div class="wl-filter-field">
+              <label for="wlGenreSelect">Műfaj</label>
+              <select id="wlGenreSelect">
+                <option>Összes műfáj</option>
+                <option>Akció</option>
+                <option>Kaland</option>
+                <option>Fantasy</option>
+                <option>Dráma</option>
+                <option>Horror</option>
+              </select>
+            </div>
+
+            <button class="btn-primary" id="wlApply" style="width:100%">Szűrők alkalmazása</button>
+          </section>
+
+        </aside>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ===== Szkriptek ===== -->
+  <script src="js/data.js?v=7"></script>
+  <script src="js/layout.js?v=7"></script>
+  <script src="js/main.js?v=7"></script>
+  <script src="js/watchlist.js?v=7"></script>
+  <script src="js/images.js?v=7"></script>
+</body>
+</html>

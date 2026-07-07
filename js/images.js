@@ -44,6 +44,9 @@ const IMAGE_SOURCES = {
   "poster-blue-lock":        { type: "poster", q: "Blue Lock" },
   "poster-dandadan":         { type: "poster", q: "Dandadan" },
   "poster-vinland-saga":     { type: "poster", q: "Vinland Saga" },
+  "poster-fma":              { type: "poster", q: "Fullmetal Alchemist Brotherhood" },
+  "poster-rezero":           { type: "poster", q: "Re:Zero kara Hajimeru Isekai Seikatsu 3rd Season" },
+  "poster-konosuba":         { type: "poster", q: "Kono Subarashii Sekai ni Shukufuku wo! 3" },
 
   /* ----- Hátterek (trailer borítókép 16:9, ha nincs: poszter) ----- */
   "backdrop-solo-leveling":  { type: "backdrop", q: "Solo Leveling" },

@@ -1,0 +1,203 @@
+/* ==========================================================================
+   AnimeHub – favorites.css
+   Kedvencek: kártyarács szív gombbal, statisztikák, műveletek
+   ========================================================================== */
+
+.fav-page-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ----- Fejléc ----- */
+.favp-head .title-row { display: flex; align-items: center; gap: 12px; }
+.favp-head .title-row .heart { color: var(--purple-2); }
+.favp-head h1 { font-size: 27px; font-weight: 800; }
+.favp-head .subtitle { font-size: 14px; color: var(--text-soft); margin-top: 6px; }
+
+.favp-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.favp-tab {
+  padding: 9px 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-soft);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.favp-tab:hover { background: var(--bg-hover); color: var(--text); }
+
+.favp-tab.active {
+  color: #fff;
+  background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+  border-color: transparent;
+}
+
+.favp-toolbar .spacer { flex: 1; }
+
+/* ----- Kártyarács ----- */
+.favp-cards {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.favp-card {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  aspect-ratio: 2 / 3.1;
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  display: block;
+}
+
+.favp-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
+}
+
+.favp-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+.favp-card .shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(5, 4, 9, 0.95) 0%, rgba(5, 4, 9, 0.35) 42%, transparent 68%);
+}
+
+/* Szív gomb (eltávolítás) */
+.heart-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: rgba(139, 92, 246, 0.85);
+  border-radius: 50%;
+  backdrop-filter: blur(4px);
+  transition: transform 0.15s, background 0.2s;
+}
+
+.heart-btn:hover { transform: scale(1.12); background: var(--red); }
+
+.favp-card .info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 12px 13px;
+}
+
+.favp-card .info h3 { font-size: 14px; font-weight: 700; line-height: 1.3; }
+.favp-card .info .years { font-size: 11.5px; color: var(--text-soft); margin-top: 4px; }
+.favp-card .info .rating { margin-top: 5px; font-size: 12.5px; }
+
+/* Üres állapot */
+.favp-empty {
+  grid-column: 1 / -1;
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14.5px;
+}
+
+/* ==========================================================================
+   Jobb oszlop
+   ========================================================================== */
+
+/* Gyűjtemény összegző */
+.coll-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.coll-box .heart-big {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  color: var(--purple-2);
+  background: rgba(139, 92, 246, 0.13);
+  border-radius: 16px;
+  flex-shrink: 0;
+}
+
+.coll-box .num { font-size: 30px; font-weight: 800; color: var(--purple-2); line-height: 1; }
+.coll-box .lbl { font-size: 13px; color: var(--text-soft); margin-top: 4px; }
+
+/* Statisztika sorok */
+.favp-stat {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 0;
+  font-size: 13.5px;
+  color: var(--text-soft);
+}
+
+.favp-stat + .favp-stat { border-top: 1px solid var(--border-soft); }
+.favp-stat svg { color: var(--purple-2); flex-shrink: 0; }
+.favp-stat .val { margin-left: auto; font-weight: 800; color: var(--text); }
+
+/* Szűrő mező */
+.wl-filter-field label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-soft);
+  margin-bottom: 7px;
+}
+
+/* Műveletek */
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  padding: 12px 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-soft);
+  border-radius: 11px;
+  transition: background 0.2s, color 0.2s;
+  text-align: left;
+}
+
+.action-btn:hover { background: var(--bg-hover); color: var(--text); }
+.action-btn.danger { color: var(--red); }
+.action-btn.danger:hover { background: rgba(248, 113, 113, 0.08); }
+
+/* ----- Reszponzív ----- */
+@media (max-width: 1350px) {
+  .fav-page-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 1100px) {
+  .favp-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (max-width: 760px) {
+  .favp-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 520px) {
+  .favp-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
