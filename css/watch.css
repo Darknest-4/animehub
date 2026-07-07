@@ -536,6 +536,7 @@ body.watch-page { background: #060509; }
   .icon-rail { display: none; }
   .watch-topbar { padding-left: 20px; padding-right: 20px; height: 60px; }
   .watch-topbar .search { display: none; }
+  .search-mini { display: grid; }
   .watch-main { margin-left: 0; padding: 14px 14px 100px; gap: 16px; }
   .watch-nav { display: none; }
 

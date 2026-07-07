@@ -26,6 +26,7 @@ const LAYOUT_ICONS = {
   playMini: '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
   playCircle: '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>',
   user:     '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+  menu:     '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>',
 };
 
 /* ----- Topbar ----- */
@@ -43,6 +44,7 @@ function layoutTopbarHTML() {
     </div>
 
     <div class="topbar-actions">
+      <a class="btn-icon search-mini" href="search.html" aria-label="Keresés">${LAYOUT_ICONS.search}</a>
       <button class="btn-premium">${LAYOUT_ICONS.crown} <span>Prémium előfizetés</span></button>
       <button class="btn-icon" aria-label="Értesítések">${LAYOUT_ICONS.bell}<span class="dot"></span></button>
       <a class="user-chip" href="profile.html">
@@ -105,17 +107,45 @@ function layoutSidebarHTML(activePage, extra) {
     ${extra === "continue" ? continueMini : premiumCard}`;
 }
 
-/* ----- Mobil alsó navigáció (lebegő, lekerekített sáv) ----- */
-function layoutBottomNavHTML(activePage) {
-  const items = [
-    { page: "home",      href: "index.html",   icon: "home",  label: "Kezdőlap" },
-    { page: "anime",     href: "anime.html",   icon: "anime", label: "Animék" },
-    { page: "watch",     href: "watch.html",   icon: "playCircle", label: "Lejátszó" },
-    { page: "community", href: "community.html", icon: "users", label: "Közösség" },
-    { page: "profile",   href: "profile.html", icon: "user",  label: "Profil" },
-  ];
+/* ----- Mobil alsó navigáció (lebegő, lekerekített sáv) -----
+   4 fő oldal + "Több" gomb, ami felugró rácsban adja a maradék oldalakat,
+   így telefonon is minden oldal elérhető. */
+const BOTTOM_NAV_ITEMS = [
+  { page: "home",      href: "index.html",     icon: "home",     label: "Kezdőlap" },
+  { page: "anime",     href: "anime.html",     icon: "anime",    label: "Animék" },
+  { page: "schedule",  href: "schedule.html",  icon: "calendar", label: "Ütemező" },
+  { page: "community", href: "community.html", icon: "users",    label: "Közösség" },
+];
 
-  return items
+const MORE_SHEET_ITEMS = [
+  { page: "watch",   href: "watch.html",   icon: "playCircle", label: "Lejátszó" },
+  { page: "news",    href: "news.html",    icon: "news",       label: "Hírek" },
+  { page: "profile", href: "profile.html", icon: "user",       label: "Profil" },
+  { page: "search",  href: "search.html",  icon: "search",     label: "Keresés" },
+  { page: "team",    href: "team.html",    icon: "users",      label: "Csapat" },
+  { page: "support", href: "support.html", icon: "help",       label: "Támogatás" },
+];
+
+function layoutBottomNavHTML(activePage) {
+  const moreActive = MORE_SHEET_ITEMS.some((i) => i.page === activePage);
+
+  return BOTTOM_NAV_ITEMS
+    .map(
+      (i) => `
+      <a href="${i.href}"${i.page === activePage ? ' class="active"' : ""}>
+        ${LAYOUT_ICONS[i.icon]}
+        <span>${i.label}</span>
+      </a>`
+    )
+    .join("") + `
+    <button id="bottomNavMore"${moreActive ? ' class="active"' : ""}>
+      ${LAYOUT_ICONS.menu}
+      <span>Több</span>
+    </button>`;
+}
+
+function layoutMoreSheetHTML(activePage) {
+  return MORE_SHEET_ITEMS
     .map(
       (i) => `
       <a href="${i.href}"${i.page === activePage ? ' class="active"' : ""}>
@@ -141,4 +171,19 @@ document.addEventListener("DOMContentLoaded", () => {
   bottomNav.className = "bottom-nav";
   bottomNav.innerHTML = layoutBottomNavHTML(page);
   document.body.appendChild(bottomNav);
+
+  // "Több" felugró menü
+  const moreSheet = document.createElement("div");
+  moreSheet.className = "more-sheet";
+  moreSheet.innerHTML = layoutMoreSheetHTML(page);
+  document.body.appendChild(moreSheet);
+
+  const moreBtn = document.getElementById("bottomNavMore");
+  moreBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    moreSheet.classList.toggle("open");
+  });
+  document.addEventListener("click", (e) => {
+    if (!moreSheet.contains(e.target)) moreSheet.classList.remove("open");
+  });
 });
