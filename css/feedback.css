@@ -45,7 +45,7 @@
   place-items: center;
   color: #fff;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+  background: var(--gradient-primary);
 }
 
 .fb-card h3 { font-size: 15px; font-weight: 700; }
@@ -75,7 +75,7 @@
 
 .fb-tab.active {
   color: #fff;
-  background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+  background: var(--gradient-primary);
   border-color: transparent;
 }
 
@@ -238,7 +238,7 @@
   border-radius: 12px;
 }
 
-.fb-type-btn .ic.i1 { background: linear-gradient(135deg, var(--purple-dark), var(--purple)); }
+.fb-type-btn .ic.i1 { background: var(--gradient-primary); }
 .fb-type-btn .ic.i2 { background: linear-gradient(135deg, #b91c1c, #ef4444); }
 .fb-type-btn .ic.i3 { background: linear-gradient(135deg, #0369a1, #38bdf8); }
 

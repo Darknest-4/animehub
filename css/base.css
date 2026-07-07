@@ -6,29 +6,71 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 
-/* ----- Változók ----- */
+/* ----- Változók – AnimeHub Dark Purple paletta ----- */
 :root {
-  --bg:           #08070d;
-  --bg-soft:      #0e0d16;
-  --bg-card:      #13111d;
-  --bg-card-2:    #181524;
-  --bg-hover:     #1e1a2e;
-  --border:       #241f36;
-  --border-soft:  #1b1729;
+  /* 🎨 Háttér */
+  --bg-primary:    #0B0B11;
+  --bg-secondary:  #11111A;
+  --bg-card-hover: #202031;
 
-  --purple:       #8b5cf6;
-  --purple-2:     #a78bfa;
-  --purple-dark:  #6d28d9;
-  --purple-glow:  rgba(139, 92, 246, 0.35);
+  /* 🟣 Elsődleges lila */
+  --primary:       #8B5CF6;
+  --primary-light: #A855F7;
+  --primary-dark:  #6D28D9;
+  --primary-hover: #9333EA;
 
-  --text:         #ececf4;
-  --text-soft:    #b9b4cc;
-  --text-muted:   #736e8a;
+  /* 🌈 Gradientek */
+  --gradient-primary: linear-gradient(135deg, #8B5CF6, #A855F7);
+  --gradient-card:    linear-gradient(180deg, #1A1A29, #11111A);
+  --gradient-button:  linear-gradient(135deg, #A855F7, #7C3AED);
 
-  --gold:         #fbbf24;
-  --green:        #34d399;
-  --red:          #f87171;
-  --orange:       #fb923c;
+  /* 🩶 Szöveg */
+  --text-primary:   #FFFFFF;
+  --text-secondary: #B5B5C7;
+  --text-disabled:  #5F6075;
+
+  /* 🖼️ Border */
+  --border-light: #393953;
+  --border-focus: #8B5CF6;
+
+  /* ✨ Glow */
+  --glow-purple: rgba(139, 92, 246, 0.45);
+  --glow-pink:   rgba(168, 85, 247, 0.35);
+  --glow-white:  rgba(255, 255, 255, 0.08);
+
+  /* 📊 Statisztikák */
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --danger:  #EF4444;
+  --info:    #3B82F6;
+
+  /* 🌌 Árnyékok */
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.35);
+  --shadow-glow: 0 0 25px rgba(139, 92, 246, 0.25);
+  --shadow-glow-big: 0 0 40px rgba(139, 92, 246, 0.45), 0 0 80px rgba(168, 85, 247, 0.15);
+
+  /* ----- Rövid álnevek (a meglévő komponensek ezeket használják) ----- */
+  --bg:           var(--bg-primary);
+  --bg-soft:      var(--bg-secondary);
+  --bg-card:      #181824;
+  --bg-card-2:    #1A1A29;
+  --bg-hover:     var(--bg-card-hover);
+  --border:       #2A2A3A;
+  --border-soft:  #232330;
+
+  --purple:       var(--primary);
+  --purple-2:     var(--primary-light);
+  --purple-dark:  var(--primary-dark);
+  --purple-glow:  var(--glow-purple);
+
+  --text:         var(--text-primary);
+  --text-soft:    var(--text-secondary);
+  --text-muted:   #8A8AA3;
+
+  --gold:         var(--warning);
+  --green:        var(--success);
+  --red:          var(--danger);
+  --orange:       #FB923C;
 
   --radius:       14px;
   --radius-sm:    10px;
@@ -60,7 +102,7 @@ ul, ol { list-style: none; }
 /* ----- Scrollbar ----- */
 ::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #2c2740; border-radius: 99px; }
+::-webkit-scrollbar-thumb { background: #2A2A3A; border-radius: 99px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--purple-dark); }
 
 /* ==========================================================================
@@ -75,7 +117,7 @@ ul, ol { list-style: none; }
   align-items: center;
   gap: 24px;
   padding: 0 24px;
-  background: rgba(8, 7, 13, 0.85);
+  background: rgba(11, 11, 17, 0.85);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border-soft);
 }
@@ -99,7 +141,7 @@ ul, ol { list-style: none; }
   font-size: 15px;
   font-weight: 800;
   color: #fff;
-  background: linear-gradient(135deg, var(--purple-dark), var(--purple-2));
+  background: var(--gradient-primary);
   box-shadow: 0 0 18px var(--purple-glow);
 }
 
@@ -299,14 +341,21 @@ ul, ol { list-style: none; }
   font-size: 14px;
   font-weight: 600;
   color: #fff;
-  background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+  background: var(--gradient-button);
   border-radius: 12px;
-  transition: transform 0.15s, box-shadow 0.2s;
+  transition: transform 0.15s, box-shadow 0.2s, filter 0.15s;
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 22px var(--purple-glow);
+  filter: brightness(1.08);
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-primary:active {
+  filter: none;
+  background: var(--primary-dark);
+  transform: translateY(0);
 }
 
 .btn-secondary {
@@ -423,7 +472,8 @@ ul, ol { list-style: none; }
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--bg-card);
-  border: 1px solid var(--border-soft);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
   transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 
@@ -453,8 +503,9 @@ ul, ol { list-style: none; }
 /* Panel (jobb oldali dobozok) */
 .panel {
   background: var(--bg-card);
-  border: 1px solid var(--border-soft);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
   padding: 20px;
 }
 
@@ -509,7 +560,7 @@ ul, ol { list-style: none; }
 
 .view-btn.active {
   color: #fff;
-  background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+  background: var(--gradient-primary);
   border-color: transparent;
 }
 
@@ -687,7 +738,7 @@ ul, ol { list-style: none; }
 
 img.img-loading {
   background: linear-gradient(100deg,
-    #14121e 38%, #251f38 50%, #14121e 62%);
+    #14141F 38%, #26263A 50%, #14141F 62%);
   background-size: 200% 100%;
   animation: shimmer 1.3s linear infinite;
   color: transparent; /* alt szöveg elrejtése betöltés közben */
@@ -706,7 +757,7 @@ img.img-fade {
 .skeleton {
   border-radius: 8px;
   background: linear-gradient(100deg,
-    #14121e 38%, #251f38 50%, #14121e 62%);
+    #14141F 38%, #26263A 50%, #14141F 62%);
   background-size: 200% 100%;
   animation: shimmer 1.3s linear infinite;
 }
@@ -726,7 +777,7 @@ img.img-fade {
   justify-content: space-around;
   align-items: center;
   padding: 8px 10px;
-  background: rgba(16, 14, 24, 0.92);
+  background: rgba(17, 17, 26, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border);
@@ -772,7 +823,7 @@ img.img-fade {
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
   padding: 12px;
-  background: rgba(16, 14, 24, 0.96);
+  background: rgba(17, 17, 26, 0.96);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border);

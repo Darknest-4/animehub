@@ -44,7 +44,7 @@
 
 .result-tab.active {
   color: #fff;
-  background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+  background: var(--gradient-primary);
   border-color: transparent;
 }
 
