@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keresés – AnimeHub</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="css/base.css?v=4">
+  <link rel="stylesheet" href="css/search.css?v=4">
+</head>
+<body data-page="search">
+
+  <!-- ===== Topbar (layout.js tölti fel) ===== -->
+  <header id="appTopbar" class="topbar"></header>
+
+  <div class="layout">
+
+    <!-- ===== Sidebar (layout.js tölti fel) ===== -->
+    <aside id="appSidebar" class="sidebar"></aside>
+
+    <!-- ===== Fő tartalom ===== -->
+    <main class="main">
+      <div class="search-grid">
+
+        <!-- ===== Bal oszlop ===== -->
+        <div>
+
+          <header class="search-head">
+            <h1>Keresési eredmények</h1>
+            <p class="for">Találatok erre: <strong id="queryLabel"></strong></p>
+            <div class="result-tabs" id="resultTabs"></div>
+            <div class="filter-row">
+              <button class="filter-select">Minden típus
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <button class="filter-select">Minden műfaj
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <button class="filter-select">Minden státusz
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <button class="filter-select">Év szerint
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <button class="filter-select filters-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+                Szűrők
+              </button>
+            </div>
+          </header>
+
+          <!-- Animék -->
+          <section class="result-section" id="animeSection">
+            <div class="section-head">
+              <h2>Animék</h2>
+              <span class="spacer"></span>
+              <a class="link-more" href="#">Összes anime
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+            </div>
+            <div class="result-cards" id="animeCards"></div>
+          </section>
+
+          <!-- Epizódok -->
+          <section class="result-section" id="episodeSection">
+            <div class="section-head">
+              <h2>Epizódok</h2>
+              <span class="spacer"></span>
+              <a class="link-more" href="#">Összes epizód
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+            </div>
+            <div id="episodeList"></div>
+            <button class="more-btn">További epizódok megtekintése
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+          </section>
+
+          <!-- Üres állapot -->
+          <div class="no-results" id="noResults" hidden>
+            Nincs találat erre a keresésre. 😔<br>Próbálj más kulcsszavakat!
+          </div>
+
+        </div>
+
+        <!-- ===== Jobb oszlop ===== -->
+        <aside>
+
+          <!-- Népszerű keresések -->
+          <section class="panel">
+            <div class="panel-head">
+              <h3>Népszerű keresések</h3>
+              <span class="icon">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              </span>
+            </div>
+            <div id="popSearches"></div>
+          </section>
+
+          <!-- Legutóbbi keresések -->
+          <section class="panel">
+            <div class="panel-head">
+              <h3>Legutóbbi keresések</h3>
+              <button class="link-more" id="clearRecent">Törlés</button>
+            </div>
+            <div class="recent-chips" id="recentChips"></div>
+          </section>
+
+          <!-- Keresési tippek -->
+          <section class="panel">
+            <div class="panel-head">
+              <span class="icon">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.4 1 2.3h6c0-.9.4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+              </span>
+              <h3>Keresési tippek</h3>
+            </div>
+            <div class="tip-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>
+              Használj kulcsszavakat, pl. anime címe, karakter neve vagy műfaj.
+            </div>
+            <div class="tip-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>
+              Próbáld ki a szinonimákat, ha nem találsz eredményt.
+            </div>
+            <div class="tip-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>
+              Szűrőkkel pontosíthatod a találatokat.
+            </div>
+          </section>
+
+        </aside>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ===== Szkriptek ===== -->
+  <script src="js/data.js?v=4"></script>
+  <script src="js/layout.js?v=4"></script>
+  <script src="js/main.js?v=4"></script>
+  <script src="js/search.js?v=4"></script>
+  <script src="js/images.js?v=4"></script>
+</body>
+</html>

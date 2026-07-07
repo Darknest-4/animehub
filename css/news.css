@@ -1,0 +1,211 @@
+/* ==========================================================================
+   AnimeHub – news.css
+   Hírek oldal
+   ========================================================================== */
+
+.news-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 356px;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ----- Fejléc ----- */
+.news-head h1 { font-size: 27px; font-weight: 800; }
+.news-head .subtitle { font-size: 14px; color: var(--text-soft); margin-top: 6px; }
+
+.news-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.news-tab {
+  padding: 9px 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-soft);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.news-tab:hover { background: var(--bg-hover); color: var(--text); }
+
+.news-tab.active {
+  color: #fff;
+  background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+  border-color: transparent;
+}
+
+.news-toolbar .sort { margin-left: auto; }
+
+/* ----- Hír kártya ----- */
+.news-list { margin-top: 20px; }
+
+.news-card {
+  display: flex;
+  gap: 20px;
+  padding: 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.news-card + .news-card { margin-top: 14px; }
+.news-card:hover { border-color: rgba(139, 92, 246, 0.4); transform: translateY(-2px); }
+
+.news-card > img {
+  width: 230px;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.news-card .content { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+
+.news-card .meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.news-badge {
+  padding: 4px 11px;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  border-radius: 7px;
+  color: var(--purple-2);
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.35);
+}
+
+.news-card .when { font-size: 12.5px; color: var(--text-muted); }
+.news-card .meta .dots { margin-left: auto; color: var(--text-muted); }
+
+.news-card h2 { font-size: 18.5px; font-weight: 700; line-height: 1.35; margin-top: 10px; }
+.news-card p { font-size: 13.5px; line-height: 1.6; color: var(--text-soft); margin-top: 7px; }
+
+.news-card .foot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 14px;
+}
+
+.news-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 11px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-soft);
+  border-radius: 9px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.news-stat:hover { background: var(--bg-hover); color: var(--text); }
+.news-stat.liked { color: var(--red); }
+
+.read-more {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--purple-2);
+}
+
+.read-more:hover { color: var(--text); }
+
+/* ==========================================================================
+   Jobb oszlop
+   ========================================================================== */
+
+/* Kategóriák */
+.cat-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 11px 12px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-soft);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  text-align: left;
+  transition: background 0.2s, color 0.2s;
+}
+
+.cat-item:hover { background: var(--bg-hover); color: var(--text); }
+
+.cat-item.active {
+  color: var(--purple-2);
+  background: rgba(139, 92, 246, 0.1);
+  border-color: rgba(139, 92, 246, 0.35);
+}
+
+.cat-item svg { flex-shrink: 0; }
+.cat-item .count { margin-left: auto; font-size: 12.5px; color: var(--text-muted); }
+
+/* Népszerű hírek */
+.pop-news-item {
+  display: flex;
+  gap: 12px;
+  padding: 10px 8px;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s;
+}
+
+.pop-news-item:hover { background: var(--bg-hover); }
+.pop-news-item + .pop-news-item { border-top: 1px solid var(--border-soft); }
+
+.pop-news-item .n {
+  width: 18px;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--purple-2);
+  flex-shrink: 0;
+}
+
+.pop-news-item img {
+  width: 64px;
+  aspect-ratio: 16 / 11;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.pop-news-item .info { flex: 1; min-width: 0; }
+.pop-news-item .info h4 { font-size: 12.5px; font-weight: 600; line-height: 1.4; }
+
+.pop-news-item .info .stat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.pop-news-item .info .stat .fire { color: var(--orange); display: inline-flex; align-items: center; gap: 3px; }
+
+/* ----- Reszponzív ----- */
+@media (max-width: 1350px) {
+  .news-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 720px) {
+  .news-card { flex-direction: column; }
+  .news-card > img { width: 100%; }
+}

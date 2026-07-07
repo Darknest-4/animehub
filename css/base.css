@@ -474,6 +474,42 @@ ul, ol { list-style: none; }
 
 .panel-head .link-more { font-size: 12.5px; }
 
+/* ----- Szűrő / legördülő stílusú gomb (több oldalon használt) ----- */
+.filter-select {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 14px;
+  font-size: 13px;
+  color: var(--text-soft);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+.filter-select:hover { background: var(--bg-hover); }
+
+/* ----- "Összes megtekintése" teljes szélességű gomb ----- */
+.view-all {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  margin-top: 14px;
+  height: 42px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-soft);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.view-all:hover { background: var(--bg-hover); color: var(--text); }
+
 /* ==========================================================================
    Lenyíló menük (fejléc: értesítések, felhasználó; kereső találatok)
    ========================================================================== */

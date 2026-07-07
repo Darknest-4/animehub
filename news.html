@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hírek – AnimeHub</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="css/base.css?v=4">
+  <link rel="stylesheet" href="css/news.css?v=4">
+</head>
+<body data-page="news">
+
+  <!-- ===== Topbar (layout.js tölti fel) ===== -->
+  <header id="appTopbar" class="topbar"></header>
+
+  <div class="layout">
+
+    <!-- ===== Sidebar (layout.js tölti fel) ===== -->
+    <aside id="appSidebar" class="sidebar"></aside>
+
+    <!-- ===== Fő tartalom ===== -->
+    <main class="main">
+      <div class="news-grid">
+
+        <!-- ===== Bal oszlop ===== -->
+        <div>
+
+          <header class="news-head">
+            <h1>Hírek</h1>
+            <p class="subtitle">Friss hírek az anime világából, egyenesen Neked.</p>
+            <div class="news-toolbar">
+              <span id="newsTabs" style="display:contents"></span>
+              <button class="filter-select sort">Legújabb
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+            </div>
+          </header>
+
+          <!-- Hírek listája (news.js rendereli) -->
+          <div class="news-list" id="newsList"></div>
+
+        </div>
+
+        <!-- ===== Jobb oszlop ===== -->
+        <aside>
+
+          <!-- Kategóriák -->
+          <section class="panel">
+            <div class="panel-head"><h3>Kategóriák</h3></div>
+            <div id="catList"></div>
+          </section>
+
+          <!-- Népszerű hírek -->
+          <section class="panel">
+            <div class="panel-head">
+              <h3>Népszerű hírek</h3>
+              <a class="link-more" href="#">Több
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+            </div>
+            <div id="popNews"></div>
+            <button class="view-all">Összes hír megtekintése</button>
+          </section>
+
+        </aside>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ===== Szkriptek ===== -->
+  <script src="js/data.js?v=4"></script>
+  <script src="js/layout.js?v=4"></script>
+  <script src="js/main.js?v=4"></script>
+  <script src="js/news.js?v=4"></script>
+  <script src="js/images.js?v=4"></script>
+</body>
+</html>
