@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kedvencek – AnimeHub</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="css/base.css?v=7">
+  <link rel="stylesheet" href="css/favorites.css?v=7">
+</head>
+<body data-page="favorites">
+
+  <!-- ===== Topbar (layout.js tölti fel) ===== -->
+  <header id="appTopbar" class="topbar"></header>
+
+  <div class="layout">
+
+    <!-- ===== Sidebar (layout.js tölti fel) ===== -->
+    <aside id="appSidebar" class="sidebar"></aside>
+
+    <!-- ===== Fő tartalom ===== -->
+    <main class="main">
+      <div class="fav-page-grid">
+
+        <!-- ===== Bal oszlop ===== -->
+        <div>
+
+          <header class="favp-head">
+            <div class="title-row">
+              <span class="heart">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </span>
+              <h1>Kedvencek</h1>
+            </div>
+            <p class="subtitle">Itt találod az összes anime-t, amit a kedvenceid közé mentettél.</p>
+
+            <div class="favp-toolbar">
+              <span id="favpTabs" style="display:contents"></span>
+              <span class="spacer"></span>
+              <button class="filter-select">Hozzáadás dátuma
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="view-toggle">
+                <button class="view-btn active" aria-label="Rács nézet">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                </button>
+                <button class="view-btn" aria-label="Lista nézet">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                </button>
+              </div>
+            </div>
+          </header>
+
+          <!-- Kedvencek rács (favorites.js rendereli) -->
+          <div class="favp-cards" id="favpCards"></div>
+
+          <button class="view-all" style="max-width:280px;margin:22px auto 0">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            Több anime betöltése
+          </button>
+
+        </div>
+
+        <!-- ===== Jobb oszlop ===== -->
+        <aside>
+
+          <!-- Gyűjtemény -->
+          <section class="panel">
+            <div class="panel-head"><h3>Gyűjteményed</h3></div>
+            <div class="coll-box">
+              <span class="heart-big">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </span>
+              <div>
+                <div class="num" id="favCount">10</div>
+                <div class="lbl">kedvenc anime</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Statisztikák -->
+          <section class="panel">
+            <div class="panel-head"><h3>Statisztikák</h3></div>
+            <div class="favp-stat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              Összes anime <span class="val" id="statCount">10</span>
+            </div>
+            <div class="favp-stat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><circle cx="12" cy="12" r="3.5"/></svg>
+              Összes epizód <span class="val" id="statEps">1,248</span>
+            </div>
+            <div class="favp-stat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+              Átlag értékelés <span class="val" id="statAvg">9.0</span>
+            </div>
+            <div class="favp-stat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Összesített nézési idő <span class="val" id="statHours">456 óra</span>
+            </div>
+          </section>
+
+          <!-- Szűrők -->
+          <section class="panel">
+            <div class="panel-head"><h3>Szűrők</h3></div>
+            <div class="wl-filter-field" style="margin-bottom:14px">
+              <label>Állapot</label>
+              <select style="width:100%;padding:11px 13px;font-size:13px;font-family:inherit;color:var(--text);background:var(--bg-card-2);border:1px solid var(--border);border-radius:10px;outline:none">
+                <option>Összes</option>
+                <option>Aktuális</option>
+                <option>Befejezett</option>
+                <option>Terveim között</option>
+                <option>Felfüggesztett</option>
+              </select>
+            </div>
+            <button class="btn-primary" style="width:100%">Szűrés alkalmazása</button>
+          </section>
+
+          <!-- Műveletek -->
+          <section class="panel">
+            <div class="panel-head"><h3>Műveletek</h3></div>
+            <button class="action-btn" id="exportList">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Lista exportálása
+            </button>
+            <button class="action-btn danger" id="clearList">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              Lista törlése
+            </button>
+          </section>
+
+        </aside>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ===== Szkriptek ===== -->
+  <script src="js/data.js?v=7"></script>
+  <script src="js/layout.js?v=7"></script>
+  <script src="js/main.js?v=7"></script>
+  <script src="js/favorites.js?v=7"></script>
+  <script src="js/images.js?v=7"></script>
+</body>
+</html>

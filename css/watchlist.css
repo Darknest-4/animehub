@@ -1,0 +1,207 @@
+/* ==========================================================================
+   AnimeHub – watchlist.css
+   Műsorlista: állapot fülek, lista sorok, statisztika panel
+   ========================================================================== */
+
+.watchlist-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ----- Fejléc ----- */
+.wl-head h1 { font-size: 27px; font-weight: 800; }
+
+.wl-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 16px;
+  border-bottom: 1px solid var(--border-soft);
+  flex-wrap: wrap;
+}
+
+.wl-tab {
+  padding: 11px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.wl-tab:hover { color: var(--text); }
+.wl-tab.active { color: var(--purple-2); border-color: var(--purple); }
+
+.wl-toolbar .spacer { flex: 1; }
+.wl-toolbar .sort-label { font-size: 13px; color: var(--text-muted); }
+.wl-toolbar .filter-select { height: 36px; margin-bottom: 6px; }
+
+/* ----- Lista sorok ----- */
+.wl-list { margin-top: 18px; }
+
+.wl-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  transition: border-color 0.2s;
+}
+
+.wl-row + .wl-row { margin-top: 12px; }
+.wl-row:hover { border-color: rgba(139, 92, 246, 0.4); }
+
+.wl-row > img {
+  width: 168px;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 11px;
+  flex-shrink: 0;
+}
+
+.wl-row .info { flex: 1; min-width: 0; }
+.wl-row .info h3 { font-size: 17px; font-weight: 700; }
+
+.wl-row .meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.wl-row .meta .rating { font-size: 13px; }
+.wl-row .meta .tag { padding: 4px 10px; font-size: 11.5px; }
+
+.wl-row .years {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 9px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+/* Jobb oldali státusz blokk */
+.wl-status { min-width: 190px; text-align: right; flex-shrink: 0; }
+
+.wl-status .state { font-size: 13.5px; font-weight: 700; }
+.wl-status .state.s-watching { color: var(--purple-2); }
+.wl-status .state.s-queued   { color: var(--orange); }
+.wl-status .state.s-paused   { color: #38bdf8; }
+.wl-status .state.s-done     { color: var(--green); }
+.wl-status .state.s-dropped  { color: var(--text-muted); }
+
+.wl-status .eps { font-size: 12.5px; color: var(--text-soft); margin-top: 6px; }
+
+.wl-status .bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 9px;
+}
+
+.wl-status .progress { flex: 1; height: 6px; }
+.wl-status .progress span.c-watching { background: linear-gradient(90deg, var(--purple-dark), var(--purple-2)); }
+.wl-status .progress span.c-paused   { background: #38bdf8; }
+.wl-status .progress span.c-done     { background: var(--green); }
+.wl-status .pct { font-size: 12px; font-weight: 700; color: var(--text-soft); width: 38px; text-align: right; }
+
+.wl-row .dots { color: var(--text-muted); align-self: flex-start; }
+
+.wl-count { text-align: center; font-size: 12.5px; color: var(--text-muted); margin-top: 18px; }
+
+/* ==========================================================================
+   Jobb oszlop: statisztikák
+   ========================================================================== */
+.wl-stats .big-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.wl-stats .big-row .num { font-size: 30px; font-weight: 800; color: var(--purple-2); }
+.wl-stats .big-row .lbl { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+
+.status-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  font-size: 13px;
+  color: var(--text-soft);
+}
+
+.status-line i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-line .n { font-weight: 800; color: var(--text); width: 18px; }
+
+.wl-total { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-soft); }
+
+.wl-total .row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-soft);
+  margin-bottom: 9px;
+}
+
+.wl-total .pct-lbl { font-size: 12.5px; color: var(--text-muted); margin-top: 8px; }
+
+/* Szűrő mezők */
+.wl-filter-field { margin-bottom: 14px; }
+
+.wl-filter-field label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-soft);
+  margin-bottom: 7px;
+}
+
+.wl-filter-field select,
+.wl-filter-field input {
+  width: 100%;
+  padding: 11px 13px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--bg-card-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+}
+
+.wl-filter-field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='%23736e8a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+.wl-year-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+/* ----- Reszponzív ----- */
+@media (max-width: 1350px) {
+  .watchlist-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 820px) {
+  .wl-row { flex-wrap: wrap; }
+  .wl-row > img { width: 100%; }
+  .wl-status { min-width: 100%; text-align: left; }
+  .wl-status .pct { text-align: left; }
+}

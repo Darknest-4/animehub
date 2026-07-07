@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animék – AnimeHub</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="css/base.css?v=7">
+  <link rel="stylesheet" href="css/home.css?v=7"> <!-- top-item komponenshez -->
+  <link rel="stylesheet" href="css/animes.css?v=7">
+</head>
+<body data-page="anime">
+
+  <!-- ===== Topbar (layout.js tölti fel) ===== -->
+  <header id="appTopbar" class="topbar"></header>
+
+  <div class="layout">
+
+    <!-- ===== Sidebar (layout.js tölti fel) ===== -->
+    <aside id="appSidebar" class="sidebar"></aside>
+
+    <!-- ===== Fő tartalom ===== -->
+    <main class="main">
+      <div class="animes-grid">
+
+        <!-- ===== Bal oszlop ===== -->
+        <div>
+
+          <!-- Hero fejléc műfaj fülekkel -->
+          <section class="browse-hero">
+            <div class="backdrop"><img src="assets/img/backdrop-naruto.svg" alt=""></div>
+            <h1>Animék</h1>
+            <p class="subtitle">Fedezd fel, kövesd nyomon és élvezd kedvenc animéidet.</p>
+            <div class="genre-tabs" id="genreTabs"></div>
+          </section>
+
+          <!-- Eszköztár -->
+          <div class="browse-toolbar">
+            <span class="count" id="totalCount"></span>
+            <span class="spacer"></span>
+            <button class="filter-select" id="sortBtn"><span>Népszerűség szerint</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="view-toggle">
+              <button class="view-btn active" aria-label="Rács nézet">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+              </button>
+              <button class="view-btn" aria-label="Lista nézet">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Népszerű animék -->
+          <section class="browse-section">
+            <div class="section-head">
+              <span class="icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </span>
+              <h2>Népszerű animek</h2>
+              <a class="link-more" href="#">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+            </div>
+            <div class="browse-cards" id="popularCards"></div>
+          </section>
+
+          <!-- Frissen hozzáadva -->
+          <section class="browse-section">
+            <div class="section-head">
+              <span class="icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </span>
+              <h2>Frissen hozzáadva</h2>
+            </div>
+            <div class="browse-cards" id="freshCards"></div>
+          </section>
+
+          <button class="more-btn view-all" id="loadMore" style="max-width:280px;margin:22px auto 0">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            Több anime betöltése
+          </button>
+
+        </div>
+
+        <!-- ===== Jobb oszlop ===== -->
+        <aside>
+
+          <!-- Top animék -->
+          <section class="panel">
+            <div class="panel-head">
+              <h3>Top animek</h3>
+              <a class="link-more" href="#">Több
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+            </div>
+            <div id="topAnimeList"></div>
+          </section>
+
+          <!-- Szűrők -->
+          <section class="panel filter-panel">
+            <div class="panel-head">
+              <h3>Szűrők</h3>
+              <button class="link-more">Összes törlése</button>
+            </div>
+
+            <div class="filter-label">Állapot</div>
+            <div class="chip-row" id="statusChips">
+              <button class="filter-chip active">Összes</button>
+              <button class="filter-chip">Folyamatban</button>
+              <button class="filter-chip">Befejezett</button>
+              <button class="filter-chip">Tervezett</button>
+              <button class="filter-chip">Szüneteltetett</button>
+            </div>
+
+            <div class="filter-label">Műfaj</div>
+            <select>
+              <option>Összes műfáj</option>
+              <option>Akció</option>
+              <option>Kaland</option>
+              <option>Fantasy</option>
+              <option>Dráma</option>
+              <option>Shounen</option>
+              <option>Slice of Life</option>
+              <option>Romantikus</option>
+            </select>
+
+            <div class="filter-label">Év</div>
+            <div class="year-range">
+              <div class="labels"><span id="yearFrom">1960</span><span>2024</span></div>
+              <input type="range" id="yearRange" min="1960" max="2024" value="1960">
+            </div>
+
+            <div class="filter-label">Értékelés</div>
+            <div class="star-filter" id="starFilter">
+              <button aria-label="1 csillag"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></button>
+              <button aria-label="2 csillag"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></button>
+              <button aria-label="3 csillag"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></button>
+              <button aria-label="4 csillag"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></button>
+              <button aria-label="5 csillag"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></button>
+              <span class="lbl">és több</span>
+            </div>
+
+            <button class="btn-primary" id="applyFilters">Szűrés alkalmazása</button>
+          </section>
+
+        </aside>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ===== Szkriptek ===== -->
+  <script src="js/data.js?v=7"></script>
+  <script src="js/layout.js?v=7"></script>
+  <script src="js/main.js?v=7"></script>
+  <script src="js/animes.js?v=7"></script>
+  <script src="js/images.js?v=7"></script>
+</body>
+</html>

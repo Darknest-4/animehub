@@ -1,0 +1,309 @@
+/* ==========================================================================
+   AnimeHub – feedback.css
+   Visszajelzés oldal: típus kártyák, lista szavazással, jobb oszlop
+   ========================================================================== */
+
+.feedback-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 356px;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ----- Fejléc ----- */
+.fb-head h1 { font-size: 27px; font-weight: 800; }
+.fb-head .subtitle { font-size: 14px; color: var(--text-soft); margin-top: 6px; }
+
+/* ----- Típus kártyák ----- */
+.fb-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.fb-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  text-align: left;
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  transition: transform 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+
+.fb-card:hover { transform: translateY(-3px); border-color: rgba(139, 92, 246, 0.45); }
+
+.fb-card .ic {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+}
+
+.fb-card h3 { font-size: 15px; font-weight: 700; }
+.fb-card p { font-size: 12.5px; line-height: 1.5; color: var(--text-soft); margin-top: 5px; }
+
+/* ----- Fülek + rendezés ----- */
+.fb-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 22px 0 16px;
+  flex-wrap: wrap;
+}
+
+.fb-tab {
+  padding: 9px 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-soft);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.fb-tab:hover { background: var(--bg-hover); color: var(--text); }
+
+.fb-tab.active {
+  color: #fff;
+  background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+  border-color: transparent;
+}
+
+.fb-toolbar .sort { margin-left: auto; }
+
+/* ----- Új visszajelzés űrlap (kártyára kattintva nyílik) ----- */
+.fb-composer {
+  display: none;
+  margin-bottom: 16px;
+  padding: 18px;
+  background: var(--bg-card);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  border-radius: var(--radius);
+}
+
+.fb-composer.open { display: block; }
+
+.fb-composer h3 { font-size: 15.5px; font-weight: 700; margin-bottom: 12px; }
+.fb-composer h3 span { color: var(--purple-2); }
+
+.fb-composer input,
+.fb-composer textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 13.5px;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--bg-card-2);
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  transition: border-color 0.2s;
+}
+
+.fb-composer input:focus,
+.fb-composer textarea:focus { border-color: var(--purple); }
+
+.fb-composer textarea { min-height: 90px; resize: vertical; margin-top: 10px; }
+
+.fb-composer .foot { display: flex; gap: 10px; margin-top: 12px; justify-content: flex-end; }
+
+/* ----- Visszajelzés elem ----- */
+.fb-item {
+  display: flex;
+  gap: 16px;
+  padding: 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  transition: border-color 0.2s;
+}
+
+.fb-item + .fb-item { margin-top: 12px; }
+.fb-item:hover { border-color: rgba(139, 92, 246, 0.35); }
+
+/* Szavazó oszlop */
+.fb-vote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.fb-vote button {
+  width: 30px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+  border-radius: 8px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.fb-vote button:hover { background: var(--bg-hover); color: var(--text); }
+.fb-vote button.sel-up { color: var(--purple-2); }
+.fb-vote button.sel-down { color: var(--red); }
+
+.fb-vote .num { font-size: 15px; font-weight: 800; }
+
+/* Tartalom */
+.fb-content { flex: 1; min-width: 0; }
+
+.fb-content .top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+.fb-tag {
+  padding: 4px 11px;
+  font-size: 11.5px;
+  font-weight: 700;
+  border-radius: 7px;
+  border: 1px solid;
+}
+
+.fb-tag.otlet    { color: #a78bfa; background: rgba(167, 139, 250, 0.1); border-color: rgba(167, 139, 250, 0.4); }
+.fb-tag.hiba     { color: #f87171; background: rgba(248, 113, 113, 0.1); border-color: rgba(248, 113, 113, 0.4); }
+.fb-tag.velemeny { color: #38bdf8; background: rgba(56, 189, 248, 0.1);  border-color: rgba(56, 189, 248, 0.4); }
+
+.fb-content .top h3 { font-size: 16px; font-weight: 700; }
+
+.fb-status {
+  margin-left: auto;
+  padding: 4px 11px;
+  font-size: 11.5px;
+  font-weight: 700;
+  border-radius: 8px;
+  border: 1px solid;
+}
+
+.fb-status.s-progress { color: var(--gold);     background: rgba(251, 191, 36, 0.08);  border-color: rgba(251, 191, 36, 0.4); }
+.fb-status.s-fixed    { color: var(--green);    background: rgba(52, 211, 153, 0.08);  border-color: rgba(52, 211, 153, 0.4); }
+.fb-status.s-done     { color: var(--green);    background: rgba(52, 211, 153, 0.08);  border-color: rgba(52, 211, 153, 0.4); }
+.fb-status.s-planned  { color: #38bdf8;         background: rgba(56, 189, 248, 0.08);  border-color: rgba(56, 189, 248, 0.4); }
+.fb-status.s-open     { color: var(--text-soft); background: var(--bg-card-2);          border-color: var(--border); }
+
+.fb-content .dots { color: var(--text-muted); margin-left: 6px; }
+
+.fb-content .body { font-size: 13.5px; line-height: 1.6; color: var(--text-soft); margin-top: 8px; }
+
+.fb-content .foot {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 12px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.fb-content .foot .stat { display: inline-flex; align-items: center; gap: 6px; }
+.fb-content .foot .who { margin-left: auto; text-align: right; }
+.fb-content .foot .who strong { display: block; color: var(--text-soft); font-weight: 600; }
+
+/* ==========================================================================
+   Jobb oszlop
+   ========================================================================== */
+
+/* Új visszajelzés típusok */
+.fb-type-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 15px;
+  text-align: left;
+  background: var(--bg-card-2);
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  transition: border-color 0.2s, background 0.2s;
+  cursor: pointer;
+}
+
+.fb-type-btn + .fb-type-btn { margin-top: 10px; }
+.fb-type-btn:hover { background: var(--bg-hover); border-color: rgba(139, 92, 246, 0.45); }
+
+.fb-type-btn .ic {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  border-radius: 12px;
+}
+
+.fb-type-btn .ic.i1 { background: linear-gradient(135deg, var(--purple-dark), var(--purple)); }
+.fb-type-btn .ic.i2 { background: linear-gradient(135deg, #b91c1c, #ef4444); }
+.fb-type-btn .ic.i3 { background: linear-gradient(135deg, #0369a1, #38bdf8); }
+
+.fb-type-btn h4 { font-size: 14px; font-weight: 700; }
+.fb-type-btn p { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+
+/* Statisztikák */
+.stat-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: 13.5px;
+  color: var(--text-soft);
+}
+
+.stat-line + .stat-line { border-top: 1px solid var(--border-soft); }
+.stat-line strong { font-size: 14.5px; color: var(--text); }
+
+/* Címkék */
+.tag-cloud { display: flex; flex-wrap: wrap; gap: 9px; }
+
+.tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 13px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--purple-2);
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  border-radius: 9px;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.tag-chip:hover { background: rgba(139, 92, 246, 0.18); }
+.tag-chip .c { color: var(--text-muted); font-weight: 600; }
+
+/* Köszönet doboz */
+.thanks-box {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--text-soft);
+  background: rgba(139, 92, 246, 0.07);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: var(--radius);
+}
+
+.thanks-box svg { color: var(--purple-2); flex-shrink: 0; }
+.thanks-box strong { display: block; color: var(--text); margin-bottom: 3px; }
+
+/* ----- Reszponzív ----- */
+@media (max-width: 1350px) {
+  .feedback-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .fb-cards { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .fb-status { margin-left: 0; }
+}

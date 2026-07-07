@@ -491,6 +491,28 @@ ul, ol { list-style: none; }
 
 .filter-select:hover { background: var(--bg-hover); }
 
+
+/* ----- Nézetváltó (rács / lista) ----- */
+.view-toggle { display: flex; gap: 4px; }
+
+.view-btn {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.view-btn.active {
+  color: #fff;
+  background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+  border-color: transparent;
+}
+
 /* ----- "Összes megtekintése" teljes szélességű gomb ----- */
 .view-all {
   display: flex;

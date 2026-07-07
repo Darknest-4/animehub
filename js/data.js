@@ -468,6 +468,222 @@ const DATA = {
   ],
 
   /* ======================================================================
+     Animék böngésző oldal
+     ====================================================================== */
+  browsePopular: [
+    { title: "Solo Leveling",                  genre: "Akció",   year: 2024, rating: 9.3, image: "assets/img/poster-solo-leveling.svg" },
+    { title: "Demon Slayer: Hashira Training Arc", genre: "Akció", year: 2019, rating: 9.1, image: "assets/img/poster-demon-slayer.svg" },
+    { title: "Jujutsu Kaisen Season 2",        genre: "Akció",   year: 2023, rating: 9.0, image: "assets/img/poster-jujutsu-kaisen.svg" },
+    { title: "One Piece",                      genre: "Kaland",  year: 1999, rating: 9.0, image: "assets/img/poster-one-piece.svg" },
+    { title: "Attack on Titan Final Season",   genre: "Akció",   year: 2013, rating: 9.0, image: "assets/img/poster-attack-on-titan.svg" },
+    { title: "Chainsaw Man",                   genre: "Akció",   year: 2022, rating: 8.8, image: "assets/img/poster-chainsaw-man.svg" },
+    { title: "Frieren: Beyond Journey's End",  genre: "Fantasy", year: 2023, rating: 9.2, image: "assets/img/poster-frieren.svg" },
+    { title: "Vinland Saga",                   genre: "Dráma",   year: 2019, rating: 8.9, image: "assets/img/poster-vinland-saga.svg" },
+    { title: "Fullmetal Alchemist: Brotherhood", genre: "Kaland", year: 2009, rating: 9.1, image: "assets/img/poster-fma.svg" },
+    { title: "Bleach: Thousand-Year Blood War", genre: "Akció",  year: 2022, rating: 9.0, image: "assets/img/poster-bleach.svg" },
+    { title: "Spy x Family",                   genre: "Slice of Life", year: 2022, rating: 8.8, image: "assets/img/poster-spy-family.svg" },
+    { title: "Naruto Shippuden",               genre: "Shounen", year: 2007, rating: 9.1, image: "assets/img/poster-naruto-shippuden.svg" },
+  ],
+
+  browseFresh: [
+    { title: "Re:Zero Season 3",   genre: "Fantasy", year: 2024, eps: "12 epizód", image: "assets/img/poster-rezero.svg" },
+    { title: "Wind Breaker Season 2", genre: "Akció", year: 2024, eps: "8 epizód", image: "assets/img/poster-wind-breaker.svg" },
+    { title: "Kaiju No. 8 Season 2", genre: "Akció", year: 2024, eps: "6 epizód", image: "assets/img/poster-kaiju-8.svg" },
+    { title: "KonoSuba! 3. évad",  genre: "Slice of Life", year: 2024, eps: "8 epizód", image: "assets/img/poster-konosuba.svg" },
+    { title: "Naruto: Remake",     genre: "Shounen", year: 2024, eps: "4 epizód", image: "assets/img/poster-naruto.svg" },
+    { title: "The Irregular at Magic High School 3", genre: "Akció", year: 2024, eps: "5 epizód", image: "assets/img/poster-irregular-magic.svg" },
+    { title: "Dandadan",           genre: "Akció",   year: 2024, eps: "12 epizód", image: "assets/img/poster-dandadan.svg" },
+    { title: "Blue Lock 2",        genre: "Shounen", year: 2024, eps: "10 epizód", image: "assets/img/poster-blue-lock.svg" },
+  ],
+
+  browseGenres: ["Összes", "Akció", "Kaland", "Fantasy", "Dráma", "Shounen", "Slice of Life", "Romantikus"],
+
+  /* ======================================================================
+     Műsorlista oldal
+     ====================================================================== */
+  watchlist: [
+    {
+      title: "Attack on Titan", rating: 9.2, genres: ["Akció", "Dráma", "Fantasy"],
+      years: "2013 – 2023", extra: "4 évad", status: "Jelenleg nézem",
+      watched: 78, total: 94, image: "assets/img/poster-attack-on-titan.svg",
+    },
+    {
+      title: "Jujutsu Kaisen", rating: 9.0, genres: ["Akció", "Fantasy", "Iskola"],
+      years: "2020 –", extra: "2 évad", status: "Jelenleg nézem",
+      watched: 15, total: 47, image: "assets/img/poster-jujutsu-kaisen.svg",
+    },
+    {
+      title: "Demon Slayer: Kimetsu no Yaiba", rating: 8.9, genres: ["Akció", "Történelmi", "Fantasy"],
+      years: "2019 –", extra: "4 évad", status: "Várólistán",
+      watched: 0, total: 55, image: "assets/img/poster-demon-slayer.svg",
+    },
+    {
+      title: "One Piece", rating: 9.0, genres: ["Akció", "Kaland", "Fantasy"],
+      years: "1999 –", extra: "1,100+ epizód", status: "Szüneteltetett",
+      watched: 112, total: 1100, image: "assets/img/poster-one-piece.svg",
+    },
+    {
+      title: "Fullmetal Alchemist: Brotherhood", rating: 9.1, genres: ["Akció", "Dráma", "Fantasy"],
+      years: "2009 – 2010", extra: "64 epizód", status: "Befejezve",
+      watched: 64, total: 64, image: "assets/img/poster-fma.svg",
+    },
+    {
+      title: "Chainsaw Man", rating: 8.7, genres: ["Akció", "Horror", "Dráma"],
+      years: "2022", extra: "1 évad", status: "Várólistán",
+      watched: 0, total: 12, image: "assets/img/poster-chainsaw-man.svg",
+    },
+  ],
+
+  watchlistStatuses: ["Összes", "Jelenleg nézem", "Várólistán", "Szüneteltetett", "Befejezettek", "Eldobott"],
+
+  /* ======================================================================
+     Kedvencek oldal
+     ====================================================================== */
+  favoritesPage: [
+    { title: "Attack on Titan",     years: "2013 – 2023", rating: 9.2, status: "Befejezett",   image: "assets/img/poster-attack-on-titan.svg" },
+    { title: "Jujutsu Kaisen",      years: "2020 – 2023", rating: 9.0, status: "Aktuális",     image: "assets/img/poster-jujutsu-kaisen.svg" },
+    { title: "Demon Slayer: Kimetsu no Yaiba", years: "2019 – 2023", rating: 8.9, status: "Aktuális", image: "assets/img/poster-demon-slayer.svg" },
+    { title: "One Piece",           years: "1999 –",      rating: 9.0, status: "Aktuális",     image: "assets/img/poster-one-piece.svg" },
+    { title: "Fullmetal Alchemist: Brotherhood", years: "2009 – 2010", rating: 9.1, status: "Befejezett", image: "assets/img/poster-fma.svg" },
+    { title: "Naruto: Shippuden",   years: "2007 – 2017", rating: 9.1, status: "Befejezett",   image: "assets/img/poster-naruto-shippuden.svg" },
+    { title: "Tokyo Ghoul",         years: "2014",        rating: 8.8, status: "Felfüggesztett", image: "assets/img/poster-tokyo-ghoul.svg" },
+    { title: "Chainsaw Man",        years: "2022",        rating: 8.7, status: "Terveim között", image: "assets/img/poster-chainsaw-man.svg" },
+    { title: "Bleach: Thousand-Year Blood War", years: "2022 – 2023", rating: 9.0, status: "Aktuális", image: "assets/img/poster-bleach.svg" },
+    { title: "Solo Leveling",       years: "2024 –",      rating: 9.3, status: "Aktuális",     image: "assets/img/poster-solo-leveling.svg" },
+  ],
+
+  /* ======================================================================
+     Visszajelzés oldal
+     ====================================================================== */
+  feedback: [
+    {
+      type: "Ötlet", title: "Sötét mód időzítő",
+      body: "Jó lenne, ha be lehetne állítani, hogy a sötét mód automatikusan bekapcsoljon napnyugtakor.",
+      votes: 128, comments: 15, likes: 32, author: "Akane93", when: "2 napja", status: "Megvalósítás alatt",
+    },
+    {
+      type: "Hiba", title: "Lejátszó nem jegyzi meg a felirat beállításait",
+      body: "Ha bezárom és újranyitom az epizódot, a felirat mérete és pozíciója visszaáll az alapértelmezettre.",
+      votes: 96, comments: 23, likes: 18, author: "NightOwl", when: "3 napja", status: "Javítva",
+    },
+    {
+      type: "Vélemény", title: "Imádom az új ütemezőt! 🎉",
+      body: "Nagyon átlátható és hasznos lett, köszi a fejlesztőknek!",
+      votes: 75, comments: 8, likes: 46, author: "LuffyFan001", when: "5 napja", status: "Megoldva",
+    },
+    {
+      type: "Ötlet", title: "Mobil app",
+      body: "Nagyon jó lenne egy hivatalos mobilalkalmazás is!",
+      votes: 61, comments: 34, likes: 21, author: "ZeroTwo", when: "1 hete", status: "Tervezve",
+    },
+    {
+      type: "Hiba", title: "Értesítések néha nem jelennek meg",
+      body: "Van, hogy nem kapok értesítést az új epizódról, pedig be van kapcsolva.",
+      votes: 43, comments: 12, likes: 9, author: "ShinobiX", when: "1 hete", status: "Nyitott",
+    },
+    {
+      type: "Vélemény", title: "A kereső szuper gyors lett",
+      body: "Észrevettem, hogy sokkal gyorsabban jönnek a találatok. Szép munka!",
+      votes: 38, comments: 5, likes: 27, author: "SakuraChan", when: "2 hete", status: "Megoldva",
+    },
+  ],
+
+  feedbackStats: [
+    { label: "Összes visszajelzés", value: 842 },
+    { label: "Megvalósítás alatt", value: 12 },
+    { label: "Megoldva", value: 243 },
+    { label: "Nyitott", value: 58 },
+    { label: "Elutasítva", value: 31 },
+  ],
+
+  feedbackTags: [
+    { name: "Lejátszó", count: 142 }, { name: "Mobil", count: 98 },
+    { name: "Ütemező", count: 76 },  { name: "Értesítések", count: 63 },
+    { name: "Felirat", count: 58 },  { name: "Közösség", count: 47 },
+    { name: "Design", count: 35 },   { name: "Egyéb", count: 23 },
+  ],
+
+  /* ======================================================================
+     Beállítások oldal – fülek és beállítás sorok
+     type: "link" (nyíl), "select" (legördülő), "toggle" (kapcsoló)
+     ====================================================================== */
+  settingsTabs: {
+    "Fiók beállítások": [
+      {
+        group: "Fiók beállítások",
+        rows: [
+          { type: "link", icon: "lock",  title: "Jelszó módosítása",   desc: "Erős jelszóval védd a fiókodat." },
+          { type: "link", icon: "mail",  title: "E-mail cím módosítása", desc: "Változtasd meg az e-mail címedet." },
+          { type: "link", icon: "trash", title: "Fiók törlése",        desc: "A fiók és az összes adatod véglegesen törlésre kerül.", danger: true },
+        ],
+      },
+      {
+        group: "Nyelv és időzóna",
+        rows: [
+          { type: "select", icon: "globe", title: "Nyelv",   desc: "Válaszd ki a felület nyelvét.",  options: ["Magyar", "English", "日本語"], key: "lang" },
+          { type: "select", icon: "clock", title: "Időzóna", desc: "Válaszd ki az időzónádat.", options: ["(UTC+02:00) Budapest", "(UTC+00:00) London", "(UTC+09:00) Tokyo"], key: "tz" },
+        ],
+      },
+    ],
+    "Megjelenítés": [
+      {
+        group: "Téma és kinézet",
+        rows: [
+          { type: "select", icon: "moon",  title: "Téma",        desc: "A felület színvilága.", options: ["Sötét (alapértelmezett)", "AMOLED fekete", "Világos"], key: "theme" },
+          { type: "select", icon: "globe", title: "Betűméret",   desc: "A szövegek mérete.", options: ["Normál", "Nagy", "Kicsi"], key: "fontsize" },
+          { type: "toggle", icon: "zap",   title: "Animációk",   desc: "Felület animációk be/ki.", key: "animations", default: true },
+          { type: "toggle", icon: "image", title: "Borítóképek automatikus betöltése", desc: "Adatforgalom spórolásához kapcsold ki.", key: "autoimg", default: true },
+        ],
+      },
+    ],
+    "Lejátszás": [
+      {
+        group: "Lejátszó",
+        rows: [
+          { type: "select", icon: "play",  title: "Alapértelmezett minőség", desc: "Új epizódok indításakor.", options: ["1080p", "720p", "480p", "Automatikus"], key: "quality" },
+          { type: "select", icon: "zap",   title: "Alapértelmezett sebesség", desc: "Lejátszási sebesség.", options: ["1x", "1.25x", "1.5x"], key: "speed" },
+          { type: "toggle", icon: "play",  title: "Automatikus lejátszás", desc: "Következő epizód automatikus indítása.", key: "autoplay", default: false },
+          { type: "toggle", icon: "cc",    title: "Feliratok alapból bekapcsolva", desc: "Magyar felirat megjelenítése.", key: "subs", default: true },
+          { type: "toggle", icon: "clock", title: "Intró átugrása", desc: "Az openingek automatikus átugrása.", key: "skipintro", default: true },
+        ],
+      },
+    ],
+    "Értesítések": [
+      {
+        group: "Értesítések",
+        rows: [
+          { type: "toggle", icon: "bell",  title: "Új epizód értesítések", desc: "A műsorlistádon lévő animékhez.", key: "notif-ep", default: true },
+          { type: "toggle", icon: "users", title: "Közösségi értesítések", desc: "Válaszok és említések.", key: "notif-comm", default: true },
+          { type: "toggle", icon: "news",  title: "Hírlevél", desc: "Heti összefoglaló e-mailben.", key: "notif-news", default: false },
+          { type: "toggle", icon: "zap",   title: "Push értesítések", desc: "Böngésző értesítések.", key: "notif-push", default: true },
+        ],
+      },
+    ],
+    "Adatvédelem": [
+      {
+        group: "Adatvédelem",
+        rows: [
+          { type: "toggle", icon: "eye",    title: "Privát profil", desc: "Csak a követőid láthatják a profilod.", key: "priv-profile", default: false },
+          { type: "toggle", icon: "eye",    title: "Nézési előzmények elrejtése", desc: "Mások nem látják, mit néztél.", key: "priv-history", default: false },
+          { type: "toggle", icon: "shield", title: "Kétlépcsős azonosítás", desc: "Extra biztonság a fiókodnak.", key: "priv-2fa", default: true },
+          { type: "link",   icon: "trash",  title: "Adatok letöltése", desc: "Kérj másolatot a tárolt adataidról." },
+        ],
+      },
+    ],
+    "Kapcsolt fiókok": [
+      {
+        group: "Kapcsolt fiókok",
+        rows: [
+          { type: "connect", icon: "discord", title: "Discord", desc: "Oszd meg az aktivitásod a szervereden.", key: "conn-discord", default: true },
+          { type: "connect", icon: "google",  title: "Google",  desc: "Gyors bejelentkezés Google fiókkal.", key: "conn-google", default: true },
+          { type: "connect", icon: "x",       title: "X (Twitter)", desc: "Oszd meg kedvenc animéidet.", key: "conn-x", default: false },
+          { type: "connect", icon: "mal",     title: "MyAnimeList", desc: "Szinkronizáld a listáidat.", key: "conn-mal", default: false },
+        ],
+      },
+    ],
+  },
+
+  /* ======================================================================
      Támogatás oldal
      ====================================================================== */
   faq: [
