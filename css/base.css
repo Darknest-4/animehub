@@ -712,7 +712,8 @@ img.img-fade {
   box-shadow: 0 10px 34px rgba(0, 0, 0, 0.6);
 }
 
-.bottom-nav a {
+.bottom-nav a,
+.bottom-nav button {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -726,13 +727,63 @@ img.img-fade {
   transition: color 0.2s, background 0.2s;
 }
 
-.bottom-nav a.active {
+.bottom-nav a.active,
+.bottom-nav button.active {
   color: var(--purple-2);
   background: rgba(139, 92, 246, 0.13);
   box-shadow: 0 0 14px rgba(139, 92, 246, 0.2);
 }
 
-.bottom-nav a:active { transform: scale(0.94); }
+.bottom-nav a:active,
+.bottom-nav button:active { transform: scale(0.94); }
+
+/* ----- "Több" felugró menü (az alsó nav fölött) ----- */
+.more-sheet {
+  position: fixed;
+  z-index: 199;
+  left: 16px;
+  right: 16px;
+  bottom: 92px;
+  max-width: 440px;
+  margin: 0 auto;
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 12px;
+  background: rgba(16, 14, 24, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.65);
+}
+
+.more-sheet.open { display: grid; }
+
+.more-sheet a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding: 14px 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-soft);
+  border-radius: 15px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.more-sheet a:hover { background: var(--bg-hover); color: var(--text); }
+
+.more-sheet a.active {
+  color: var(--purple-2);
+  background: rgba(139, 92, 246, 0.13);
+}
+
+.more-sheet a:active { transform: scale(0.95); }
+
+/* ----- Mobil kereső ikon a fejlécben ----- */
+.search-mini { display: none; }
 
 /* ----- Reszponzív ----- */
 @media (max-width: 1100px) {
@@ -768,9 +819,10 @@ img.img-fade {
   .panel { padding: 16px; }
 }
 
-/* Nagyon keskeny kijelzőn a kereső külön ikonként nem fér el – elrejtjük,
-   a tartalom kereshető marad az oldalakon belüli keresőkkel */
+/* Nagyon keskeny kijelzőn a kereső mező helyett ikon jelenik meg,
+   ami a keresés oldalra visz – így mobilon is elérhető a keresés */
 @media (max-width: 560px) {
   .topbar .search { display: none; }
   .topbar { justify-content: space-between; }
+  .search-mini { display: grid; }
 }
