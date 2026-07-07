@@ -94,10 +94,21 @@ function updateSubtitle(t) {
 function initVideo() {
   if (!video) return;
 
-  video.src = CONFIG.videoSrc;
+  /* Források listája – régi (cache-elt) data.js esetén is működjön */
+  const sources =
+    (typeof CONFIG !== "undefined" && (CONFIG.videoSources || [CONFIG.videoSrc]).filter(Boolean)) || [];
+  let srcIndex = 0;
+
+  if (!sources.length) {
+    video.style.display = "none";
+    return;
+  }
+
+  video.src = sources[srcIndex];
 
   video.addEventListener("loadedmetadata", () => {
     playerState.hasVideo = true;
+    video.style.display = "";
     clearInterval(playerState.simTimer);
     updateUI();
   });
@@ -107,10 +118,17 @@ function initVideo() {
   video.addEventListener("pause", updateUI);
 
   video.addEventListener("error", () => {
-    // Nincs net vagy hibás forrás → marad a szimulált mód + placeholder kép
+    // Következő forrás próbálása; ha egyik sem megy → szimulált mód + placeholder
+    srcIndex += 1;
+    if (srcIndex < sources.length) {
+      console.warn("Videóforrás nem érhető el, próbálom a következőt:", sources[srcIndex]);
+      video.src = sources[srcIndex];
+      video.load();
+      return;
+    }
     playerState.hasVideo = false;
     video.style.display = "none";
-    console.warn("A videó nem tölthető be, szimulált lejátszás fut. Forrás:", CONFIG.videoSrc);
+    console.warn("Egyik videóforrás sem tölthető be, szimulált lejátszás fut.");
   });
 
   // Kattintás a videóra = lejátszás/szünet
