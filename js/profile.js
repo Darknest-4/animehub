@@ -68,12 +68,14 @@ function renderActivity() {
    Nézési statisztika – évváltó, oszlopdiagram tooltippel és kattintással
    ========================================================================== */
 const chartState = {
-  year: DATA.watchMinutes.defaultYear,
+  year: DATA.watchMinutes.defaultYear || 2024,
   selectedMonth: null,
 };
 
 function currentYearData() {
-  return DATA.watchMinutes.years[chartState.year];
+  // Régi (cache-elt) data.js struktúrával is működjön
+  if (DATA.watchMinutes.years) return DATA.watchMinutes.years[chartState.year];
+  return { values: DATA.watchMinutes.values || [], trend: "" };
 }
 
 function renderChart() {

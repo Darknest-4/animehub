@@ -51,6 +51,12 @@ function initSeasons() {
   const tabs = document.getElementById("seasonTabs");
   if (!tabs) return;
 
+  // Régi (cache-elt) data.js esetén ne törjön el az oldal
+  if (!DATA.seasons) {
+    console.warn("Hiányzó évad-adatok – frissítsd az oldalt (Ctrl+F5).");
+    return;
+  }
+
   let active = DATA.defaultSeason || Object.keys(DATA.seasons)[0];
   renderSeasonTabs(active);
   renderEpisodes(active);
