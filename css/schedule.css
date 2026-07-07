@@ -227,7 +227,7 @@
 
 .cal-day.today {
   color: #fff;
-  background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+  background: var(--gradient-primary);
   box-shadow: 0 0 14px var(--purple-glow);
 }
 

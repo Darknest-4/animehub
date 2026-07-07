@@ -36,7 +36,7 @@
 
 .settings-tab.active {
   color: #fff;
-  background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+  background: var(--gradient-primary);
   border-color: transparent;
 }
 
@@ -192,7 +192,7 @@
   font-size: 12.5px;
   font-weight: 700;
   color: #fff;
-  background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+  background: var(--gradient-primary);
   border-radius: 10px;
   flex-shrink: 0;
 }
@@ -210,7 +210,7 @@
   height: 26px;
   flex-shrink: 0;
   border-radius: 99px;
-  background: #2c2740;
+  background: #2A2A3A;
   transition: background 0.25s;
   cursor: pointer;
 }
@@ -227,7 +227,7 @@
   transition: transform 0.25s, background 0.25s;
 }
 
-.switch.on { background: linear-gradient(135deg, var(--purple-dark), var(--purple)); }
+.switch.on { background: var(--gradient-primary); }
 .switch.on::after { transform: translateX(20px); background: #fff; }
 
 /* Lábjegyzet */

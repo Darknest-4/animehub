@@ -39,7 +39,7 @@
 
 .favp-tab.active {
   color: #fff;
-  background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+  background: var(--gradient-primary);
   border-color: transparent;
 }
 
@@ -75,7 +75,7 @@
 .favp-card .shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(5, 4, 9, 0.95) 0%, rgba(5, 4, 9, 0.35) 42%, transparent 68%);
+  background: linear-gradient(0deg, rgba(9, 9, 15, 0.95) 0%, rgba(9, 9, 15, 0.35) 42%, transparent 68%);
 }
 
 /* Szív gomb (eltávolítás) */
