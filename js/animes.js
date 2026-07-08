@@ -9,28 +9,42 @@ const browseState = {
   status: "Összes",
   minStars: 0,
   showAll: false,
+  popular: null,  // élő Jikan adatok (ha betöltöttek)
+  fresh: null,
 };
 
 /* ----- Kártyák ----- */
+function browseGenreText(a) {
+  if (Array.isArray(a.genres)) return a.genres[0] || a.type || "TV";
+  return a.genre || a.type || "TV";
+}
+
 function browseCardHTML(a, isNew) {
+  const link = a.id ? `anime.html?id=${a.id}` : `anime.html?q=${encodeURIComponent(a.title)}`;
+  const rating = typeof a.rating === "number" ? a.rating.toFixed(1) : (a.rating || "–");
   return `
-    <a class="browse-card" href="anime.html">
+    <a class="browse-card" href="${link}">
       <img src="${a.image}" alt="${a.title}">
       <span class="shade"></span>
       ${isNew
         ? '<span class="new-badge">ÚJ</span>'
-        : `<span class="rate">${ICONS.star} ${a.rating.toFixed(1)}</span>`}
+        : `<span class="rate">${ICONS.star} ${rating}</span>`}
       <span class="info">
-        <span class="meta">${a.genre} · ${a.year}${a.eps ? " · " + a.eps : ""}</span>
+        <span class="meta">${browseGenreText(a)} · ${a.year || "—"}${a.eps ? " · " + a.eps : ""}</span>
         <h3>${a.title}</h3>
       </span>
     </a>`;
 }
 
+function genreMatch(a, genre) {
+  if (Array.isArray(a.genres)) return a.genres.includes(genre);
+  return a.genre === genre;
+}
+
 function filteredBrowse(list) {
   let items = list.slice();
   if (browseState.genre !== "Összes") {
-    items = items.filter((a) => a.genre === browseState.genre);
+    items = items.filter((a) => genreMatch(a, browseState.genre));
   }
   if (browseState.minStars > 0) {
     items = items.filter((a) => !a.rating || a.rating >= 7 + browseState.minStars * 0.5);
@@ -42,8 +56,8 @@ function filteredBrowse(list) {
 }
 
 function renderBrowse() {
-  const popular = filteredBrowse(DATA.browsePopular);
-  const fresh = filteredBrowse(DATA.browseFresh);
+  const popular = filteredBrowse(browseState.popular || DATA.browsePopular);
+  const fresh = filteredBrowse(browseState.fresh || DATA.browseFresh);
 
   const popLimit = browseState.showAll ? popular.length : 6;
   document.getElementById("popularCards").innerHTML =
@@ -70,20 +84,39 @@ function renderGenreTabs() {
 }
 
 /* ----- Top 5 (jobb oszlop) ----- */
-function renderTopAnime() {
-  document.getElementById("topAnimeList").innerHTML = DATA.topNow
-    .map(
-      (a, i) => `
-      <a class="top-item" href="anime.html">
+function renderTopAnime(list) {
+  const data = list || DATA.topNow;
+  document.getElementById("topAnimeList").innerHTML = data
+    .map((a, i) => {
+      const link = a.id ? `anime.html?id=${a.id}` : `anime.html?q=${encodeURIComponent(a.title)}`;
+      return `
+      <a class="top-item" href="${link}">
         <span class="rank">${i + 1}</span>
         <img src="${a.image}" alt="${a.title}">
         <div class="info">
           <h4>${a.title}</h4>
-          ${ratingHTML(a.rating)}
+          ${a.rating ? ratingHTML(a.rating) : ""}
         </div>
-      </a>`
-    )
+      </a>`;
+    })
     .join("");
+}
+
+/* ----- Élő adatok betöltése ----- */
+function loadLiveBrowse() {
+  if (typeof Jikan === "undefined") return;
+
+  Jikan.top(24).then((list) => {
+    if (list.length) { browseState.popular = list; renderBrowse(); }
+  }).catch(() => {});
+
+  Jikan.seasonNow(8).then((list) => {
+    if (list.length) { browseState.fresh = list; renderBrowse(); }
+  }).catch(() => {});
+
+  Jikan.top(5, "bypopularity").then((list) => {
+    if (list.length) renderTopAnime(list);
+  }).catch(() => {});
 }
 
 /* ----- Vezérlők ----- */
@@ -91,6 +124,7 @@ function initBrowse() {
   renderGenreTabs();
   renderBrowse();
   renderTopAnime();
+  loadLiveBrowse();
 
   document.getElementById("genreTabs").addEventListener("click", (e) => {
     const btn = e.target.closest("button[data-genre]");

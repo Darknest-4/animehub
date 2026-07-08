@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Naruto Shippuden – AnimeHub</title>
+  <title>Anime adatlap – AnimeHub</title>
 
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
-  <link rel="stylesheet" href="css/base.css?v=9">
-  <link rel="stylesheet" href="css/anime.css?v=9">
+  <link rel="stylesheet" href="css/base.css?v=10">
+  <link rel="stylesheet" href="css/anime.css?v=10">
 </head>
 <body data-page="anime" data-sidebar-extra="continue">
 
@@ -26,7 +26,7 @@
       <nav class="breadcrumb">
         <a href="animes.html">Animék</a>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        <span class="current">Naruto Shippuden</span>
+        <span class="current" id="bcTitle">Betöltés…</span>
       </nav>
 
       <div class="anime-grid">
@@ -36,33 +36,30 @@
 
           <!-- Hero: poszter + cím + gombok -->
           <section class="anime-hero">
-            <div class="backdrop"><img src="assets/img/backdrop-naruto.svg" alt=""></div>
+            <div class="backdrop"><img id="animeBackdrop" src="assets/img/backdrop-naruto.svg" alt=""></div>
             <div class="anime-hero-inner">
               <div class="anime-poster">
-                <img src="assets/img/poster-naruto-shippuden.svg" alt="Naruto Shippuden poszter">
+                <img id="animePoster" src="assets/img/poster-naruto-shippuden.svg" alt="Poszter">
               </div>
               <div class="anime-head">
-                <h1>Naruto Shippuden</h1>
-                <p class="jp-title">ナルト 疾風伝</p>
-                <div class="anime-tags">
+                <h1 id="animeTitle">Naruto Shippuden</h1>
+                <p class="jp-title" id="animeJp">ナルト 疾風伝</p>
+                <div class="anime-tags" id="animeTags">
                   <span class="tag">TV-14</span>
                   <span class="tag">2007–2017</span>
                   <span class="tag">Akció</span>
-                  <span class="tag">Kaland</span>
-                  <span class="tag">Dráma</span>
-                  <span class="tag">Shounen</span>
                 </div>
                 <div class="anime-score">
                   <span class="big">
                     <svg class="star" width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-                    9.1
+                    <span id="animeScore">9.1</span>
                   </span>
-                  <span>134.2K értékelés</span>
+                  <span id="animeVotes">134.2K értékelés</span>
                 </div>
                 <div class="anime-actions">
-                  <a class="btn-primary" href="watch.html">
+                  <a class="btn-primary" id="watchBtn" href="watch.html">
                     <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                    Folytatás
+                    Megnézem
                   </a>
                   <button class="btn-secondary" id="favBtn">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
@@ -76,33 +73,15 @@
 
           <!-- Leírás + adatok + műfajok -->
           <section class="anime-body">
-            <p class="anime-desc">
-              Naruto Uzumaki, a falujából kiközösített ninja, aki arról álmodik, hogy Hokage
-              lesz és elnyeri mindenki elismerését. Két és fél évnyi kemény edzés után Naruto
-              visszatér Konoha falujába, és új kihívások elé néz barátaival, miközben az
-              Akatsuki fenyegetése egyre nagyobbá válik.
-            </p>
+            <p class="anime-desc" id="animeDesc">Betöltés…</p>
 
-            <dl class="meta-grid">
-              <div class="meta-row"><dt>Eredeti cím</dt><dd>NARUTO -ナルト- 疾風伝</dd></div>
-              <div class="meta-row"><dt>Epizódok</dt><dd>500</dd></div>
-              <div class="meta-row"><dt>Stúdió</dt><dd>Studio Pierrot</dd></div>
-              <div class="meta-row"><dt>Hossz</dt><dd>23 perc</dd></div>
-              <div class="meta-row"><dt>Forrás</dt><dd>Manga</dd></div>
-              <div class="meta-row"><dt>Premier</dt><dd>2007. február 15.</dd></div>
-              <div class="meta-row"><dt>Évadok</dt><dd>22</dd></div>
-              <div class="meta-row"><dt>Befejezés</dt><dd>2017. március 23.</dd></div>
+            <dl class="meta-grid" id="animeMeta">
+              <div class="meta-row"><dt>Eredeti cím</dt><dd>—</dd></div>
             </dl>
 
             <div class="genres">
               <h3>Műfajok</h3>
-              <div class="tags">
-                <span class="tag">Akció</span>
-                <span class="tag">Kaland</span>
-                <span class="tag">Dráma</span>
-                <span class="tag">Shounen</span>
-                <span class="tag">Szupererő</span>
-              </div>
+              <div class="tags" id="animeGenres"></div>
             </div>
           </section>
 
@@ -111,7 +90,7 @@
             <div class="section-head">
               <h2>Epizódok</h2>
               <span class="spacer"></span>
-              <a class="link-more" href="#">Mind az 500 epizód
+              <a class="link-more" id="allEpsLink" href="#">Mind az epizód
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
               </a>
             </div>
@@ -132,10 +111,10 @@
             <div class="score-box">
               <div class="score-main">
                 <svg class="star-big" width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-                <div class="value">9.1<small>/10</small></div>
-                <div class="count">134.2K értékelés</div>
+                <div class="value"><span id="scoreValue">9.1</span><small>/10</small></div>
+                <div class="count" id="scoreCount">134.2K értékelés</div>
               </div>
-              <div class="score-bars">
+              <div class="score-bars" id="scoreBars">
                 <div class="score-bar"><span class="label">5<span class="star">★</span></span><div class="progress"><span style="width:72%"></span></div><span class="pct">72%</span></div>
                 <div class="score-bar"><span class="label">4<span class="star">★</span></span><div class="progress"><span style="width:20%"></span></div><span class="pct">20%</span></div>
                 <div class="score-bar"><span class="label">3<span class="star">★</span></span><div class="progress"><span style="width:6%"></span></div><span class="pct">6%</span></div>
@@ -149,8 +128,8 @@
           <section class="panel">
             <div class="panel-head"><h3>Státusz</h3></div>
             <div class="status-row">
-              <span class="state">Befejezett</span>
-              <span class="eps">500 / 500 epizód</span>
+              <span class="state" id="animeStatus">Befejezett</span>
+              <span class="eps" id="animeEpsCount">500 / 500 epizód</span>
             </div>
           </section>
 
@@ -159,7 +138,7 @@
             <div class="panel-head"><h3>Népszerűség</h3></div>
             <div class="pop-box">
               <div class="pop-info">
-                <div class="rank">#3</div>
+                <div class="rank" id="animeRank">#3</div>
                 <p>Legnépszerűbb<br>minden idők</p>
               </div>
               <div class="pop-chart">
@@ -181,19 +160,19 @@
           <section class="panel">
             <div class="panel-head"><h3>Megosztás</h3></div>
             <div class="share-row">
-              <button class="share-btn" aria-label="Discord">
+              <button class="share-btn" data-share="discord" aria-label="Discord">
                 <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.93-1.51 13.78 13.78 0 0 0-.64 1.28 18.27 18.27 0 0 0-5.5 0 12.64 12.64 0 0 0-.64-1.28 19.74 19.74 0 0 0-4.93 1.51C.53 9.05-.32 13.58.1 18.06a19.9 19.9 0 0 0 6.04 3.03 14.65 14.65 0 0 0 1.23-2.03 12.8 12.8 0 0 1-1.95-.93c.16-.12.32-.24.48-.36a14.2 14.2 0 0 0 12.2 0c.16.13.32.25.48.36-.63.37-1.28.68-1.96.93a14.6 14.6 0 0 0 1.24 2.03 19.84 19.84 0 0 0 6.03-3.03c.5-5.2-.84-9.68-3.57-13.69zM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42s.95-2.42 2.16-2.42c1.21 0 2.18 1.09 2.16 2.42 0 1.34-.95 2.42-2.16 2.42zm7.96 0c-1.18 0-2.15-1.08-2.15-2.42s.95-2.42 2.15-2.42c1.22 0 2.18 1.09 2.16 2.42 0 1.34-.94 2.42-2.16 2.42z"/></svg>
               </button>
-              <button class="share-btn" aria-label="Reddit">
+              <button class="share-btn" data-share="reddit" aria-label="Reddit">
                 <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12c0-1.33-1.08-2.4-2.4-2.4-.65 0-1.24.26-1.67.68a11.8 11.8 0 0 0-6.42-2.04l1.1-5.17 3.58.76a1.8 1.8 0 1 0 .18-.86l-4-.85a.44.44 0 0 0-.52.34l-1.22 5.77a11.8 11.8 0 0 0-6.5 2.03 2.4 2.4 0 1 0-2.66 3.94c-.03.22-.05.45-.05.68 0 3.45 4.02 6.25 8.98 6.25s8.98-2.8 8.98-6.25c0-.22-.02-.44-.05-.66A2.4 2.4 0 0 0 24 12zM6.16 13.72a1.72 1.72 0 1 1 3.44 0 1.72 1.72 0 0 1-3.44 0zm9.59 4.55c-1.17 1.17-3.42 1.26-3.75 1.26s-2.58-.09-3.75-1.26a.44.44 0 0 1 .62-.62c.74.74 2.32 1 3.13 1s2.39-.26 3.13-1a.44.44 0 0 1 .62.62zm-.31-2.83a1.72 1.72 0 1 1 0-3.44 1.72 1.72 0 0 1 0 3.44z"/></svg>
               </button>
-              <button class="share-btn" aria-label="X">
+              <button class="share-btn" data-share="x" aria-label="X">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.6l5.24 6.93zm-1.29 19.5h2.04L6.49 3.24H4.3z"/></svg>
               </button>
-              <button class="share-btn" aria-label="Facebook">
+              <button class="share-btn" data-share="facebook" aria-label="Facebook">
                 <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.1 24 12.07z"/></svg>
               </button>
-              <button class="share-btn" aria-label="Link másolása">
+              <button class="share-btn" data-share="copy" aria-label="Link másolása">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
               </button>
             </div>
@@ -205,30 +184,7 @@
               <h3>Kapcsolódó animék</h3>
               <a class="link-more" href="#">Mutasd mindet</a>
             </div>
-            <a class="related-item" href="#">
-              <img src="assets/img/poster-boruto.svg" alt="Boruto">
-              <div class="info">
-                <h4>Boruto: Naruto Next Generations</h4>
-                <p>TV · 293 epizód</p>
-              </div>
-              <span class="chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-            </a>
-            <a class="related-item" href="#">
-              <img src="assets/img/poster-naruto.svg" alt="Naruto">
-              <div class="info">
-                <h4>Naruto</h4>
-                <p>TV · 220 epizód</p>
-              </div>
-              <span class="chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-            </a>
-            <a class="related-item" href="#">
-              <img src="assets/img/poster-naruto-movie.svg" alt="Naruto Movie 1">
-              <div class="info">
-                <h4>Naruto Movie 1: Ninja Clash in the Land of Snow</h4>
-                <p>Film · 2004</p>
-              </div>
-              <span class="chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-            </a>
+            <div id="relatedList"></div>
           </section>
 
         </aside>
@@ -238,10 +194,11 @@
   </div>
 
   <!-- ===== Szkriptek ===== -->
-  <script src="js/data.js?v=9"></script>
-  <script src="js/layout.js?v=9"></script>
-  <script src="js/main.js?v=9"></script>
-  <script src="js/anime.js?v=9"></script>
-  <script src="js/images.js?v=9"></script>
+  <script src="js/data.js?v=10"></script>
+  <script src="js/layout.js?v=10"></script>
+  <script src="js/main.js?v=10"></script>
+  <script src="js/jikan.js?v=10"></script>
+  <script src="js/anime.js?v=10"></script>
+  <script src="js/images.js?v=10"></script>
 </body>
 </html>

@@ -288,8 +288,8 @@
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 8px var(--green);
+  background: var(--dot, var(--green));
+  box-shadow: 0 0 8px var(--dot, var(--green));
 }
 
 .status-row .eps { color: var(--text-soft); }
