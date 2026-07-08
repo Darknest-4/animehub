@@ -32,8 +32,10 @@ const LAYOUT_ICONS = {
 /* ----- Topbar ----- */
 function layoutTopbarHTML() {
   return `
+    <button class="btn-icon menu-toggle" aria-label="Menü">
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
     <a class="logo" href="index.html">
-      <span class="logo-mark">AH</span>
       <span>Anime<span class="logo-accent">Hub</span></span>
     </a>
 
@@ -118,12 +120,16 @@ const BOTTOM_NAV_ITEMS = [
 ];
 
 const MORE_SHEET_ITEMS = [
-  { page: "watch",   href: "watch.html",   icon: "playCircle", label: "Lejátszó" },
-  { page: "news",    href: "news.html",    icon: "news",       label: "Hírek" },
-  { page: "profile", href: "profile.html", icon: "user",       label: "Profil" },
-  { page: "search",  href: "search.html",  icon: "search",     label: "Keresés" },
-  { page: "team",    href: "team.html",    icon: "users",      label: "Csapat" },
-  { page: "support", href: "support.html", icon: "help",       label: "Támogatás" },
+  { page: "watch",     href: "watch.html",     icon: "playCircle", label: "Lejátszó" },
+  { page: "watchlist", href: "watchlist.html", icon: "list",       label: "Műsorlista" },
+  { page: "favorites", href: "favorites.html", icon: "heart",      label: "Kedvencek" },
+  { page: "news",      href: "news.html",      icon: "news",       label: "Hírek" },
+  { page: "profile",   href: "profile.html",   icon: "user",       label: "Profil" },
+  { page: "search",    href: "search.html",    icon: "search",     label: "Keresés" },
+  { page: "team",      href: "team.html",      icon: "users",      label: "Csapat" },
+  { page: "support",   href: "support.html",   icon: "help",       label: "Támogatás" },
+  { page: "settings",  href: "settings.html",  icon: "settings",   label: "Beállítások" },
+  { page: "feedback",  href: "feedback.html",  icon: "feedback",   label: "Visszajelzés" },
 ];
 
 function layoutBottomNavHTML(activePage) {
@@ -186,4 +192,36 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", (e) => {
     if (!moreSheet.contains(e.target)) moreSheet.classList.remove("open");
   });
+
+  // Mobil oldalsó fiók: a teljes sidebar menü hamburgerre nyílik
+  const overlay = document.createElement("div");
+  overlay.className = "drawer-overlay";
+  document.body.appendChild(overlay);
+
+  const drawer = document.createElement("aside");
+  drawer.className = "mobile-drawer";
+  drawer.innerHTML = `
+    <div class="drawer-head">
+      <a class="logo" href="index.html"><span>Anime<span class="logo-accent">Hub</span></span></a>
+      <button class="btn-icon drawer-close" aria-label="Bezárás">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    ${layoutSidebarHTML(page, extra)}`;
+  document.body.appendChild(drawer);
+
+  function toggleDrawer(open) {
+    drawer.classList.toggle("open", open);
+    overlay.classList.toggle("open", open);
+    document.body.style.overflow = open ? "hidden" : "";
+  }
+
+  document.querySelectorAll(".menu-toggle").forEach((btn) =>
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleDrawer(!drawer.classList.contains("open"));
+    })
+  );
+  overlay.addEventListener("click", () => toggleDrawer(false));
+  drawer.querySelector(".drawer-close").addEventListener("click", () => toggleDrawer(false));
 });
