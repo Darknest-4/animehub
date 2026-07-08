@@ -86,7 +86,7 @@ function initLiveSearch() {
       </a>`;
     box.innerHTML = (hits.length
       ? hits.map((a) => `
-          <a class="search-hit" href="anime.html">
+          <a class="search-hit" href="anime.html?q=${encodeURIComponent(a.title)}">
             <img src="${a.image}" alt="${a.title}">
             <div class="t">
               <h4>${a.title}</h4>

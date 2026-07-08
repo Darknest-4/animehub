@@ -31,7 +31,7 @@ function renderHero() {
             <p class="hero-desc">${s.desc}</p>
             <div class="hero-actions">
               <a class="btn-primary" href="watch.html">${ICONS.play} Megnézem</a>
-              <a class="btn-secondary" href="anime.html">Részletek</a>
+              <a class="btn-secondary" href="anime.html?q=${encodeURIComponent(s.title)}">Részletek</a>
             </div>
           </div>
         </article>`
@@ -94,8 +94,9 @@ function renderContinueRow() {
 }
 
 function posterCardHTML(anime) {
+  const link = anime.id ? `anime.html?id=${anime.id}` : `anime.html?q=${encodeURIComponent(anime.title)}`;
   return `
-    <a class="poster-card" href="anime.html">
+    <a class="poster-card" href="${link}">
       <div class="card">
         ${anime.isNew ? '<span class="badge badge-new">Új epizód</span>' : ""}
         <img src="${anime.image}" alt="${anime.title}">
@@ -118,23 +119,48 @@ function renderPosterRows() {
 /* ==========================================================================
    Jobb oldali panelek
    ========================================================================== */
+function topItemHTML(a, i) {
+  const link = a.id ? `anime.html?id=${a.id}` : `anime.html?q=${encodeURIComponent(a.title)}`;
+  return `
+    <a class="top-item" href="${link}">
+      <span class="rank">${i + 1}</span>
+      <img src="${a.image}" alt="${a.title}">
+      <div class="info">
+        <h4>${a.title}</h4>
+        ${a.rating ? ratingHTML(a.rating) : ""}
+      </div>
+    </a>`;
+}
+
 function renderTopNow() {
   const list = document.getElementById("topNowList");
   if (!list) return;
+  list.innerHTML = DATA.topNow.map(topItemHTML).join("");
+}
 
-  list.innerHTML = DATA.topNow
-    .map(
-      (a, i) => `
-      <a class="top-item" href="anime.html">
-        <span class="rank">${i + 1}</span>
-        <img src="${a.image}" alt="${a.title}">
-        <div class="info">
-          <h4>${a.title}</h4>
-          ${ratingHTML(a.rating)}
-        </div>
-      </a>`
-    )
-    .join("");
+/* ----- Élő adatok a Jikan-ból (ha elérhető) ----- */
+function loadLiveHome() {
+  if (typeof Jikan === "undefined") return;
+
+  // Top 5 népszerű most
+  Jikan.top(5, "bypopularity").then((list) => {
+    const el = document.getElementById("topNowList");
+    if (el && list.length) el.innerHTML = list.map(topItemHTML).join("");
+  }).catch(() => {});
+
+  // Népszerű animék sor (top 10 értékelés szerint)
+  Jikan.top(10).then((list) => {
+    const el = document.getElementById("popularRow");
+    if (el && list.length) el.innerHTML = list.map(posterCardHTML).join("");
+  }).catch(() => {});
+
+  // Frissen hozzáadva = aktuális szezon
+  Jikan.seasonNow(10).then((list) => {
+    const el = document.getElementById("freshRow");
+    if (el && list.length) {
+      el.innerHTML = list.map((a) => posterCardHTML({ ...a, isNew: true })).join("");
+    }
+  }).catch(() => {});
 }
 
 function renderSchedule() {
@@ -164,4 +190,5 @@ document.addEventListener("DOMContentLoaded", () => {
   renderPosterRows();
   renderTopNow();
   renderSchedule();
+  loadLiveHome();
 });

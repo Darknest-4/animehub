@@ -87,23 +87,45 @@ function renderCalendar() {
 }
 
 /* ----- Következő epizódok ----- */
-function renderUpcoming() {
+function renderUpcoming(items) {
   const list = document.getElementById("upcomingList");
   if (!list) return;
 
-  list.innerHTML = DATA.upcomingEpisodes
-    .map(
-      (u) => `
-      <a class="next-ep-item" href="watch.html">
+  const data = items || DATA.upcomingEpisodes;
+  list.innerHTML = data
+    .map((u) => {
+      const link = u.id ? `anime.html?id=${u.id}` : "watch.html";
+      return `
+      <a class="next-ep-item" href="${link}">
         <img src="${u.image}" alt="${u.title}">
         <div class="info">
           <h4>${u.title}</h4>
           <p>${u.ep}</p>
         </div>
         <div class="when"><strong>${u.when}</strong>${u.time}</div>
-      </a>`
-    )
+      </a>`;
+    })
     .join("");
+}
+
+/* ----- Élő menetrend a Jikan-ból (mai nap) ----- */
+function loadLiveSchedule() {
+  if (typeof Jikan === "undefined") return;
+  const days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+  const today = days[new Date().getDay()];
+
+  Jikan.schedule(today).then((list) => {
+    if (!list.length) return;
+    const items = list.slice(0, 6).map((a) => ({
+      id: a.id,
+      title: a.title,
+      ep: a.eps ? `${a.eps} epizód` : "Új epizód",
+      when: "Ma",
+      time: a.airing ? "Ma" : "",
+      image: a.image,
+    }));
+    renderUpcoming(items);
+  }).catch(() => {});
 }
 
 /* ----- Hét léptetés (dátumcímke frissítése) ----- */
@@ -130,5 +152,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderWeek();
   renderCalendar();
   renderUpcoming();
+  loadLiveSchedule();
   initWeekNav();
 });
