@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anime szerkesztése – AnimeHub Admin</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="css/base.css?v=10">
+  <link rel="stylesheet" href="css/admin.css?v=10">
+</head>
+<body class="admin" data-admin-page="edit">
+
+  <div class="admin-layout">
+    <aside id="adminSidebar" class="admin-sidebar"></aside>
+
+    <div class="admin-main">
+      <header id="adminTopbar" class="admin-topbar"></header>
+
+      <div class="admin-content">
+
+        <div class="admin-head">
+          <div class="titles">
+            <a class="link" href="admin-animes.html" style="display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--text-secondary);margin-bottom:8px">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+              Vissza az animékhez
+            </a>
+            <h1>Anime szerkesztése</h1>
+            <p class="subtitle">Szerkeszd az anime adatait és beállításait.</p>
+          </div>
+          <div style="display:flex;gap:10px">
+            <a class="admin-btn ghost" href="anime.html?q=Jujutsu%20Kaisen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Előnézet</a>
+            <a class="admin-btn ghost" href="admin-animes.html">Mégse</a>
+            <button class="admin-btn" id="saveEdit"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg> Mentés</button>
+          </div>
+        </div>
+
+        <div class="edit-grid">
+
+          <!-- Bal: űrlap -->
+          <div>
+            <section class="admin-card admin-panel edit-section">
+              <h3>Alapvető információk</h3>
+              <div class="field-row">
+                <div class="field"><label>Cím <span class="required">*</span></label><input type="text" value="Jujutsu Kaisen"></div>
+                <div class="field"><label>Japán cím</label><input type="text" value="呪術廻戦"></div>
+              </div>
+              <div class="field-row">
+                <div class="field"><label>Alternatív címek</label><div class="tag-input"><input type="text" placeholder="Pl. JJK, Sorcery Fight"><span class="add-tag">＋</span></div></div>
+                <div class="field"><label>Típus</label><select><option>TV Sorozat</option><option>Film</option><option>OVA</option></select></div>
+              </div>
+              <div class="field-row" style="grid-template-columns:1fr 1fr 1fr">
+                <div class="field"><label>Állapot</label><select style="color:var(--success)"><option>Aktív</option><option>Inaktív</option></select></div>
+                <div class="field"><label>Év</label><input type="text" value="2020"></div>
+                <div class="field"><label>Korhatár</label><select><option>16+</option><option>12+</option><option>18+</option></select></div>
+              </div>
+              <div class="field"><label>Leírás <span class="required">*</span></label><textarea style="min-height:110px">Yuji Itadori egy átlagos gimnazista, aki hihetetlen fizikai erejével tűnik ki. Amikor egy elátkozott tárgyat nyel le, Ryoumen Sukuna, az átkok királya a testébe költözik. Yuji ezután belép a Tokiói Fő Jujutsu Technikai Iskolába, hogy felkutassa Sukuna ujjait, miközben egyre több átokkal kell szembenéznie.</textarea><div style="text-align:right;font-size:11.5px;color:var(--text-muted);margin-top:5px">314 / 2000</div></div>
+            </section>
+
+            <section class="admin-card admin-panel edit-section">
+              <h3>Részletek</h3>
+              <div class="field-row">
+                <div class="field"><label>Műfajok</label><div class="tag-input"><span class="chip">Akció <span class="x">✕</span></span><span class="chip">Sötét fantasy <span class="x">✕</span></span><span class="chip">Iskola <span class="x">✕</span></span><span class="chip">Természetfeletti <span class="x">✕</span></span><span class="add-tag">＋</span></div></div>
+                <div class="field"><label>Stúdió</label><select><option>MAPPA</option><option>ufotable</option><option>Bones</option></select></div>
+              </div>
+              <div class="field-row" style="grid-template-columns:1fr 1fr 1fr">
+                <div class="field"><label>Forrás</label><select><option>Manga</option><option>Light Novel</option><option>Eredeti</option></select></div>
+                <div class="field"><label>Eredeti nyelv</label><select><option>Japán</option><option>Angol</option></select></div>
+                <div class="field"><label>Évadok száma</label><select><option>2</option><option>1</option><option>3</option></select></div>
+              </div>
+              <div class="field-row" style="grid-template-columns:1fr 1fr 1fr">
+                <div class="field"><label>Epizódok száma</label><input type="text" value="24"></div>
+                <div class="field"><label>Átlagos epizódhossz (perc)</label><input type="text" value="tt12345534"></div>
+                <div class="field"><label>IMDb azonosító</label><input type="text" value="40748"></div>
+              </div>
+            </section>
+
+            <section class="admin-card admin-panel edit-section">
+              <h3>Címkék</h3>
+              <div class="field"><div class="tag-input"><span class="chip">Démonok <span class="x">✕</span></span><span class="chip">Shounen <span class="x">✕</span></span><span class="chip">Harcművészet <span class="x">✕</span></span><span class="chip">Boszorkányság <span class="x">✕</span></span><span class="chip">Modern kor <span class="x">✕</span></span><span class="add-tag">＋ Címke hozzáadása</span></div></div>
+            </section>
+          </div>
+
+          <!-- Jobb: média + info -->
+          <div>
+            <section class="admin-card admin-panel edit-section">
+              <h3>Borítókép</h3>
+              <div class="upload-zone">
+                <div class="cover-preview">
+                  <img src="assets/img/poster-jujutsu-kaisen.svg" alt="Borító">
+                  <div class="remove">✕ Eltávolítás</div>
+                </div>
+                <div class="drop-zone">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  <span class="t">Új borítókép feltöltése</span>
+                  <span class="h">JPG, PNG vagy WebP<br>Ajánlott: 600x900px</span>
+                </div>
+              </div>
+            </section>
+
+            <section class="admin-card admin-panel edit-section">
+              <h3>Banner kép</h3>
+              <div class="banner-preview"><img src="assets/img/backdrop-sasuke.svg" alt="Banner"></div>
+              <button class="admin-btn ghost" style="width:100%;height:40px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> Új banner kép feltöltése</button>
+              <div style="font-size:11.5px;color:var(--text-muted);margin-top:8px;text-align:center">Ajánlott méret: 1920x500px</div>
+            </section>
+
+            <section class="admin-card admin-panel edit-section">
+              <h3>Trailer / Promó videó</h3>
+              <div class="field"><label>YouTube vagy Vimeo link</label><input type="text" value="https://www.youtube.com/watch?v=PkKuAvb-8xs"></div>
+              <div class="trailer-embed"><img src="assets/img/backdrop-sasuke.svg" alt=""><div class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div></div>
+            </section>
+
+            <section class="admin-card admin-panel edit-section">
+              <h3>További információk</h3>
+              <div class="field-row">
+                <div class="field"><label>Megjelenés dátuma</label><input type="text" value="2020.10.03."></div>
+                <div class="field"><label>Utolsó frissítés</label><input type="text" value="2024.06.15."></div>
+              </div>
+              <div class="set-row"><div class="info"><h4>Kiemelt</h4></div><span class="switch on"></span></div>
+              <div class="set-row"><div class="info"><h4>Ajánlott a főoldalon</h4></div><span class="switch on"></span></div>
+              <div class="field" style="margin-top:12px"><label>Meta kulcsszavak</label><input type="text" value="jujutsu kaisen, jjk, yuji itadori, sukuna, manga"></div>
+            </section>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/admin-data.js?v=10"></script>
+  <script src="js/admin.js?v=10"></script>
+  <script src="js/images.js?v=10"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beállítások – AnimeHub Admin</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="css/base.css?v=10">
+  <link rel="stylesheet" href="css/admin.css?v=10">
+</head>
+<body class="admin" data-admin-page="settings">
+
+  <div class="admin-layout">
+    <aside id="adminSidebar" class="admin-sidebar"></aside>
+
+    <div class="admin-main">
+      <header id="adminTopbar" class="admin-topbar"></header>
+
+      <div class="admin-content">
+
+        <div class="admin-head">
+          <div class="titles">
+            <h1>Beállítások</h1>
+            <p class="subtitle">Az oldal működésének és megjelenésének testreszabása.</p>
+          </div>
+          <button class="admin-btn" id="saveSettings">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+            Beállítások mentése
+          </button>
+        </div>
+
+        <!-- Fülek -->
+        <div class="settings-tabbar" id="settingsTabs">
+          <button class="set-tab active">Általános</button>
+          <button class="set-tab">Megjelenés</button>
+          <button class="set-tab">E-mail</button>
+          <button class="set-tab">Fájlok és média</button>
+          <button class="set-tab">Integrációk</button>
+          <button class="set-tab">Biztonság</button>
+          <button class="set-tab">Egyéb</button>
+          <button class="set-tab">Karbantartás</button>
+        </div>
+
+        <div class="settings-cols">
+
+          <!-- 1. oszlop: Általános + Megjelenés -->
+          <div>
+            <section class="admin-card admin-panel" style="margin-bottom:16px">
+              <div class="set-panel-title">Általános beállítások</div>
+              <div class="field"><label>Oldal neve</label><input type="text" value="AnimeHub"></div>
+              <div class="field"><label>Oldal leírása</label><textarea>Nézd kedvenc animéidet online, magyar felirattal, kiváló minőségben.</textarea></div>
+              <div class="field"><label>Oldal URL</label><input type="text" value="https://animehub.hu"></div>
+              <div class="field-row">
+                <div class="field"><label>Alapértelmezett nyelv</label><select><option>Magyar</option><option>English</option></select></div>
+                <div class="field"><label>Időzóna</label><select><option>(GMT+02:00) Budapest</option><option>(GMT+00:00) London</option></select></div>
+              </div>
+              <div class="field-row">
+                <div class="field"><label>Dátum formátum</label><select><option>YYYY. MM. DD.</option><option>DD/MM/YYYY</option></select></div>
+                <div class="field"><label>Idő formátum</label><select><option>24 órás</option><option>12 órás</option></select></div>
+              </div>
+            </section>
+
+            <section class="admin-card admin-panel">
+              <div class="set-panel-title">Megjelenés</div>
+              <div class="logo-row">
+                <div class="logo-preview"><span style="color:var(--primary-light);font-weight:800">AH</span></div>
+                <div class="btns"><button class="mini-btn ghost">Csere</button><button class="mini-btn del">Törlés</button></div>
+                <span class="hint">Ajánlott méret: 200x60px, PNG</span>
+              </div>
+              <div class="logo-row">
+                <div class="logo-preview"><span style="color:var(--primary-light);font-weight:800;font-size:12px">AH</span></div>
+                <div class="btns"><button class="mini-btn ghost">Csere</button><button class="mini-btn del">Törlés</button></div>
+                <span class="hint">Ajánlott méret: 64x64px, ICO/PNG</span>
+              </div>
+              <div class="color-row">Elsődleges szín <span class="color-swatch"><i style="background:#8B5CF6"></i>#8B5CF6</span></div>
+              <div class="color-row">Másodlagos szín <span class="color-swatch"><i style="background:#A78BFA"></i>#A78BFA</span></div>
+              <div class="color-row">Háttér szín <span class="color-swatch"><i style="background:#0B0B0F"></i>#0B0B0F</span></div>
+            </section>
+          </div>
+
+          <!-- 2. oszlop: E-mail + Fájlok -->
+          <div>
+            <section class="admin-card admin-panel" style="margin-bottom:16px">
+              <div class="set-panel-title">E-mail beállítások (SMTP) <span class="switch on"></span></div>
+              <div class="field-row">
+                <div class="field"><label>SMTP szerver</label><input type="text" value="smtp.animehub.hu"></div>
+                <div class="field"><label>Port</label><input type="text" value="587"></div>
+              </div>
+              <div class="field"><label>Titkosítás</label><select><option>TLS</option><option>SSL</option><option>Nincs</option></select></div>
+              <div class="field"><label>Feladó e-mail címe</label><input type="text" value="noreply@animehub.hu"></div>
+              <div class="field"><label>Feladó neve</label><input type="text" value="AnimeHub"></div>
+              <div class="field-row">
+                <div class="field"><label>Felhasználónév</label><input type="text" value="noreply@animehub.hu"></div>
+                <div class="field"><label>Jelszó</label><div class="with-icon"><input type="password" value="password123"><span class="eye">👁</span></div></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;margin-top:6px">
+                <button class="admin-btn" style="height:40px;flex:1">E-mail beállítások tesztelése</button>
+                <span class="test-result">✓ Sikeres kapcsolódás</span>
+              </div>
+            </section>
+
+            <section class="admin-card admin-panel">
+              <div class="set-panel-title">Fájlok és média</div>
+              <div class="field"><label>Maximális feltöltési méret</label><select><option>2 GB</option><option>1 GB</option><option>500 MB</option></select></div>
+              <div class="field"><label>Megengedett fájltípusok</label><div class="file-types"><span class="ft">mp4</span><span class="ft">mkv</span><span class="ft">webm</span><span class="ft">jpg</span><span class="ft">png</span></div></div>
+              <div class="field"><label>Videó minőség (alapértelmezett)</label><select><option>1080p</option><option>720p</option></select></div>
+              <div class="field"><label>Előnézeti kép időpont (másodperc)</label><select><option>10</option><option>5</option><option>15</option></select></div>
+              <div class="set-row"><div class="info"><h4>Videók automatikus átkódolása</h4></div><span class="switch on"></span></div>
+              <div class="set-row"><div class="info"><h4>WebP képek használata</h4></div><span class="switch on"></span></div>
+              <div class="set-row"><div class="info"><h4>CDN használata</h4></div><span class="switch on"></span></div>
+              <div class="field" style="margin-top:12px"><label>CDN URL</label><input type="text" value="https://cdn.animehub.hu"></div>
+            </section>
+          </div>
+
+          <!-- 3. oszlop: Integrációk + Rendszer -->
+          <div>
+            <section class="admin-card admin-panel" style="margin-bottom:16px">
+              <div class="set-panel-title">Integrációk</div>
+              <div class="integ-row">
+                <div class="head"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.93-1.51 13.78 13.78 0 0 0-.64 1.28 18.27 18.27 0 0 0-5.5 0 12.64 12.64 0 0 0-.64-1.28 19.74 19.74 0 0 0-4.93 1.51C.53 9.05-.32 13.58.1 18.06a19.9 19.9 0 0 0 6.04 3.03A14.65 14.65 0 0 0 7.37 19a12.8 12.8 0 0 1-1.95-.93l.48-.36a14.2 14.2 0 0 0 12.2 0l.48.36c-.63.37-1.28.68-1.96.93.36.7.78 1.38 1.24 2.03a19.84 19.84 0 0 0 6.03-3.03c.5-5.2-.84-9.68-3.57-13.69z"/></svg><div class="t"><h4>Discord webhook</h4><p>Új jelentések és hibák értesítése Discordon.</p></div><span class="switch on"></span></div>
+                <input type="text" value="https://discord.com/api/webhooks/..." style="width:100%;padding:9px 12px;font-size:12.5px;color:var(--text);background:var(--bg-card-2);border:1px solid var(--border);border-radius:9px;outline:none">
+              </div>
+              <div class="integ-row">
+                <div class="head"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 3l2.5 5.5L20 11l-4 3.5 1 5.5-5-3-5 3 1-5.5L4 11l5.5-.5z"/></svg><div class="t"><h4>Google Analytics (GA4)</h4><p>Kövesd a látogatók viselkedését.</p></div><span class="switch on"></span></div>
+                <input type="text" value="G-XXXXXXXXXX" style="width:100%;padding:9px 12px;font-size:12.5px;color:var(--text);background:var(--bg-card-2);border:1px solid var(--border);border-radius:9px;outline:none">
+              </div>
+              <div class="integ-row">
+                <div class="head"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2s8 3 8 9-8 11-8 11-8-5-8-11 8-9 8-9z"/></svg><div class="t"><h4>Cloudflare API kulcs</h4><p>Cache ürítés és domain kezelés.</p></div><span class="switch"></span></div>
+                <div class="with-icon"><input type="password" value="cloudflare-key" style="width:100%;padding:9px 34px 9px 12px;font-size:12.5px;color:var(--text);background:var(--bg-card-2);border:1px solid var(--border);border-radius:9px;outline:none"><span class="eye" style="right:12px">👁</span></div>
+              </div>
+              <div class="integ-row">
+                <div class="head"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2s8 3 8 9-8 11-8 11-8-5-8-11 8-9 8-9z"/></svg><div class="t"><h4>ReCAPTCHA v3 Site Key</h4></div><span class="switch on"></span></div>
+                <input type="text" value="6LcXXXXXXXXXXXXXXXX" style="width:100%;padding:9px 12px;font-size:12.5px;color:var(--text);background:var(--bg-card-2);border:1px solid var(--border);border-radius:9px;outline:none">
+              </div>
+            </section>
+
+            <section class="admin-card admin-panel">
+              <div class="set-panel-title">Rendszer beállítások</div>
+              <div class="set-row"><div class="info"><h4>Regisztráció engedélyezése</h4><p>Új felhasználók regisztrálhatnak.</p></div><span class="switch on"></span></div>
+              <div class="set-row"><div class="info"><h4>Vendég mód engedélyezése</h4><p>Bejelentkezés nélkül is nézhetők az animék.</p></div><span class="switch on"></span></div>
+              <div class="set-row"><div class="info"><h4>Hozzászólások engedélyezése</h4></div><span class="switch on"></span></div>
+              <div class="set-row"><div class="info"><h4>Értékelések engedélyezése</h4></div><span class="switch on"></span></div>
+              <div class="set-row"><div class="info"><h4>Premium rendszer engedélyezése</h4></div><span class="switch on"></span></div>
+              <div class="field" style="margin-top:12px"><label>Alapértelmezett szerepkör új felhasználóknak</label><select><option>Felhasználó</option><option>VIP</option></select></div>
+              <div class="field-row">
+                <div class="field"><label>Oldal elemek száma</label><select><option>24</option><option>12</option><option>48</option></select></div>
+                <div class="field"><label>Időtúllépés (perc)</label><select><option>60</option><option>30</option><option>120</option></select></div>
+              </div>
+            </section>
+          </div>
+
+        </div>
+
+        <!-- Karbantartási mód -->
+        <section class="admin-card admin-panel" style="margin-top:16px">
+          <div class="set-panel-title">Karbantartási mód</div>
+          <div class="settings-cols">
+            <div class="set-row"><div class="info"><h4>Az oldal karbantartás alatt lesz elérhető.</h4></div><span class="switch"></span></div>
+            <div class="field"><label>Karbantartási üzenet</label><textarea>Jelenleg karbantartást végzünk. Hamarosan visszatérünk!</textarea></div>
+            <div class="field-row">
+              <div class="field"><label>Tervezett befejezés</label><input type="text" value="2024. 06. 20."></div>
+              <div class="field"><label>&nbsp;</label><input type="text" value="12:00"></div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="js/admin-data.js?v=10"></script>
+  <script src="js/admin.js?v=10"></script>
+  <script src="js/images.js?v=10"></script>
+</body>
+</html>
