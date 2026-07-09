@@ -960,10 +960,12 @@ img.img-fade {
    vagy data-attribútum), így nem töri a meglévő elemeket.
    ========================================================================== */
 
-/* Oldalbetöltési átmenet (fade + enyhe blur) */
-@keyframes pageEnter { from { opacity: 0; transform: translateY(8px); filter: blur(6px); } to { opacity: 1; transform: none; filter: blur(0); } }
-body.fx-page { animation: pageEnter 0.34s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
-body.fx-leaving { opacity: 0; filter: blur(6px); transition: opacity 0.22s ease, filter 0.22s ease; }
+/* Oldalbetöltési átmenet – CSAK opacity a <body>-n!
+   Fontos: transform/filter a body-n elrontja a position:sticky topbart és
+   sidebart (containing block jön létre), ezért kizárólag opacity-t használunk. */
+@keyframes pageEnter { from { opacity: 0; } to { opacity: 1; } }
+body.fx-page { animation: pageEnter 0.3s ease both; }
+body.fx-leaving { opacity: 0; transition: opacity 0.2s ease; }
 @media (prefers-reduced-motion: reduce) { body.fx-page { animation: none; } body.fx-leaving { transition: none; } }
 
 /* Reveal on scroll */
