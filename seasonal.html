@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Szezonális animék – AnimeHub</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="css/base.css?v=12">
+  <link rel="stylesheet" href="css/discover.css?v=12">
+  <link rel="stylesheet" href="css/library.css?v=12">
+</head>
+<body data-page="seasonal">
+  <header id="appTopbar" class="topbar"></header>
+  <div class="layout">
+    <aside id="appSidebar" class="sidebar"></aside>
+    <main class="main">
+      <div class="page-head">
+        <span class="eyebrow">🍂 Szezon</span>
+        <h1>Szezonális animék</h1>
+        <p class="sub">Az aktuális szezon újdonságai, megjelenési nap szerint. Mock adatok.</p>
+      </div>
+      <div style="margin-bottom:20px"><div class="seg" id="seasonSeg">
+        <button class="active">Tél 2026</button><button>Ősz 2025</button><button>Nyár 2025</button><button>Tavasz 2025</button>
+      </div></div>
+      <div id="seasonalGrid"></div>
+    </main>
+  </div>
+  <script src="js/data.js?v=10"></script>
+  <script src="js/layout.js?v=12"></script>
+  <script src="js/effects.js?v=12"></script>
+  <script src="js/main.js?v=10"></script>
+  <script src="js/mock.js?v=12"></script>
+  <script src="js/library.js?v=12"></script>
+  <script src="js/images.js?v=10"></script>
+</body>
+</html>

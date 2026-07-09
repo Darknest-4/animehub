@@ -81,4 +81,148 @@ const MOCK = {
   ],
 };
 
+/* ==========================================================================
+   Anime adatlap – bővített szekciók (mock)
+   Ezek statikus demó adatok az adatlap új blokkjaihoz. Backendkor egy
+   /anime/:id/full válasszal cserélhetők.
+   ========================================================================== */
+MOCK.animeDetail = {
+  characters: [
+    { name: "Yuji Itadori", role: "Főszereplő", image: "assets/img/avatar-rocklee.svg", va: "Junya Enoki", vaImg: "assets/img/avatar-kiba.svg" },
+    { name: "Megumi Fushiguro", role: "Főszereplő", image: "assets/img/avatar-sasuke.svg", va: "Yuma Uchida", vaImg: "assets/img/avatar-neji.svg" },
+    { name: "Nobara Kugisaki", role: "Főszereplő", image: "assets/img/avatar-sakura.svg", va: "Asami Seto", vaImg: "assets/img/avatar-ino.svg" },
+    { name: "Satoru Gojo", role: "Mellékszereplő", image: "assets/img/avatar-kakashi.svg", va: "Yuichi Nakamura", vaImg: "assets/img/avatar-itachi.svg" },
+    { name: "Ryomen Sukuna", role: "Antagonista", image: "assets/img/avatar-akatsuki.svg", va: "Junichi Suwabe", vaImg: "assets/img/avatar-gaara.svg" },
+    { name: "Maki Zenin", role: "Mellékszereplő", image: "assets/img/avatar-tenten.svg", va: "Mikako Komatsu", vaImg: "assets/img/avatar-temari.svg" },
+  ],
+  franchise: [
+    { title: "1. évad", type: "TV · 24 ep", year: "2020", image: "assets/img/poster-jujutsu-kaisen.svg", current: false },
+    { title: "0 Film", type: "Film", year: "2021", image: "assets/img/poster-jujutsu-kaisen.svg", current: false },
+    { title: "2. évad", type: "TV · 23 ep", year: "2023", image: "assets/img/poster-jujutsu-kaisen.svg", current: true },
+    { title: "3. évad", type: "TV · Hamarosan", year: "2026", image: "assets/img/poster-jujutsu-kaisen.svg", current: false },
+  ],
+  screenshots: ["assets/img/backdrop-sasuke.svg", "assets/img/backdrop-naruto.svg", "assets/img/backdrop-solo-leveling.svg", "assets/img/backdrop-profile.svg", "assets/img/backdrop-sasuke.svg", "assets/img/backdrop-naruto.svg"],
+  themes: [
+    { kind: "OP", n: 1, title: "Kaikai Kitan", artist: "Eve", eps: "1–13" },
+    { kind: "OP", n: 2, title: "Ao no Sumika", artist: "Tatsuya Kitani", eps: "1–23 (2. évad)" },
+    { kind: "ED", n: 1, title: "Lost in Paradise", artist: "ALI feat. AKLO", eps: "1–13" },
+    { kind: "ED", n: 2, title: "Akari", artist: "Soushi Sakiyama", eps: "1–23 (2. évad)" },
+  ],
+  trailer: { thumb: "assets/img/backdrop-sasuke.svg", title: "Hivatalos előzetes", yt: "PkKuAvb-8xs" },
+  recommendations: [
+    { title: "Chainsaw Man", score: 8.6, image: "assets/img/poster-chainsaw-man.svg" },
+    { title: "Demon Slayer", score: 8.9, image: "assets/img/poster-demon-slayer.svg" },
+    { title: "Bleach: TYBW", score: 8.95, image: "assets/img/poster-bleach.svg" },
+    { title: "Solo Leveling", score: 8.84, image: "assets/img/poster-solo-leveling.svg" },
+    { title: "Attack on Titan", score: 9.05, image: "assets/img/poster-attack-on-titan.svg" },
+    { title: "Blue Lock", score: 8.32, image: "assets/img/poster-blue-lock.svg" },
+  ],
+  studio: { name: "MAPPA", founded: "2011", country: "Japán 🇯🇵", works: 42, desc: "Prémium animációs stúdió, ismert a Jujutsu Kaisen, Chainsaw Man és az Attack on Titan Final Season munkáiról." },
+  stats: [
+    { label: "Rangsor", value: "#4" },
+    { label: "Népszerűség", value: "#2" },
+    { label: "Tagok", value: "1.4M" },
+    { label: "Kedvencek", value: "128K" },
+  ],
+  production: [
+    ["Típus", "TV Sorozat"], ["Epizódok", "23"], ["Státusz", "Befejezett"],
+    ["Sugárzás", "2023.07 – 2023.12"], ["Szezon", "Nyár 2023"], ["Stúdió", "MAPPA"],
+    ["Forrás", "Manga"], ["Műfaj", "Akció, Természetfeletti"], ["Időtartam", "24 perc / ep"],
+    ["Korhatár", "R – 17+"],
+  ],
+};
+
+/* ----- Watch oldal – bővített funkciók (mock) ----- */
+MOCK.watch = {
+  audioTracks: ["Japán (eredeti)", "Magyar szinkron", "Angol szinkron"],
+  subtitleTracks: ["Magyar", "Angol", "Kikapcsolva"],
+  qualities: ["4K (2160p)", "1080p", "720p", "480p", "Auto"],
+  shortcuts: [
+    ["Szóköz / K", "Lejátszás / szünet"], ["J / ←", "10 mp vissza"], ["L / →", "10 mp előre"],
+    ["F", "Teljes képernyő"], ["T", "Theatre mód"], ["I", "Mini player"], ["M", "Némítás"],
+    ["C", "Felirat be/ki"], [", / .", "Kockázás"], ["0–9", "Ugrás %-ra"], ["Shift + N", "Következő epizód"],
+  ],
+  party: {
+    room: "AH-7F3K2",
+    host: "Katsu",
+    participants: [
+      { user: "Katsu", avatar: "assets/img/avatar-akatsuki.svg", host: true },
+      { user: "gojo_satoru", avatar: "assets/img/avatar-kakashi.svg", host: false },
+      { user: "sakura_h", avatar: "assets/img/avatar-sakura.svg", host: false },
+      { user: "itachi_uchiha", avatar: "assets/img/avatar-itachi.svg", host: false },
+    ],
+    chat: [
+      { user: "gojo_satoru", text: "Ez a jelenet legendás 🔥", when: "14:32" },
+      { user: "sakura_h", text: "Végre elkezdtük!", when: "14:33" },
+      { user: "itachi_uchiha", text: "Csendet, jön a legjobb rész", when: "14:35" },
+    ],
+  },
+  notes: [
+    { t: "08:14", text: "Itachi visszaemlékezés kezdete" },
+    { t: "15:40", text: "Fontos párbeszéd a klánról" },
+  ],
+  bookmarks: [
+    { t: "02:10", label: "Intro vége" },
+    { t: "19:55", label: "Cliffhanger" },
+  ],
+};
+
+/* ----- Manga szekció (mock) ----- */
+MOCK.manga = [
+  { id: "berserk", title: "Berserk", jp: "ベルセルク", author: "Kentaro Miura", score: 9.47, chapters: 374, status: "Folyamatban", genres: ["Akció", "Dark Fantasy", "Seinen"], cover: "assets/img/poster-attack-on-titan.svg", year: 1989 },
+  { id: "vagabond", title: "Vagabond", jp: "バガボンド", author: "Takehiko Inoue", score: 9.24, chapters: 327, status: "Szünetel", genres: ["Akció", "Történelmi", "Seinen"], cover: "assets/img/poster-demon-slayer.svg", year: 1998 },
+  { id: "one-piece", title: "One Piece", jp: "ワンピース", author: "Eiichiro Oda", score: 9.21, chapters: 1110, status: "Folyamatban", genres: ["Akció", "Kaland", "Shounen"], cover: "assets/img/poster-one-piece.svg", year: 1997 },
+  { id: "jjk", title: "Jujutsu Kaisen", jp: "呪術廻戦", author: "Gege Akutami", score: 8.71, chapters: 271, status: "Befejezett", genres: ["Akció", "Természetfeletti"], cover: "assets/img/poster-jujutsu-kaisen.svg", year: 2018 },
+  { id: "csm", title: "Chainsaw Man", jp: "チェンソーマン", author: "Tatsuki Fujimoto", score: 8.66, chapters: 190, status: "Folyamatban", genres: ["Akció", "Horror"], cover: "assets/img/poster-chainsaw-man.svg", year: 2018 },
+  { id: "solo", title: "Solo Leveling", jp: "나 혼자만 레벨업", author: "Chugong", score: 8.79, chapters: 200, status: "Befejezett", genres: ["Akció", "Fantasy", "Manhwa"], cover: "assets/img/poster-solo-leveling.svg", year: 2018 },
+  { id: "aot", title: "Attack on Titan", jp: "進撃の巨人", author: "Hajime Isayama", score: 9.05, chapters: 139, status: "Befejezett", genres: ["Akció", "Dráma"], cover: "assets/img/poster-attack-on-titan.svg", year: 2009 },
+  { id: "spy", title: "Spy x Family", jp: "スパイファミリー", author: "Tatsuya Endo", score: 8.55, chapters: 98, status: "Folyamatban", genres: ["Vígjáték", "Akció"], cover: "assets/img/poster-spy-family.svg", year: 2019 },
+];
+MOCK.mangaDetail = {
+  synopsis: "Egy sötét, középkori világban egy magányos kardforgató, Guts, a Fekete Kardforgató járja útját bosszúért. Az emberi ambíció, a barátság és az árulás eposzi története, amely a manga műfaj egyik csúcsteljesítménye.",
+  volumes: 42, published: "1989 – jelenleg", serialization: "Young Animal", demographic: "Seinen",
+  chapters: Array.from({ length: 12 }, (_, i) => ({ n: 374 - i, title: `${374 - i}. fejezet`, date: `2024.${String(6 - (i % 6)).padStart(2, "0")}.15.`, read: i > 3 })),
+  characters: [
+    { name: "Guts", role: "Főszereplő", image: "assets/img/avatar-sasuke.svg" },
+    { name: "Griffith", role: "Antagonista", image: "assets/img/avatar-itachi.svg" },
+    { name: "Casca", role: "Főszereplő", image: "assets/img/avatar-sakura.svg" },
+    { name: "Puck", role: "Mellékszereplő", image: "assets/img/avatar-choji.svg" },
+  ],
+};
+MOCK.readerPages = Array.from({ length: 8 }, (_, i) => ({ n: i + 1, img: ["assets/img/backdrop-sasuke.svg", "assets/img/backdrop-naruto.svg", "assets/img/backdrop-solo-leveling.svg", "assets/img/backdrop-profile.svg"][i % 4] }));
+
+/* ----- Könyvtár oldalak (mock) ----- */
+MOCK.seasonal = {
+  season: "Tél 2026", seasons: ["Tél 2026", "Ősz 2025", "Nyár 2025", "Tavasz 2025"],
+  items: MOCK.topAnime.slice(0, 10).map((a, i) => ({ ...a, day: ["Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat", "Vasárnap"][i % 7], newEp: (i % 3) + 1 })),
+};
+MOCK.history = [
+  { title: "Jujutsu Kaisen", ep: "2. évad 18. rész", when: "Ma, 14:32", progress: 96, image: "assets/img/poster-jujutsu-kaisen.svg" },
+  { title: "Solo Leveling", ep: "1. évad 7. rész", when: "Ma, 12:10", progress: 100, image: "assets/img/poster-solo-leveling.svg" },
+  { title: "Frieren", ep: "1. évad 20. rész", when: "Tegnap, 22:41", progress: 43, image: "assets/img/poster-frieren.svg" },
+  { title: "Chainsaw Man", ep: "1. évad 12. rész", when: "Tegnap, 20:05", progress: 100, image: "assets/img/poster-chainsaw-man.svg" },
+  { title: "Attack on Titan", ep: "4. évad 28. rész", when: "2 napja", progress: 78, image: "assets/img/poster-attack-on-titan.svg" },
+  { title: "Bleach: TYBW", ep: "2. évad 5. rész", when: "3 napja", progress: 100, image: "assets/img/poster-bleach.svg" },
+];
+MOCK.downloads = [
+  { title: "Jujutsu Kaisen", ep: "2. évad 18. rész", size: "1.45 GB", quality: "1080p", status: "kész", progress: 100, image: "assets/img/poster-jujutsu-kaisen.svg" },
+  { title: "Solo Leveling", ep: "1. évad 8. rész", size: "1.32 GB", quality: "1080p", status: "letöltés", progress: 62, image: "assets/img/poster-solo-leveling.svg" },
+  { title: "Demon Slayer", ep: "4. évad 3. rész", size: "980 MB", quality: "720p", status: "kész", progress: 100, image: "assets/img/poster-demon-slayer.svg" },
+  { title: "Dandadan", ep: "1. évad 5. rész", size: "1.5 GB", quality: "1080p", status: "várakozik", progress: 0, image: "assets/img/poster-dandadan.svg" },
+];
+MOCK.messages = {
+  conversations: [
+    { id: 1, user: "gojo_satoru", avatar: "assets/img/avatar-kakashi.svg", last: "Láttad már az új részt? 🔥", when: "2 perce", unread: 2, online: true },
+    { id: 2, user: "sakura_h", avatar: "assets/img/avatar-sakura.svg", last: "Köszi az ajánlást!", when: "1 órája", unread: 0, online: true },
+    { id: 3, user: "itachi_uchiha", avatar: "assets/img/avatar-itachi.svg", last: "Watch party ma este?", when: "3 órája", unread: 1, online: false },
+    { id: 4, user: "kiba_inuzuka", avatar: "assets/img/avatar-kiba.svg", last: "Rendben, holnap!", when: "Tegnap", unread: 0, online: false },
+  ],
+  thread: [
+    { me: false, text: "Szia! Láttad már a Jujutsu Kaisen új részét?", when: "14:30" },
+    { me: true, text: "Még nem, este nézem meg!", when: "14:31" },
+    { me: false, text: "Nagyon durva lett, ne olvass spoilert 😅", when: "14:32" },
+    { me: true, text: "Hehe, csinálunk watch party-t? 🎉", when: "14:33" },
+  ],
+};
+
 if (typeof window !== "undefined") window.MOCK = MOCK;

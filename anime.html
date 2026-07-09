@@ -7,7 +7,7 @@
 
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="stylesheet" href="css/base.css?v=12">
-  <link rel="stylesheet" href="css/anime.css?v=10">
+  <link rel="stylesheet" href="css/anime.css?v=12">
 </head>
 <body data-page="anime" data-sidebar-extra="continue">
 
@@ -100,6 +100,37 @@
             <div class="episode-list" id="episodeList"></div>
           </section>
 
+          <!-- ===== Bővített szekciók (anime-extra.js + MOCK) ===== -->
+          <section class="ax-section">
+            <div class="ax-head"><h2>Karakterek &amp; Szinkronszínészek</h2><span class="spacer"></span><a class="link-more" href="#">Mind</a></div>
+            <div class="char-grid" id="axCharacters"></div>
+          </section>
+
+          <section class="ax-section">
+            <div class="ax-head"><h2>Franchise idővonal</h2></div>
+            <div class="franchise-rail" id="axFranchise"></div>
+          </section>
+
+          <section class="ax-section">
+            <div class="ax-head"><h2>Képek a sorozatból</h2></div>
+            <div class="shot-grid" id="axScreenshots"></div>
+          </section>
+
+          <section class="ax-section">
+            <div class="ax-head"><h2>Előzetes</h2></div>
+            <div id="axTrailer"></div>
+          </section>
+
+          <section class="ax-section">
+            <div class="ax-head"><h2>Opening &amp; Ending</h2></div>
+            <div class="theme-list" id="axThemes"></div>
+          </section>
+
+          <section class="ax-section">
+            <div class="ax-head"><h2>Ajánlott animék</h2><span class="spacer"></span><a class="link-more" href="top-anime.html">Top anime</a></div>
+            <div class="rec-rail" id="axRecommendations"></div>
+          </section>
+
         </div>
 
         <!-- ===== Jobb oszlop ===== -->
@@ -187,6 +218,24 @@
             <div id="relatedList"></div>
           </section>
 
+          <!-- Stúdió -->
+          <section class="panel">
+            <div class="panel-head"><h3>Stúdió</h3></div>
+            <div class="studio-box" id="axStudio"></div>
+          </section>
+
+          <!-- Statisztikák -->
+          <section class="panel">
+            <div class="panel-head"><h3>Statisztikák</h3></div>
+            <div class="astat-grid" id="axStats"></div>
+          </section>
+
+          <!-- Production információk -->
+          <section class="panel">
+            <div class="panel-head"><h3>Production információk</h3></div>
+            <dl class="prod-list" id="axProduction"></dl>
+          </section>
+
         </aside>
 
       </div>
@@ -200,6 +249,8 @@
   <script src="js/main.js?v=10"></script>
   <script src="js/jikan.js?v=10"></script>
   <script src="js/anime.js?v=10"></script>
+  <script src="js/mock.js?v=12"></script>
+  <script src="js/anime-extra.js?v=12"></script>
   <script src="js/images.js?v=10"></script>
 </body>
 </html>

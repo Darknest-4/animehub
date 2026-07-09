@@ -559,3 +559,100 @@ body.watch-page { background: #09090F; }
   .watch-info > section { padding: 16px; }
   .watch-about h2 { font-size: 18px; }
 }
+
+/* ==========================================================================
+   Watch – bővített funkciók (mock): action bar, overlayek, tools, party
+   ========================================================================== */
+
+/* Ambient Mode – színes glow a lejátszó mögött */
+.player.ambient { box-shadow: 0 0 90px 10px rgba(139,92,246,0.35), 0 0 160px 30px rgba(168,85,247,0.18); transition: box-shadow 0.4s ease; }
+
+/* Theatre Mode – egyoszlopos, szélesebb lejátszó */
+.watch-main.theatre { grid-template-columns: 1fr; }
+.watch-main.theatre .episodes-panel { display: none; }
+.watch-main.theatre .player { aspect-ratio: 16 / 8; }
+
+/* Skip Intro / Ending overlay gombok */
+.skip-overlay { position: absolute; right: 20px; bottom: 96px; z-index: 6; display: flex; gap: 10px; }
+.skip-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; font-size: 13px; font-weight: 700; color: #fff; background: rgba(9,9,15,0.72); border: 1px solid rgba(255,255,255,0.18); border-radius: 10px; backdrop-filter: blur(8px); transition: transform 0.2s, background 0.2s; }
+.skip-btn:hover { transform: translateY(-2px); background: var(--gradient-primary); border-color: transparent; }
+
+/* Következő epizód visszaszámláló overlay */
+.next-countdown { position: absolute; right: 20px; bottom: 96px; z-index: 7; width: 300px; padding: 16px; background: rgba(12,12,20,0.9); border: 1px solid rgba(139,92,246,0.4); border-radius: 14px; backdrop-filter: blur(10px); box-shadow: var(--shadow-glow); display: none; }
+.next-countdown.show { display: block; animation: fxSlideUp 0.3s ease both; }
+.next-countdown .lbl { font-size: 11.5px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; }
+.next-countdown h4 { font-size: 14px; font-weight: 700; margin: 4px 0 10px; }
+.next-countdown .cd-row { display: flex; gap: 8px; }
+.next-countdown .cd-row button { flex: 1; height: 38px; font-size: 13px; font-weight: 700; border-radius: 9px; }
+.next-countdown .ring { color: var(--purple-2); font-weight: 800; }
+
+/* Action bar a lejátszó alatt */
+.watch-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.wa-btn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 14px; font-size: 12.5px; font-weight: 600; color: var(--text-soft); background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; transition: transform 0.2s, color 0.2s, border-color 0.2s, background 0.2s; }
+.wa-btn svg { flex-shrink: 0; }
+.wa-btn:hover { color: var(--text); border-color: rgba(139,92,246,0.4); transform: translateY(-2px); }
+.wa-btn.on { color: #fff; background: var(--gradient-primary); border-color: transparent; box-shadow: 0 0 16px var(--purple-glow); }
+
+/* Watch tools – tabos panel (jegyzetek / könyvjelzők / watch party) */
+.watch-tools { margin-top: 16px; border: 1px solid var(--border); border-radius: 16px; background: var(--bg-card); overflow: hidden; }
+.wt-tabs { display: flex; gap: 4px; padding: 8px; border-bottom: 1px solid var(--border-soft); overflow-x: auto; scrollbar-width: none; }
+.wt-tabs::-webkit-scrollbar { display: none; }
+.wt-tab { display: inline-flex; align-items: center; gap: 7px; padding: 9px 14px; font-size: 13px; font-weight: 600; color: var(--text-soft); border-radius: 9px; white-space: nowrap; }
+.wt-tab.active { color: #fff; background: var(--gradient-primary); }
+.wt-body { padding: 16px; }
+.wt-panel[hidden] { display: none; }
+
+.tool-add { display: flex; gap: 8px; margin-bottom: 14px; }
+.tool-add input { flex: 1; padding: 10px 13px; font-size: 13px; color: var(--text); background: var(--bg-card-2); border: 1px solid var(--border); border-radius: 10px; outline: none; }
+.tool-add input:focus { border-color: var(--purple); box-shadow: 0 0 0 3px var(--purple-glow); }
+
+.tool-item { display: flex; align-items: center; gap: 12px; padding: 11px 13px; border: 1px solid var(--border); border-radius: 11px; background: var(--bg-card-2); }
+.tool-item + .tool-item { margin-top: 9px; }
+.tool-item .ts { font-size: 12px; font-weight: 800; color: var(--purple-2); background: rgba(139,92,246,0.12); padding: 4px 9px; border-radius: 7px; cursor: pointer; flex-shrink: 0; }
+.tool-item .tx { flex: 1; min-width: 0; font-size: 13px; }
+.tool-item .del { color: var(--text-muted); cursor: pointer; }
+.tool-item .del:hover { color: var(--danger); }
+
+/* Watch Party */
+.party-head { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid rgba(139,92,246,0.3); border-radius: 12px; background: rgba(139,92,246,0.07); margin-bottom: 14px; }
+.party-head .room { flex: 1; }
+.party-head .room .r { font-size: 11px; color: var(--text-muted); }
+.party-head .room .code { font-size: 15px; font-weight: 800; letter-spacing: 1px; }
+.party-avatars { display: flex; }
+.party-avatars img { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--bg-card); object-fit: cover; margin-left: -8px; }
+.party-avatars img:first-child { margin-left: 0; }
+.party-chat { display: flex; flex-direction: column; gap: 10px; max-height: 220px; overflow-y: auto; margin-bottom: 12px; }
+.pc-msg { display: flex; gap: 9px; }
+.pc-msg .u { font-size: 12px; font-weight: 700; color: var(--purple-2); }
+.pc-msg .t { font-size: 12.5px; color: var(--text-soft); }
+.pc-msg .w { font-size: 10.5px; color: var(--text-muted); margin-left: auto; }
+
+/* Mini player (lebegő) */
+.mini-player { position: fixed; right: 20px; bottom: 20px; z-index: 400; width: 300px; aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 18px 50px rgba(0,0,0,0.55), var(--shadow-glow); background: #000; display: none; }
+.mini-player.show { display: block; animation: fxSlideUp 0.3s ease both; }
+.mini-player img { width: 100%; height: 100%; object-fit: cover; }
+.mini-player .mp-bar { position: absolute; top: 0; left: 0; right: 0; display: flex; align-items: center; gap: 8px; padding: 8px 10px; background: linear-gradient(180deg, rgba(0,0,0,0.7), transparent); }
+.mini-player .mp-bar .t { flex: 1; font-size: 11.5px; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mini-player .mp-bar button { color: #fff; }
+.mini-player .mp-play { position: absolute; inset: 0; display: grid; place-items: center; }
+.mini-player .mp-play span { width: 46px; height: 46px; display: grid; place-items: center; color: #fff; background: rgba(139,92,246,0.85); border-radius: 50%; }
+
+/* Subtitle settings / shortcut modal segédek */
+.set-modal { padding: 24px; }
+.set-modal h2 { font-size: 19px; font-weight: 800; margin-bottom: 16px; }
+.sc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 20px; }
+.sc-grid .k { font-size: 12px; font-weight: 700; color: var(--purple-2); font-family: monospace; }
+.sc-grid .d { font-size: 12.5px; color: var(--text-soft); text-align: right; }
+.set-field { margin-bottom: 14px; }
+.set-field label { display: block; font-size: 12.5px; font-weight: 600; color: var(--text-soft); margin-bottom: 7px; }
+.set-field .opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.set-field .opts button { padding: 8px 14px; font-size: 12.5px; font-weight: 600; color: var(--text-soft); background: var(--bg-card-2); border: 1px solid var(--border); border-radius: 9px; }
+.set-field .opts button.active { color: #fff; background: var(--gradient-primary); border-color: transparent; }
+.sub-preview { margin-top: 10px; padding: 22px; text-align: center; background: #000; border-radius: 12px; }
+.sub-preview span { color: #fff; font-size: 15px; background: rgba(0,0,0,0.5); padding: 3px 10px; border-radius: 6px; }
+
+@media (max-width: 760px) {
+  .next-countdown { width: calc(100% - 40px); }
+  .mini-player { width: 220px; right: 12px; bottom: 78px; }
+  .sc-grid { grid-template-columns: 1fr; }
+}

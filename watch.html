@@ -7,7 +7,7 @@
 
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="stylesheet" href="css/base.css?v=12">
-  <link rel="stylesheet" href="css/watch.css?v=10">
+  <link rel="stylesheet" href="css/watch.css?v=12">
 </head>
 <body class="watch-page" data-page="watch">
 
@@ -114,6 +114,23 @@
 
         <p class="player-subtitle" id="subtitle">Az igazi erő nem a testben rejlik,<br>hanem a szívben.</p>
 
+        <!-- Skip Intro / Ending overlay -->
+        <div class="skip-overlay" id="skipOverlay">
+          <button class="skip-btn" id="skipIntro">Intro átugrása
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M5 4l10 8-10 8V4zm12 0h2v16h-2z"/></svg>
+          </button>
+        </div>
+
+        <!-- Következő epizód visszaszámláló -->
+        <div class="next-countdown" id="nextCountdown">
+          <div class="lbl">Következő epizód</div>
+          <h4>457. epizód – Testvéri kötelék</h4>
+          <div class="cd-row">
+            <button class="btn-secondary" id="cdCancel">Mégse (<span class="ring" id="cdSecs">10</span>)</button>
+            <button class="btn-primary" id="cdPlay">Lejátszás</button>
+          </div>
+        </div>
+
         <div class="player-controls">
           <div class="seek-row">
             <span id="timeCurrent">14:35</span>
@@ -160,6 +177,42 @@
           </div>
         </div>
       </section>
+
+      <!-- Funkció action bar -->
+      <div class="watch-actions" id="watchActions">
+        <button class="wa-btn" data-act="theatre"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/></svg> Theatre mód</button>
+        <button class="wa-btn" data-act="ambient"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.2" y1="4.2" x2="5.6" y2="5.6"/><line x1="18.4" y1="18.4" x2="19.8" y2="19.8"/></svg> Ambient</button>
+        <button class="wa-btn" data-act="mini"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><rect x="12" y="10" width="8" height="6" rx="1" fill="currentColor"/></svg> Mini player</button>
+        <button class="wa-btn" data-act="pip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Kép a képben</button>
+        <button class="wa-btn" data-act="screenshot"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg> Képernyőkép</button>
+        <button class="wa-btn" data-act="gif"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><text x="12" y="16" font-size="9" fill="currentColor" text-anchor="middle" font-weight="700">GIF</text></svg> GIF készítő</button>
+        <button class="wa-btn" data-act="subtitle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><line x1="6" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="18" y2="14"/></svg> Felirat beáll.</button>
+        <button class="wa-btn" data-act="audio"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-7h3zM3 19a2 2 0 0 0 2 2h1v-7H3z"/></svg> Hang / nyelv</button>
+        <button class="wa-btn" data-act="shortcuts"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="6" y1="8" x2="6" y2="8"/><line x1="10" y1="8" x2="10" y2="8"/><line x1="14" y1="8" x2="14" y2="8"/><line x1="8" y1="16" x2="16" y2="16"/></svg> Gyorsbillentyűk</button>
+        <button class="wa-btn" data-act="party"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg> Watch Party</button>
+      </div>
+
+      <!-- Jegyzetek / Könyvjelzők / Watch Party panel -->
+      <div class="watch-tools">
+        <div class="wt-tabs" id="wtTabs">
+          <button class="wt-tab active" data-tab="notes">📝 Jegyzetek</button>
+          <button class="wt-tab" data-tab="bookmarks">🔖 Könyvjelzők</button>
+          <button class="wt-tab" data-tab="party">🎉 Watch Party</button>
+        </div>
+        <div class="wt-body">
+          <div class="wt-panel" data-panel="notes">
+            <div class="tool-add"><input type="text" id="noteInput" placeholder="Jegyzet a jelenlegi időponthoz…"><button class="btn-primary" id="noteAdd">Hozzáad</button></div>
+            <div id="notesList"></div>
+          </div>
+          <div class="wt-panel" data-panel="bookmarks" hidden>
+            <div class="tool-add"><input type="text" id="bmInput" placeholder="Könyvjelző címke…"><button class="btn-primary" id="bmAdd">Jelölés</button></div>
+            <div id="bookmarksList"></div>
+          </div>
+          <div class="wt-panel" data-panel="party" hidden>
+            <div id="partyBox"></div>
+          </div>
+        </div>
+      </div>
 
       <!-- Lejátszó alatti infó -->
       <div class="watch-info">
@@ -242,6 +295,8 @@
   <script src="js/effects.js?v=12"></script>
   <script src="js/main.js?v=10"></script>
   <script src="js/watch.js?v=10"></script>
+  <script src="js/mock.js?v=12"></script>
+  <script src="js/watch-extra.js?v=12"></script>
   <script src="js/images.js?v=10"></script>
 </body>
 </html>

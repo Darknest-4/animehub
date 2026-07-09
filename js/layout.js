@@ -99,11 +99,19 @@ function layoutSidebarHTML(activePage, extra) {
     ${item("news", "news.html", "news", "Hírek")}
 
     <div class="sidebar-label">Felfedezés</div>
+    ${item("manga-list", "manga-list.html", "list", "Manga")}
     ${item("top-anime", "top-anime.html", "trending", "Top Anime")}
     ${item("leaderboard", "leaderboard.html", "trophy", "Ranglista")}
     ${item("achievements", "achievements.html", "award", "Eredmények")}
     ${item("notifications", "notifications.html", "bell", "Értesítések")}
     ${item("premium", "premium.html", "crown", "Premium")}
+
+    <div class="sidebar-label">Könyvtár</div>
+    ${item("seasonal", "seasonal.html", "calendar", "Szezonális")}
+    ${item("top-manga", "top-manga.html", "trophy", "Top Manga")}
+    ${item("history", "history.html", "clock", "Előzmények")}
+    ${item("downloads", "downloads.html", "list", "Letöltések")}
+    ${item("messages", "messages.html", "feedback", "Üzenetek")}
 
     <div class="sidebar-label">Gyűjteményed</div>
     ${item("favorites", "favorites.html", "heart", "Kedvencek")}
@@ -130,11 +138,17 @@ const BOTTOM_NAV_ITEMS = [
 ];
 
 const MORE_SHEET_ITEMS = [
+  { page: "manga-list",   href: "manga-list.html",   icon: "list",     label: "Manga" },
   { page: "top-anime",    href: "top-anime.html",    icon: "trending", label: "Top Anime" },
   { page: "leaderboard",  href: "leaderboard.html",  icon: "trophy",   label: "Ranglista" },
   { page: "achievements", href: "achievements.html", icon: "award",    label: "Eredmények" },
   { page: "notifications", href: "notifications.html", icon: "bell",   label: "Értesítések" },
   { page: "premium",      href: "premium.html",      icon: "crown",    label: "Premium" },
+  { page: "seasonal",     href: "seasonal.html",     icon: "calendar", label: "Szezonális" },
+  { page: "top-manga",    href: "top-manga.html",    icon: "trophy",   label: "Top Manga" },
+  { page: "history",      href: "history.html",      icon: "clock",    label: "Előzmények" },
+  { page: "downloads",    href: "downloads.html",    icon: "list",     label: "Letöltések" },
+  { page: "messages",     href: "messages.html",     icon: "feedback", label: "Üzenetek" },
   { page: "watch",     href: "watch.html",     icon: "playCircle", label: "Lejátszó" },
   { page: "watchlist", href: "watchlist.html", icon: "list",       label: "Műsorlista" },
   { page: "favorites", href: "favorites.html", icon: "heart",      label: "Kedvencek" },
