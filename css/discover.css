@@ -1,0 +1,151 @@
+/* ==========================================================================
+   AnimeHub – discover.css
+   Új "Felfedezés" oldalak közös, újrahasznosítható komponensei:
+   Top Anime, Ranglista, Eredmények, Értesítések, Premium.
+   A base.css változóit és FX effekt-osztályait használja.
+   ========================================================================== */
+
+.page-head { margin-bottom: 24px; }
+.page-head .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--purple-2); margin-bottom: 8px; }
+.page-head h1 { font-size: 30px; font-weight: 800; letter-spacing: -0.6px; }
+.page-head .sub { font-size: 14.5px; color: var(--text-soft); margin-top: 7px; max-width: 640px; }
+
+.seg { display: inline-flex; gap: 4px; padding: 4px; background: var(--bg-card-2); border: 1px solid var(--border); border-radius: 12px; flex-wrap: wrap; }
+.seg button { padding: 8px 15px; font-size: 13px; font-weight: 600; color: var(--text-soft); border-radius: 8px; transition: color 0.2s, background 0.2s; }
+.seg button.active { color: #fff; background: var(--gradient-primary); box-shadow: 0 0 16px var(--purple-glow); }
+
+/* ==========================================================================
+   Top Anime – rangsorolt rács
+   ========================================================================== */
+.top-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 18px; }
+.top-card { position: relative; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; background: var(--bg-card); }
+.top-card .poster { position: relative; aspect-ratio: 2/3; overflow: hidden; }
+.top-card .poster img { width: 100%; height: 100%; object-fit: cover; }
+.top-card .rankbadge { position: absolute; top: 10px; left: 10px; min-width: 30px; height: 30px; padding: 0 8px; display: grid; place-items: center; font-size: 14px; font-weight: 800; color: #fff; background: rgba(9, 9, 15, 0.72); border: 1px solid rgba(255,255,255,0.14); border-radius: 9px; backdrop-filter: blur(6px); }
+.top-card .rankbadge.g1 { background: linear-gradient(135deg,#FFD24A,#F59E0B); color:#3a2600; border-color:transparent; }
+.top-card .rankbadge.g2 { background: linear-gradient(135deg,#D6D9E0,#9AA0AD); color:#22242c; border-color:transparent; }
+.top-card .rankbadge.g3 { background: linear-gradient(135deg,#E29A6B,#B4703F); color:#2a1400; border-color:transparent; }
+.top-card .score { position: absolute; top: 10px; right: 10px; display: inline-flex; align-items: center; gap: 4px; padding: 4px 9px; font-size: 12.5px; font-weight: 800; color: #FFD24A; background: rgba(9,9,15,0.72); border-radius: 8px; backdrop-filter: blur(6px); }
+.top-card .grad { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 46%, rgba(9,9,14,0.92)); }
+.top-card .meta { position: absolute; left: 0; right: 0; bottom: 0; padding: 12px; }
+.top-card .meta h3 { font-size: 14px; font-weight: 700; line-height: 1.3; }
+.top-card .meta .tags { display: flex; gap: 6px; margin-top: 7px; flex-wrap: wrap; }
+.top-card .meta .tags span { font-size: 10.5px; font-weight: 600; color: var(--text-soft); padding: 2px 8px; background: rgba(255,255,255,0.08); border-radius: 6px; }
+.top-card .meta .row { display: flex; gap: 10px; margin-top: 8px; font-size: 11.5px; color: var(--text-muted); }
+
+/* ==========================================================================
+   Ranglista
+   ========================================================================== */
+.podium { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 22px; align-items: end; }
+.podium .p { text-align: center; padding: 20px 14px; border: 1px solid var(--border); border-radius: 16px; background: var(--gradient-card); }
+.podium .p.first { order: 2; padding-top: 28px; border-color: rgba(255,210,74,0.4); box-shadow: 0 0 30px rgba(245,158,11,0.12); }
+.podium .p.second { order: 1; }
+.podium .p.third { order: 3; }
+.podium .p img { width: 68px; height: 68px; border-radius: 50%; object-fit: cover; margin: 0 auto 10px; border: 2px solid var(--purple); }
+.podium .p.first img { width: 84px; height: 84px; border-color: #FFD24A; }
+.podium .p .medal { font-size: 22px; }
+.podium .p h4 { font-size: 14.5px; font-weight: 700; margin-top: 6px; }
+.podium .p .lvl { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.podium .p .xp { font-size: 13px; font-weight: 800; color: var(--purple-2); margin-top: 8px; }
+
+.lb-list { display: flex; flex-direction: column; gap: 10px; }
+.lb-row { display: flex; align-items: center; gap: 14px; padding: 12px 16px; border: 1px solid var(--border); border-radius: 13px; background: var(--bg-card); }
+.lb-row .rk { width: 30px; font-size: 15px; font-weight: 800; color: var(--text-muted); text-align: center; }
+.lb-row img { width: 42px; height: 42px; border-radius: 12px; object-fit: cover; }
+.lb-row .u { flex: 1; min-width: 0; }
+.lb-row .u h4 { font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 7px; }
+.lb-row .u .vip { font-size: 9.5px; font-weight: 800; color: #fff; background: var(--gradient-primary); padding: 1px 7px; border-radius: 5px; letter-spacing: 0.4px; }
+.lb-row .u p { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.lb-row .xp { font-weight: 800; color: var(--purple-2); font-size: 14px; }
+.lb-row.me { border-color: rgba(139,92,246,0.5); background: rgba(139,92,246,0.08); }
+
+/* ==========================================================================
+   Eredmények / achievementek
+   ========================================================================== */
+.ach-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 24px; }
+.ach-stat { padding: 18px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg-card); }
+.ach-stat .n { font-size: 26px; font-weight: 800; }
+.ach-stat .l { font-size: 12.5px; color: var(--text-muted); margin-top: 3px; }
+.ach-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+.ach-card { display: flex; gap: 14px; padding: 18px; border: 1px solid var(--border); border-radius: 15px; background: var(--bg-card); }
+.ach-card.locked { opacity: 0.62; }
+.ach-card .ic { width: 52px; height: 52px; flex-shrink: 0; display: grid; place-items: center; font-size: 24px; border-radius: 14px; background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.3); }
+.ach-card.tier-gold .ic { background: rgba(245,158,11,0.14); border-color: rgba(245,158,11,0.4); }
+.ach-card.tier-platina .ic { background: rgba(59,130,246,0.14); border-color: rgba(59,130,246,0.4); }
+.ach-card .body { flex: 1; min-width: 0; }
+.ach-card h4 { font-size: 14.5px; font-weight: 700; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.ach-card .tier { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; padding: 2px 8px; border-radius: 6px; color: var(--purple-2); background: rgba(139,92,246,0.14); }
+.ach-card.tier-gold .tier { color: #F59E0B; background: rgba(245,158,11,0.14); }
+.ach-card.tier-platina .tier { color: #3B82F6; background: rgba(59,130,246,0.14); }
+.ach-card p { font-size: 12.5px; color: var(--text-soft); margin-top: 4px; }
+.ach-card .bar { height: 6px; border-radius: 99px; background: var(--bg-card-2); overflow: hidden; margin-top: 11px; }
+.ach-card .bar span { display: block; height: 100%; background: var(--gradient-primary); border-radius: 99px; transition: width 0.8s cubic-bezier(0.22,0.61,0.36,1); }
+.ach-card .pct { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
+
+/* ==========================================================================
+   Értesítések
+   ========================================================================== */
+.notif-toolbar { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
+.notif-list { display: flex; flex-direction: column; gap: 10px; }
+.notif { display: flex; gap: 14px; align-items: center; padding: 14px 16px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg-card); transition: border-color 0.2s, background 0.2s; }
+.notif:hover { border-color: rgba(139,92,246,0.4); }
+.notif.unread { background: rgba(139,92,246,0.06); border-color: rgba(139,92,246,0.28); }
+.notif .ic { width: 44px; height: 44px; flex-shrink: 0; display: grid; place-items: center; border-radius: 12px; overflow: hidden; }
+.notif .ic img { width: 100%; height: 100%; object-fit: cover; }
+.notif .ic.t-episode { color: var(--purple-2); background: rgba(139,92,246,0.14); }
+.notif .ic.t-reply, .notif .ic.t-like, .notif .ic.t-friend { padding: 0; }
+.notif .ic.t-system { color: var(--purple-2); background: rgba(139,92,246,0.14); }
+.notif .ic.t-achievement { color: #F59E0B; background: rgba(245,158,11,0.14); }
+.notif .body { flex: 1; min-width: 0; }
+.notif .body h4 { font-size: 13.5px; font-weight: 700; }
+.notif .body p { font-size: 13px; color: var(--text-soft); margin-top: 2px; }
+.notif .when { font-size: 11.5px; color: var(--text-muted); white-space: nowrap; }
+.notif .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--purple); flex-shrink: 0; }
+.notif-daysep { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; margin: 18px 0 4px; }
+
+/* ==========================================================================
+   Premium
+   ========================================================================== */
+.prem-hero { position: relative; overflow: hidden; padding: 40px 32px; border-radius: 22px; border: 1px solid rgba(139,92,246,0.3); background: radial-gradient(120% 140% at 100% 0%, rgba(168,85,247,0.22), transparent 55%), var(--gradient-card); margin-bottom: 26px; }
+.prem-hero .crown-big { width: 60px; height: 60px; display: grid; place-items: center; color: #fff; background: var(--gradient-primary); border-radius: 18px; box-shadow: 0 0 34px var(--purple-glow); margin-bottom: 16px; }
+.prem-hero h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.8px; }
+.prem-hero h1 .accent { color: var(--purple-2); }
+.prem-hero p { font-size: 15px; color: var(--text-soft); margin-top: 10px; max-width: 560px; }
+
+.plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
+.plan { position: relative; padding: 26px 22px; border: 1px solid var(--border); border-radius: 18px; background: var(--bg-card); text-align: center; transition: transform 0.25s cubic-bezier(0.22,0.61,0.36,1), border-color 0.25s, box-shadow 0.25s; }
+.plan:hover { transform: translateY(-4px); border-color: rgba(139,92,246,0.4); box-shadow: var(--shadow-glow); }
+.plan.featured { border-color: rgba(139,92,246,0.55); background: radial-gradient(120% 120% at 50% 0%, rgba(139,92,246,0.14), transparent 60%), var(--bg-card); box-shadow: 0 0 34px rgba(139,92,246,0.14); }
+.plan .badge-pop { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); font-size: 11px; font-weight: 800; letter-spacing: 0.5px; color: #fff; background: var(--gradient-primary); padding: 5px 14px; border-radius: 99px; box-shadow: 0 0 16px var(--purple-glow); }
+.plan h3 { font-size: 16px; font-weight: 700; color: var(--text-soft); }
+.plan .price { font-size: 32px; font-weight: 800; margin-top: 10px; letter-spacing: -0.5px; }
+.plan .price .per { font-size: 14px; font-weight: 600; color: var(--text-muted); }
+.plan .save { display: inline-block; margin-top: 6px; font-size: 12px; font-weight: 800; color: var(--success); background: rgba(34,197,94,0.12); padding: 2px 10px; border-radius: 7px; }
+.plan .note { font-size: 12.5px; color: var(--text-muted); margin: 12px 0 18px; min-height: 32px; }
+
+.feature-table { border: 1px solid var(--border); border-radius: 18px; overflow: hidden; }
+.feature-table .fr { display: grid; grid-template-columns: 1fr 120px 120px; align-items: center; padding: 14px 20px; font-size: 13.5px; }
+.feature-table .fr + .fr { border-top: 1px solid var(--border-soft); }
+.feature-table .fr.head { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text-muted); background: var(--bg-card-2); }
+.feature-table .fr .c { text-align: center; font-weight: 700; }
+.feature-table .fr .c.prem { color: var(--purple-2); }
+.feature-table .yes { color: var(--success); }
+.feature-table .no { color: var(--text-muted); }
+
+/* ==========================================================================
+   Reszponzív
+   ========================================================================== */
+@media (max-width: 900px) {
+  .ach-summary { grid-template-columns: repeat(2, 1fr); }
+  .plan-grid { grid-template-columns: 1fr; }
+  .page-head h1 { font-size: 25px; }
+  .prem-hero h1 { font-size: 27px; }
+}
+@media (max-width: 620px) {
+  .podium { grid-template-columns: 1fr; }
+  .podium .p.first, .podium .p.second, .podium .p.third { order: 0; }
+  .top-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+  .ach-grid { grid-template-columns: 1fr; }
+  .feature-table .fr { grid-template-columns: 1fr 66px 66px; padding: 13px 14px; font-size: 12.5px; }
+  .lb-row .xp { font-size: 12.5px; }
+}

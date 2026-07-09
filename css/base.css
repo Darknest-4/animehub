@@ -953,3 +953,88 @@ img.img-fade {
   .topbar { justify-content: space-between; }
   .search-mini { display: grid; }
 }
+
+/* ==========================================================================
+   Újrahasznosítható prémium effektek (FX) – animációk, skeleton, átmenetek
+   A meglévő fekete-lila stílust használja; minden effekt opt-in (osztály
+   vagy data-attribútum), így nem töri a meglévő elemeket.
+   ========================================================================== */
+
+/* Oldalbetöltési átmenet (fade + enyhe blur) */
+@keyframes pageEnter { from { opacity: 0; transform: translateY(8px); filter: blur(6px); } to { opacity: 1; transform: none; filter: blur(0); } }
+body.fx-page { animation: pageEnter 0.34s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+body.fx-leaving { opacity: 0; filter: blur(6px); transition: opacity 0.22s ease, filter 0.22s ease; }
+@media (prefers-reduced-motion: reduce) { body.fx-page { animation: none; } body.fx-leaving { transition: none; } }
+
+/* Reveal on scroll */
+[data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1); will-change: opacity, transform; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+[data-reveal][data-reveal="left"] { transform: translateX(-22px); }
+[data-reveal][data-reveal="right"] { transform: translateX(22px); }
+[data-reveal][data-reveal="scale"] { transform: scale(0.94); }
+[data-reveal].revealed[data-reveal] { transform: none; }
+@media (prefers-reduced-motion: reduce) { [data-reveal] { opacity: 1 !important; transform: none !important; } }
+
+/* Hover utility-k */
+.hover-scale { transition: transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1); }
+.hover-scale:hover { transform: scale(1.04); }
+.hover-glow { transition: box-shadow 0.28s ease, border-color 0.28s ease; }
+.hover-glow:hover { box-shadow: var(--shadow-glow); border-color: rgba(139, 92, 246, 0.5); }
+.hover-lift { transition: transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.28s ease; }
+.hover-lift:hover { transform: translateY(-4px); box-shadow: var(--shadow-glow); }
+
+/* Kép zoom kereten belül */
+.img-zoom { overflow: hidden; }
+.img-zoom img { transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1); }
+.img-zoom:hover img { transform: scale(1.08); }
+
+/* Kártya hover (prémium) */
+.card-fx { transition: transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.28s ease, border-color 0.28s ease; }
+.card-fx:hover { transform: translateY(-5px); border-color: rgba(139, 92, 246, 0.45); box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45), var(--shadow-glow); }
+
+/* Button ripple */
+.fx-ripple { position: relative; overflow: hidden; }
+.fx-ripple > .ripple { position: absolute; border-radius: 50%; transform: scale(0); background: rgba(255, 255, 255, 0.35); pointer-events: none; animation: rippleFx 0.6s ease-out; }
+@keyframes rippleFx { to { transform: scale(2.4); opacity: 0; } }
+
+/* Dropdown megjelenés */
+@keyframes fxDropdown { from { opacity: 0; transform: translateY(-8px) scale(0.98); } to { opacity: 1; transform: none; } }
+.fx-dropdown { animation: fxDropdown 0.2s ease both; }
+
+/* Modal */
+.fx-modal-overlay { position: fixed; inset: 0; z-index: 500; display: grid; place-items: center; padding: 20px; background: rgba(6, 6, 12, 0.68); backdrop-filter: blur(5px); opacity: 0; transition: opacity 0.24s ease; }
+.fx-modal-overlay.open { opacity: 1; }
+.fx-modal { width: 100%; max-width: 520px; max-height: 88vh; overflow-y: auto; background: var(--bg-card, #181824); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), var(--shadow-glow); transform: translateY(16px) scale(0.97); opacity: 0; transition: transform 0.28s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.28s ease; }
+.fx-modal-overlay.open .fx-modal { transform: none; opacity: 1; }
+
+/* Fade / slide belépő segéd-osztályok */
+@keyframes fxFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fxSlideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.fx-fade-in { animation: fxFadeIn 0.3s ease both; }
+.fx-slide-up { animation: fxSlideUp 0.32s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+
+/* ==========================================================================
+   Skeleton loading (shimmer) – nem spinner
+   ========================================================================== */
+@keyframes skShimmer { 0% { background-position: -320px 0; } 100% { background-position: 320px 0; } }
+.skeleton, .sk { position: relative; background: var(--bg-card-2, #202031); background-image: linear-gradient(90deg, rgba(255,255,255,0) 0, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0) 100%); background-size: 320px 100%; background-repeat: no-repeat; animation: skShimmer 1.2s ease-in-out infinite; border-radius: 8px; }
+.sk-line { height: 12px; border-radius: 6px; margin: 8px 0; }
+.sk-line.sm { height: 10px; width: 60%; }
+.sk-line.lg { height: 16px; }
+.sk-avatar { width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0; }
+.sk-poster { width: 100%; aspect-ratio: 2 / 3; border-radius: 12px; }
+.sk-banner { width: 100%; aspect-ratio: 16 / 5; border-radius: 14px; }
+.sk-thumb { width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; }
+.sk-card { padding: 12px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg-card, #181824); }
+.sk-card .sk-poster { margin-bottom: 10px; }
+.sk-row { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card, #181824); }
+.sk-row .sk-lines { flex: 1; min-width: 0; }
+.sk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; }
+
+/* Enhanced sidebar aktív jelölő – animált lila indikátor + glow */
+.nav-item { position: relative; overflow: hidden; }
+.nav-item::before { content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%) scaleY(0); width: 3px; height: 60%; border-radius: 0 3px 3px 0; background: var(--gradient-primary); transition: transform 0.28s cubic-bezier(0.22, 0.61, 0.36, 1); }
+.nav-item.active::before { transform: translateY(-50%) scaleY(1); }
+.nav-item.active { box-shadow: inset 0 0 0 1px rgba(139, 92, 246, 0.25), 0 0 18px rgba(139, 92, 246, 0.12); }
+.nav-item svg { transition: transform 0.25s ease; }
+.nav-item:hover svg { transform: scale(1.12); }

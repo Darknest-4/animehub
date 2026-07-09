@@ -27,6 +27,9 @@ const LAYOUT_ICONS = {
   playCircle: '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>',
   user:     '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
   menu:     '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>',
+  trophy:   '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>',
+  trending: '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
+  award:    '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>',
 };
 
 /* ----- Topbar ----- */
@@ -47,8 +50,8 @@ function layoutTopbarHTML() {
 
     <div class="topbar-actions">
       <a class="btn-icon search-mini" href="search.html" aria-label="Keresés">${LAYOUT_ICONS.search}</a>
-      <button class="btn-premium">${LAYOUT_ICONS.crown} <span>Prémium előfizetés</span></button>
-      <button class="btn-icon" aria-label="Értesítések">${LAYOUT_ICONS.bell}<span class="dot"></span></button>
+      <a class="btn-premium" href="premium.html">${LAYOUT_ICONS.crown} <span>Prémium előfizetés</span></a>
+      <a class="btn-icon" href="notifications.html" aria-label="Értesítések">${LAYOUT_ICONS.bell}<span class="dot"></span></a>
       <a class="user-chip" href="profile.html">
         <img src="assets/img/avatar-akatsuki.svg" alt="Akatsuki">
         <span class="name">Akatsuki</span>
@@ -95,6 +98,13 @@ function layoutSidebarHTML(activePage, extra) {
     ${item("community", "community.html", "users", "Közösség")}
     ${item("news", "news.html", "news", "Hírek")}
 
+    <div class="sidebar-label">Felfedezés</div>
+    ${item("top-anime", "top-anime.html", "trending", "Top Anime")}
+    ${item("leaderboard", "leaderboard.html", "trophy", "Ranglista")}
+    ${item("achievements", "achievements.html", "award", "Eredmények")}
+    ${item("notifications", "notifications.html", "bell", "Értesítések")}
+    ${item("premium", "premium.html", "crown", "Premium")}
+
     <div class="sidebar-label">Gyűjteményed</div>
     ${item("favorites", "favorites.html", "heart", "Kedvencek")}
     ${item("watch-later", "#", "clock", "Megnézendő")}
@@ -120,6 +130,11 @@ const BOTTOM_NAV_ITEMS = [
 ];
 
 const MORE_SHEET_ITEMS = [
+  { page: "top-anime",    href: "top-anime.html",    icon: "trending", label: "Top Anime" },
+  { page: "leaderboard",  href: "leaderboard.html",  icon: "trophy",   label: "Ranglista" },
+  { page: "achievements", href: "achievements.html", icon: "award",    label: "Eredmények" },
+  { page: "notifications", href: "notifications.html", icon: "bell",   label: "Értesítések" },
+  { page: "premium",      href: "premium.html",      icon: "crown",    label: "Premium" },
   { page: "watch",     href: "watch.html",     icon: "playCircle", label: "Lejátszó" },
   { page: "watchlist", href: "watchlist.html", icon: "list",       label: "Műsorlista" },
   { page: "favorites", href: "favorites.html", icon: "heart",      label: "Kedvencek" },

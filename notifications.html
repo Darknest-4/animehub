@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Értesítések – AnimeHub</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="css/base.css?v=12">
+  <link rel="stylesheet" href="css/discover.css?v=12">
+</head>
+<body data-page="notifications">
+
+  <header id="appTopbar" class="topbar"></header>
+  <div class="layout">
+    <aside id="appSidebar" class="sidebar"></aside>
+    <main class="main">
+
+      <div class="page-head">
+        <span class="eyebrow">🔔 Frissítések</span>
+        <h1>Értesítések <span style="font-size:16px;color:var(--purple-2)">(<span id="unreadCount">0</span> olvasatlan)</span></h1>
+        <p class="sub">Minden ami veled és a követett animéiddel történik.</p>
+      </div>
+
+      <div class="notif-toolbar">
+        <div class="seg" id="notifSeg">
+          <button class="active" data-filter="all">Összes</button>
+          <button data-filter="unread">Olvasatlan</button>
+          <button data-filter="episode">Epizódok</button>
+          <button data-filter="system">Rendszer</button>
+        </div>
+        <span style="flex:1"></span>
+        <button class="btn-secondary" id="markAllRead">Összes olvasottnak</button>
+      </div>
+
+      <div id="notifList"></div>
+
+    </main>
+  </div>
+
+  <script src="js/data.js?v=10"></script>
+  <script src="js/layout.js?v=12"></script>
+  <script src="js/effects.js?v=12"></script>
+  <script src="js/main.js?v=10"></script>
+  <script src="js/mock.js?v=12"></script>
+  <script src="js/discover.js?v=12"></script>
+  <script src="js/images.js?v=10"></script>
+</body>
+</html>
