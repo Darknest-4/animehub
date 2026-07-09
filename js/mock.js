@@ -81,4 +81,55 @@ const MOCK = {
   ],
 };
 
+/* ==========================================================================
+   Anime adatlap – bővített szekciók (mock)
+   Ezek statikus demó adatok az adatlap új blokkjaihoz. Backendkor egy
+   /anime/:id/full válasszal cserélhetők.
+   ========================================================================== */
+MOCK.animeDetail = {
+  characters: [
+    { name: "Yuji Itadori", role: "Főszereplő", image: "assets/img/avatar-rocklee.svg", va: "Junya Enoki", vaImg: "assets/img/avatar-kiba.svg" },
+    { name: "Megumi Fushiguro", role: "Főszereplő", image: "assets/img/avatar-sasuke.svg", va: "Yuma Uchida", vaImg: "assets/img/avatar-neji.svg" },
+    { name: "Nobara Kugisaki", role: "Főszereplő", image: "assets/img/avatar-sakura.svg", va: "Asami Seto", vaImg: "assets/img/avatar-ino.svg" },
+    { name: "Satoru Gojo", role: "Mellékszereplő", image: "assets/img/avatar-kakashi.svg", va: "Yuichi Nakamura", vaImg: "assets/img/avatar-itachi.svg" },
+    { name: "Ryomen Sukuna", role: "Antagonista", image: "assets/img/avatar-akatsuki.svg", va: "Junichi Suwabe", vaImg: "assets/img/avatar-gaara.svg" },
+    { name: "Maki Zenin", role: "Mellékszereplő", image: "assets/img/avatar-tenten.svg", va: "Mikako Komatsu", vaImg: "assets/img/avatar-temari.svg" },
+  ],
+  franchise: [
+    { title: "1. évad", type: "TV · 24 ep", year: "2020", image: "assets/img/poster-jujutsu-kaisen.svg", current: false },
+    { title: "0 Film", type: "Film", year: "2021", image: "assets/img/poster-jujutsu-kaisen.svg", current: false },
+    { title: "2. évad", type: "TV · 23 ep", year: "2023", image: "assets/img/poster-jujutsu-kaisen.svg", current: true },
+    { title: "3. évad", type: "TV · Hamarosan", year: "2026", image: "assets/img/poster-jujutsu-kaisen.svg", current: false },
+  ],
+  screenshots: ["assets/img/backdrop-sasuke.svg", "assets/img/backdrop-naruto.svg", "assets/img/backdrop-solo-leveling.svg", "assets/img/backdrop-profile.svg", "assets/img/backdrop-sasuke.svg", "assets/img/backdrop-naruto.svg"],
+  themes: [
+    { kind: "OP", n: 1, title: "Kaikai Kitan", artist: "Eve", eps: "1–13" },
+    { kind: "OP", n: 2, title: "Ao no Sumika", artist: "Tatsuya Kitani", eps: "1–23 (2. évad)" },
+    { kind: "ED", n: 1, title: "Lost in Paradise", artist: "ALI feat. AKLO", eps: "1–13" },
+    { kind: "ED", n: 2, title: "Akari", artist: "Soushi Sakiyama", eps: "1–23 (2. évad)" },
+  ],
+  trailer: { thumb: "assets/img/backdrop-sasuke.svg", title: "Hivatalos előzetes", yt: "PkKuAvb-8xs" },
+  recommendations: [
+    { title: "Chainsaw Man", score: 8.6, image: "assets/img/poster-chainsaw-man.svg" },
+    { title: "Demon Slayer", score: 8.9, image: "assets/img/poster-demon-slayer.svg" },
+    { title: "Bleach: TYBW", score: 8.95, image: "assets/img/poster-bleach.svg" },
+    { title: "Solo Leveling", score: 8.84, image: "assets/img/poster-solo-leveling.svg" },
+    { title: "Attack on Titan", score: 9.05, image: "assets/img/poster-attack-on-titan.svg" },
+    { title: "Blue Lock", score: 8.32, image: "assets/img/poster-blue-lock.svg" },
+  ],
+  studio: { name: "MAPPA", founded: "2011", country: "Japán 🇯🇵", works: 42, desc: "Prémium animációs stúdió, ismert a Jujutsu Kaisen, Chainsaw Man és az Attack on Titan Final Season munkáiról." },
+  stats: [
+    { label: "Rangsor", value: "#4" },
+    { label: "Népszerűség", value: "#2" },
+    { label: "Tagok", value: "1.4M" },
+    { label: "Kedvencek", value: "128K" },
+  ],
+  production: [
+    ["Típus", "TV Sorozat"], ["Epizódok", "23"], ["Státusz", "Befejezett"],
+    ["Sugárzás", "2023.07 – 2023.12"], ["Szezon", "Nyár 2023"], ["Stúdió", "MAPPA"],
+    ["Forrás", "Manga"], ["Műfaj", "Akció, Természetfeletti"], ["Időtartam", "24 perc / ep"],
+    ["Korhatár", "R – 17+"],
+  ],
+};
+
 if (typeof window !== "undefined") window.MOCK = MOCK;
