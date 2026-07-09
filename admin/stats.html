@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Statisztikák – AnimeHub Admin</title>
-  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
-  <link rel="stylesheet" href="css/base.css?v=10">
-  <link rel="stylesheet" href="css/admin.css?v=10">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../css/base.css?v=11">
+  <link rel="stylesheet" href="css/admin.css?v=11">
 </head>
 <body class="admin" data-admin-page="stats">
 
@@ -29,10 +29,8 @@
           </div>
         </div>
 
-        <!-- 6 stat kártya -->
         <div class="stat-cards six" id="statCards"></div>
 
-        <!-- Megtekintések + eszközök + országok -->
         <div class="grid-3">
           <section class="admin-card admin-panel">
             <div class="admin-panel-head">
@@ -53,10 +51,9 @@
           </section>
         </div>
 
-        <!-- Legnépszerűbb + nézési idő + aktivitás -->
         <div class="grid-3">
           <section class="admin-card admin-panel">
-            <div class="admin-panel-head"><h3>Legnépszerűbb animék</h3><a class="link" href="admin-animes.html">Összes megtekintése</a></div>
+            <div class="admin-panel-head"><h3>Legnépszerűbb animék</h3><a class="link" href="animes.html">Összes megtekintése</a></div>
             <div id="popularBars"></div>
           </section>
 
@@ -67,13 +64,12 @@
 
           <section class="admin-card admin-panel">
             <div class="admin-panel-head"><h3>Felhasználói aktivitás</h3></div>
-            <div class="activity-row"><span class="ic e"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span><div class="t"><h4>Aktív felhasználók (napi átlag)</h4><p style="font-size:20px;font-weight:800;color:var(--text);margin-top:3px">8,132 <span style="font-size:12px;color:var(--success)">↑ 14.6%</span></p></div></div>
-            <div class="activity-row"><span class="ic v"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span><div class="t"><h4>Aktív felhasználók (heti)</h4><p style="font-size:20px;font-weight:800;color:var(--text);margin-top:3px">21,847 <span style="font-size:12px;color:var(--success)">↑ 16.3%</span></p></div></div>
-            <div class="activity-row"><span class="ic u"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span><div class="t"><h4>Aktív felhasználók (havi)</h4><p style="font-size:20px;font-weight:800;color:var(--text);margin-top:3px">54,782 <span style="font-size:12px;color:var(--success)">↑ 18.2%</span></p></div></div>
+            <div class="activity-row"><span class="ic e"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></span><div class="t"><h4>Aktív felhasználók (napi átlag)</h4><p style="font-size:20px;font-weight:800;color:var(--text);margin-top:3px">8,132 <span style="font-size:12px;color:var(--success)">↑ 14.6%</span></p></div></div>
+            <div class="activity-row"><span class="ic v"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></span><div class="t"><h4>Aktív felhasználók (heti)</h4><p style="font-size:20px;font-weight:800;color:var(--text);margin-top:3px">21,847 <span style="font-size:12px;color:var(--success)">↑ 16.3%</span></p></div></div>
+            <div class="activity-row"><span class="ic u"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></span><div class="t"><h4>Aktív felhasználók (havi)</h4><p style="font-size:20px;font-weight:800;color:var(--text);margin-top:3px">54,782 <span style="font-size:12px;color:var(--success)">↑ 18.2%</span></p></div></div>
           </section>
         </div>
 
-        <!-- Bevétel -->
         <section class="admin-card admin-panel">
           <div class="admin-panel-head"><h3>Bevétel és feliratkozások</h3></div>
           <div class="stat-cards" id="revenueCards" style="margin-bottom:0"></div>
@@ -83,8 +79,8 @@
     </div>
   </div>
 
-  <script src="js/admin-data.js?v=10"></script>
-  <script src="js/admin.js?v=10"></script>
-  <script src="js/images.js?v=10"></script>
+  <script src="js/admin-data.js?v=11"></script>
+  <script src="js/admin.js?v=11"></script>
+  <script src="../js/images.js?v=11"></script>
 </body>
 </html>

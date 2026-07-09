@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Epizódok kezelése – AnimeHub Admin</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../css/base.css?v=11">
+  <link rel="stylesheet" href="css/admin.css?v=11">
+</head>
+<body class="admin" data-admin-page="episodes">
+
+  <div class="admin-layout">
+    <aside id="adminSidebar" class="admin-sidebar"></aside>
+
+    <div class="admin-main">
+      <header id="adminTopbar" class="admin-topbar"></header>
+
+      <div class="admin-content">
+
+        <div class="admin-head">
+          <div class="titles">
+            <h1><a class="row-act" href="animes.html" style="margin-right:4px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></a> Epizódok kezelése</h1>
+          </div>
+        </div>
+
+        <div class="ep-layout">
+          <!-- Bal: epizód lista -->
+          <div>
+            <div class="ep-anime-head">
+              <img id="epAnimePoster" src="../assets/img/poster-jujutsu-kaisen.svg" alt="">
+              <div class="info">
+                <h2><span id="epAnimeTitle">Jujutsu Kaisen</span> <span class="type-pill">TV Sorozat</span></h2>
+                <div class="meta" id="epAnimeMeta"></div>
+              </div>
+              <a class="admin-btn ghost sm" href="edit.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg> Anime szerkesztése</a>
+            </div>
+
+            <div class="ep-tabbar" id="epTabs">
+              <button class="ep-tab active" data-tab="episodes">Epizódok</button>
+              <button class="ep-tab" data-tab="groups">Csoportok / Évados bontás</button>
+              <button class="ep-tab" data-tab="epsettings">Beállítások</button>
+            </div>
+
+            <!-- Panel: epizódok -->
+            <div data-ep-panel="episodes">
+              <div class="table-toolbar">
+                <div class="table-search">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  <input type="text" id="epSearch" placeholder="Keresés epizód címre vagy sorszámra...">
+                </div>
+                <select class="admin-select"><option>Minden évad</option><option>1. évad</option><option>2. évad</option></select>
+                <select class="admin-select"><option>Minden csoport</option><option>Bevezetés</option><option>Shibuya arc</option></select>
+                <a class="admin-btn" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Új epizód hozzáadása</a>
+              </div>
+
+              <section class="admin-card" style="padding:6px 6px 0">
+                <div class="admin-table-wrap">
+                  <table class="admin-table">
+                    <thead><tr>
+                      <th style="width:34px"><input type="checkbox" class="admin-check" data-check-all></th>
+                      <th>#</th><th>Epizód cím</th><th>Évad</th><th>Hossz</th><th>Megjelenés dátuma</th><th>Állapot</th><th>Műveletek</th>
+                    </tr></thead>
+                    <tbody id="episodeTableBody"></tbody>
+                  </table>
+                </div>
+              </section>
+
+              <div class="table-foot">
+                <span class="rows-per" id="epTotal">Összesen 47 epizód</span>
+                <div class="admin-pagination">
+                  <button class="admin-page-btn nav"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+                  <button class="admin-page-btn active">1</button>
+                  <button class="admin-page-btn">2</button>
+                  <button class="admin-page-btn">3</button>
+                  <button class="admin-page-btn dots" disabled>…</button>
+                  <button class="admin-page-btn">5</button>
+                  <button class="admin-page-btn nav"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel: csoportok -->
+            <div data-ep-panel="groups" hidden>
+              <section class="admin-card admin-panel">
+                <div class="set-panel-title">Évados bontás</div>
+                <div class="set-row"><div class="info"><h4>1. évad</h4><p>24 epizód · 2020.10.03 – 2021.03.27</p></div><span class="badge-status active">Publikálva</span></div>
+                <div class="set-row"><div class="info"><h4>2. évad</h4><p>23 epizód · 2023.07.06 – 2023.12.28</p></div><span class="badge-status active">Publikálva</span></div>
+                <button class="admin-btn ghost sm" style="margin-top:14px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Új évad</button>
+              </section>
+            </div>
+
+            <!-- Panel: beállítások -->
+            <div data-ep-panel="epsettings" hidden>
+              <section class="admin-card admin-panel">
+                <div class="set-panel-title">Epizód beállítások</div>
+                <div class="set-row"><div class="info"><h4>Automatikus publikálás ütemezés szerint</h4></div><span class="switch on"></span></div>
+                <div class="set-row"><div class="info"><h4>Premium előzetes hozzáférés</h4><p>VIP tagok 24 órával korábban látják.</p></div><span class="switch on"></span></div>
+                <div class="set-row"><div class="info"><h4>Letöltés engedélyezése</h4></div><span class="switch"></span></div>
+                <div class="field" style="margin-top:14px"><label>Alapértelmezett videó minőség</label><select><option>1080p</option><option>720p</option></select></div>
+                <button class="admin-btn sm" data-save="Mentés" style="margin-top:6px">Beállítások mentése</button>
+              </section>
+            </div>
+          </div>
+
+          <!-- Jobb: epizód szerkesztő -->
+          <section class="admin-card admin-panel ep-editor open" id="epEditor">
+            <div class="admin-panel-head" style="margin-bottom:16px">
+              <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Epizód szerkesztése</h3>
+              <button class="close" id="epEditorClose"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+            </div>
+
+            <div class="ep-block-title">Epizód előnézet</div>
+            <div class="ep-preview"><img id="epPrev" src="../assets/img/backdrop-sasuke.svg" alt=""><div class="open-prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg> Előnézet megnyitása</div></div>
+
+            <div class="ep-block-title">Alapvető adatok</div>
+            <div class="field-row">
+              <div class="field"><label>Epizód sorszám</label><input type="text" id="epfNum" value="1"></div>
+              <div class="field"><label>Évad</label><select id="epfSeason"><option>1. évad</option><option>2. évad</option></select></div>
+            </div>
+            <div class="field"><label>Epizód cím <span class="required">*</span></label><input type="text" id="epfTitle" value="Ryomen Sukuna"></div>
+            <div class="field"><label>Japán cím</label><input type="text" id="epfJp" value="両面宿儺"></div>
+            <div class="field-row">
+              <div class="field"><label>Megjelenés dátuma <span class="required">*</span></label><input type="text" id="epfDate" value="2020.10.03."></div>
+              <div class="field"><label>Hossz (perc) <span class="required">*</span></label><input type="text" id="epfLen" value="23:55"></div>
+            </div>
+            <div class="field"><label>Állapot</label><select><option>Publikálva</option><option>Vázlat</option><option>Ütemezve</option></select></div>
+
+            <div class="ep-block-title" style="margin-top:8px">Videó fájl</div>
+            <div class="video-file">
+              <span class="vic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></span>
+              <div class="vinfo"><h5>ep01_1080p.mp4</h5><p>1.45 GB · Fájlcseréhez kattints vagy húzd ide<br>MP4, WebM, MKV – Max. 10GB</p></div>
+            </div>
+            <div class="field-row" style="margin-top:14px;align-items:end">
+              <div class="field" style="margin:0"><label>Minőség</label><select><option>1080p</option><option>720p</option></select></div>
+              <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-secondary);padding-bottom:11px"><input type="checkbox" class="admin-check"> Prémium felhasználóknak</label>
+            </div>
+
+            <div class="ep-block-title" style="margin-top:8px">Feliratok</div>
+            <div class="subtitle-row">
+              <span class="lang">🇭🇺 Magyar <span class="def">Alapértelmezett</span></span>
+              <button class="row-act"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+              <button class="row-act del"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg></button>
+            </div>
+            <button class="admin-btn ghost sm" style="width:100%;margin-top:10px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Felirat hozzáadása</button>
+
+            <div class="ep-editor-foot">
+              <button class="admin-btn ghost sm" style="color:var(--danger)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg> Törlés</button>
+              <button class="admin-btn sm" id="epSave"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg> Változtatások mentése</button>
+            </div>
+          </section>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="js/admin-data.js?v=11"></script>
+  <script src="js/admin.js?v=11"></script>
+  <script src="../js/images.js?v=11"></script>
+</body>
+</html>

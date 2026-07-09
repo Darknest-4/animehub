@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Animék kezelése – AnimeHub Admin</title>
-  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
-  <link rel="stylesheet" href="css/base.css?v=10">
-  <link rel="stylesheet" href="css/admin.css?v=10">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../css/base.css?v=11">
+  <link rel="stylesheet" href="css/admin.css?v=11">
 </head>
 <body class="admin" data-admin-page="animes">
 
@@ -23,33 +23,31 @@
             <h1>Animék kezelése <span class="count-pill">456 anime</span></h1>
             <p class="subtitle">Kezeld az összes anime tartalmat az oldalon.</p>
           </div>
-          <a class="admin-btn" href="admin-edit.html">
+          <a class="admin-btn" href="edit.html">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             Új anime hozzáadása
           </a>
         </div>
 
-        <!-- Szűrők -->
         <div class="table-toolbar">
           <div class="table-search">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             <input type="text" id="animeSearch" placeholder="Keresés cím vagy japán cím alapján...">
           </div>
-          <select class="admin-select"><option>Minden műfaj</option><option>Akció</option><option>Kaland</option><option>Fantasy</option></select>
-          <select class="admin-select"><option>Minden stúdió</option><option>MAPPA</option><option>ufotable</option><option>Pierrot</option></select>
-          <select class="admin-select"><option>Státusz: Mind</option><option>Aktív</option><option>Inaktív</option></select>
-          <select class="admin-select"><option>Év: Minden</option><option>2024</option><option>2023</option></select>
+          <select class="admin-select" data-filter="genre"><option>Minden műfaj</option><option>Akció</option><option>Kaland</option><option>Fantasy</option><option>Dráma</option><option>Iskola</option><option>Horror</option><option>Sport</option></select>
+          <select class="admin-select" data-filter="studio"><option>Minden stúdió</option><option>MAPPA</option><option>ufotable</option><option>Pierrot</option><option>Bones</option><option>Wit Studio</option><option>Madhouse</option></select>
+          <select class="admin-select" data-filter="status"><option>Státusz: Mind</option><option>Aktív</option><option>Inaktív</option></select>
           <button class="clear-filters">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>
             Szűrők törlése
           </button>
         </div>
 
-        <!-- Tábla -->
         <section class="admin-card" style="padding:6px 6px 0">
           <div class="admin-table-wrap">
             <table class="admin-table">
               <thead><tr>
+                <th style="width:34px"><input type="checkbox" class="admin-check" data-check-all></th>
                 <th>Borító</th><th>Cím ⇅</th><th>Stúdió</th><th>Műfajok</th>
                 <th>Év</th><th>Epizódok</th><th>Állapot</th><th>Létrehozva</th><th>Műveletek</th>
               </tr></thead>
@@ -58,31 +56,21 @@
           </div>
         </section>
 
-        <!-- Lapozó -->
         <div class="table-foot">
           <div class="rows-per">
             Mutatott sorok:
-            <select class="admin-select" style="height:36px;padding:0 30px 0 12px"><option>10</option><option>25</option><option>50</option></select>
-            <span id="rowsInfo">1–10 / 456</span>
+            <select class="admin-select" id="perPageSelect" style="height:36px;padding:0 30px 0 12px"><option>10</option><option>25</option><option>50</option></select>
+            <span id="rowsInfo"></span>
           </div>
-          <div class="admin-pagination" id="adminPagination">
-            <button class="admin-page-btn active" data-page="1">1</button>
-            <button class="admin-page-btn" data-page="2">2</button>
-            <button class="admin-page-btn" data-page="3">3</button>
-            <button class="admin-page-btn" style="pointer-events:none">…</button>
-            <button class="admin-page-btn" data-page="46">46</button>
-            <button class="admin-page-btn" aria-label="Következő">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-            </button>
-          </div>
+          <div class="admin-pagination" id="adminPagination"></div>
         </div>
 
       </div>
     </div>
   </div>
 
-  <script src="js/admin-data.js?v=10"></script>
-  <script src="js/admin.js?v=10"></script>
-  <script src="js/images.js?v=10"></script>
+  <script src="js/admin-data.js?v=11"></script>
+  <script src="js/admin.js?v=11"></script>
+  <script src="../js/images.js?v=11"></script>
 </body>
 </html>
