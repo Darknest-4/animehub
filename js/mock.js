@@ -132,4 +132,39 @@ MOCK.animeDetail = {
   ],
 };
 
+/* ----- Watch oldal – bővített funkciók (mock) ----- */
+MOCK.watch = {
+  audioTracks: ["Japán (eredeti)", "Magyar szinkron", "Angol szinkron"],
+  subtitleTracks: ["Magyar", "Angol", "Kikapcsolva"],
+  qualities: ["4K (2160p)", "1080p", "720p", "480p", "Auto"],
+  shortcuts: [
+    ["Szóköz / K", "Lejátszás / szünet"], ["J / ←", "10 mp vissza"], ["L / →", "10 mp előre"],
+    ["F", "Teljes képernyő"], ["T", "Theatre mód"], ["I", "Mini player"], ["M", "Némítás"],
+    ["C", "Felirat be/ki"], [", / .", "Kockázás"], ["0–9", "Ugrás %-ra"], ["Shift + N", "Következő epizód"],
+  ],
+  party: {
+    room: "AH-7F3K2",
+    host: "Katsu",
+    participants: [
+      { user: "Katsu", avatar: "assets/img/avatar-akatsuki.svg", host: true },
+      { user: "gojo_satoru", avatar: "assets/img/avatar-kakashi.svg", host: false },
+      { user: "sakura_h", avatar: "assets/img/avatar-sakura.svg", host: false },
+      { user: "itachi_uchiha", avatar: "assets/img/avatar-itachi.svg", host: false },
+    ],
+    chat: [
+      { user: "gojo_satoru", text: "Ez a jelenet legendás 🔥", when: "14:32" },
+      { user: "sakura_h", text: "Végre elkezdtük!", when: "14:33" },
+      { user: "itachi_uchiha", text: "Csendet, jön a legjobb rész", when: "14:35" },
+    ],
+  },
+  notes: [
+    { t: "08:14", text: "Itachi visszaemlékezés kezdete" },
+    { t: "15:40", text: "Fontos párbeszéd a klánról" },
+  ],
+  bookmarks: [
+    { t: "02:10", label: "Intro vége" },
+    { t: "19:55", label: "Cliffhanger" },
+  ],
+};
+
 if (typeof window !== "undefined") window.MOCK = MOCK;
