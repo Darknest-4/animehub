@@ -36,12 +36,18 @@
   display: flex;
   gap: 8px;
   margin-top: 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
+.comm-tabs::-webkit-scrollbar { display: none; }
 
 .comm-tab {
+  flex-shrink: 0;
   padding: 10px 18px;
   font-size: 14px;
   font-weight: 600;
+  white-space: nowrap;
   color: var(--text-soft);
   background: rgba(13, 13, 20, 0.6);
   border: 1px solid var(--border);
@@ -391,4 +397,9 @@
   .post-body { flex-direction: column; }
   .post-img { width: 100%; }
   .composer .actions { padding-left: 0; flex-wrap: wrap; }
+  /* Poszt fejléc: ne lógjon ki – tördelhet, a név zsugorodik */
+  .post-head { flex-wrap: wrap; gap: 8px 10px; }
+  .post-head > div:not(.dots) { min-width: 0; }
+  .post-head .a { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .post-cat { order: 5; }
 }
