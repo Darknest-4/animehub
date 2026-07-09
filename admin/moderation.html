@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moderáció – AnimeHub Admin</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../css/base.css?v=11">
+  <link rel="stylesheet" href="css/admin.css?v=11">
+</head>
+<body class="admin" data-admin-page="moderation">
+
+  <div class="admin-layout">
+    <aside id="adminSidebar" class="admin-sidebar"></aside>
+
+    <div class="admin-main">
+      <header id="adminTopbar" class="admin-topbar"></header>
+
+      <div class="admin-content">
+
+        <div class="admin-head">
+          <div class="titles">
+            <h1>Moderáció</h1>
+            <p class="subtitle">Tartalom és felhasználói aktivitás moderálása.</p>
+          </div>
+        </div>
+
+        <div class="mod-layout">
+          <!-- Bal oszlop -->
+          <div>
+            <div class="mod-tabbar" id="modTabs">
+              <button class="mod-tab active" data-tab="comments">Hozzászólások <span class="cnt">243</span></button>
+              <button class="mod-tab" data-tab="reports">Jelentések <span class="cnt">18</span></button>
+              <button class="mod-tab" data-tab="userreports">Felhasználói jelentések <span class="cnt">7</span></button>
+              <button class="mod-tab" data-tab="banned">Tiltott szavak</button>
+              <button class="mod-tab" data-tab="logs">Naplók</button>
+            </div>
+
+            <!-- Panel: hozzászólások -->
+            <div data-mod-panel="comments">
+              <div class="table-toolbar" id="modFilters">
+                <div class="table-search">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  <input type="text" id="commentSearch" placeholder="Keresés hozzászólásokban...">
+                </div>
+                <select class="admin-select" data-filter="status"><option>Minden státusz</option><option>Jóváhagyva</option><option>Elrejtve</option><option>Törölve</option></select>
+                <select class="admin-select"><option>Minden típus</option><option>Anime hozzászólás</option><option>Nyilvános hozzászólás</option></select>
+                <select class="admin-select"><option>Minden anime</option><option>Naruto Shippuden</option><option>Jujutsu Kaisen</option></select>
+                <button class="clear-filters">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  Szűrők törlése
+                </button>
+              </div>
+
+              <section class="admin-card" style="padding:6px 6px 0">
+                <div class="admin-table-wrap">
+                  <table class="admin-table">
+                    <thead><tr>
+                      <th style="width:34px"><input type="checkbox" class="admin-check" data-check-all></th>
+                      <th>Hozzászólás</th><th>Tartalom</th><th>Dátum</th><th>Státusz</th><th>Műveletek</th>
+                    </tr></thead>
+                    <tbody id="commentRows"></tbody>
+                  </table>
+                </div>
+              </section>
+
+              <div class="table-foot">
+                <div class="bulk-bar">
+                  <span class="cnt"><input type="checkbox" class="admin-check" data-check-all> <span id="bulkCount">0 kiválasztva</span></span>
+                  <select class="admin-select" style="height:38px"><option>Művelet kiválasztása</option><option>Jóváhagyás</option><option>Elrejtés</option><option>Törlés</option></select>
+                  <button class="admin-btn sm">Alkalmaz</button>
+                </div>
+                <div class="admin-pagination">
+                  <button class="admin-page-btn active">1</button>
+                  <button class="admin-page-btn">2</button>
+                  <button class="admin-page-btn">3</button>
+                  <button class="admin-page-btn dots" disabled>…</button>
+                  <button class="admin-page-btn">25</button>
+                  <button class="admin-page-btn nav"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+                </div>
+              </div>
+            </div>
+
+            <div data-mod-panel="reports" hidden><section class="admin-card admin-panel"><div class="mod-empty">18 nyitott jelentés vár feldolgozásra. 📋</div></section></div>
+            <div data-mod-panel="userreports" hidden><section class="admin-card admin-panel"><div class="mod-empty">7 felhasználói jelentés érkezett. 🚩</div></section></div>
+            <div data-mod-panel="banned" hidden>
+              <section class="admin-card admin-panel">
+                <div class="set-panel-title">Tiltott szavak</div>
+                <div class="tag-input"><span class="chip">spam <span class="x">✕</span></span><span class="chip">reklám <span class="x">✕</span></span><span class="chip">szitokszó <span class="x">✕</span></span><span class="add-tag">＋ Szó hozzáadása</span></div>
+                <p style="font-size:12.5px;color:var(--text-muted);margin-top:12px">A tiltott szavakat tartalmazó hozzászólások automatikusan elrejtésre kerülnek.</p>
+              </section>
+            </div>
+            <div data-mod-panel="logs" hidden><section class="admin-card admin-panel"><div class="mod-empty">Moderációs napló üres a kiválasztott időszakban. 📝</div></section></div>
+          </div>
+
+          <!-- Jobb sáv -->
+          <div class="mod-rail">
+            <section class="admin-card admin-panel">
+              <h3>Áttekintés <span class="link">Utóbbi 7 nap ▾</span></h3>
+              <div id="modOverview"></div>
+            </section>
+
+            <section class="admin-card admin-panel">
+              <h3>Gyors műveletek</h3>
+              <button class="qa-btn info"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Összes rejtett megjelenítése</button>
+              <button class="qa-btn danger"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg> Összes kijelölt törlése</button>
+              <button class="qa-btn warn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Spamhez hasonlók keresése</button>
+            </section>
+
+            <section class="admin-card admin-panel">
+              <h3>Spam szűrő</h3>
+              <div class="set-row" style="padding-top:0"><div class="info"><h4>Automatikus spam szűrés</h4><p>Az új hozzászólások automatikus ellenőrzése.</p></div><span class="switch on"></span></div>
+              <div class="spam-field">Szűrés erőssége <select class="admin-select"><option>Közepes</option><option>Enyhe</option><option>Erős</option></select></div>
+              <div class="spam-field" style="margin-bottom:8px"><span>Spam küszöbérték</span><b id="spamThresholdVal" style="color:var(--primary-light)">70%</b></div>
+              <input type="range" class="spam-range" id="spamThreshold" min="0" max="100" value="70" style="--fill:70%">
+            </section>
+
+            <section class="admin-card admin-panel">
+              <h3>Legjelentettebb felhasználók <span class="link">Összes</span></h3>
+              <div id="reportedUsers"></div>
+            </section>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="js/admin-data.js?v=11"></script>
+  <script src="js/admin.js?v=11"></script>
+  <script src="../js/images.js?v=11"></script>
+</body>
+</html>
