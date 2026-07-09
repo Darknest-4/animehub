@@ -191,4 +191,38 @@ MOCK.mangaDetail = {
 };
 MOCK.readerPages = Array.from({ length: 8 }, (_, i) => ({ n: i + 1, img: ["assets/img/backdrop-sasuke.svg", "assets/img/backdrop-naruto.svg", "assets/img/backdrop-solo-leveling.svg", "assets/img/backdrop-profile.svg"][i % 4] }));
 
+/* ----- Könyvtár oldalak (mock) ----- */
+MOCK.seasonal = {
+  season: "Tél 2026", seasons: ["Tél 2026", "Ősz 2025", "Nyár 2025", "Tavasz 2025"],
+  items: MOCK.topAnime.slice(0, 10).map((a, i) => ({ ...a, day: ["Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat", "Vasárnap"][i % 7], newEp: (i % 3) + 1 })),
+};
+MOCK.history = [
+  { title: "Jujutsu Kaisen", ep: "2. évad 18. rész", when: "Ma, 14:32", progress: 96, image: "assets/img/poster-jujutsu-kaisen.svg" },
+  { title: "Solo Leveling", ep: "1. évad 7. rész", when: "Ma, 12:10", progress: 100, image: "assets/img/poster-solo-leveling.svg" },
+  { title: "Frieren", ep: "1. évad 20. rész", when: "Tegnap, 22:41", progress: 43, image: "assets/img/poster-frieren.svg" },
+  { title: "Chainsaw Man", ep: "1. évad 12. rész", when: "Tegnap, 20:05", progress: 100, image: "assets/img/poster-chainsaw-man.svg" },
+  { title: "Attack on Titan", ep: "4. évad 28. rész", when: "2 napja", progress: 78, image: "assets/img/poster-attack-on-titan.svg" },
+  { title: "Bleach: TYBW", ep: "2. évad 5. rész", when: "3 napja", progress: 100, image: "assets/img/poster-bleach.svg" },
+];
+MOCK.downloads = [
+  { title: "Jujutsu Kaisen", ep: "2. évad 18. rész", size: "1.45 GB", quality: "1080p", status: "kész", progress: 100, image: "assets/img/poster-jujutsu-kaisen.svg" },
+  { title: "Solo Leveling", ep: "1. évad 8. rész", size: "1.32 GB", quality: "1080p", status: "letöltés", progress: 62, image: "assets/img/poster-solo-leveling.svg" },
+  { title: "Demon Slayer", ep: "4. évad 3. rész", size: "980 MB", quality: "720p", status: "kész", progress: 100, image: "assets/img/poster-demon-slayer.svg" },
+  { title: "Dandadan", ep: "1. évad 5. rész", size: "1.5 GB", quality: "1080p", status: "várakozik", progress: 0, image: "assets/img/poster-dandadan.svg" },
+];
+MOCK.messages = {
+  conversations: [
+    { id: 1, user: "gojo_satoru", avatar: "assets/img/avatar-kakashi.svg", last: "Láttad már az új részt? 🔥", when: "2 perce", unread: 2, online: true },
+    { id: 2, user: "sakura_h", avatar: "assets/img/avatar-sakura.svg", last: "Köszi az ajánlást!", when: "1 órája", unread: 0, online: true },
+    { id: 3, user: "itachi_uchiha", avatar: "assets/img/avatar-itachi.svg", last: "Watch party ma este?", when: "3 órája", unread: 1, online: false },
+    { id: 4, user: "kiba_inuzuka", avatar: "assets/img/avatar-kiba.svg", last: "Rendben, holnap!", when: "Tegnap", unread: 0, online: false },
+  ],
+  thread: [
+    { me: false, text: "Szia! Láttad már a Jujutsu Kaisen új részét?", when: "14:30" },
+    { me: true, text: "Még nem, este nézem meg!", when: "14:31" },
+    { me: false, text: "Nagyon durva lett, ne olvass spoilert 😅", when: "14:32" },
+    { me: true, text: "Hehe, csinálunk watch party-t? 🎉", when: "14:33" },
+  ],
+};
+
 if (typeof window !== "undefined") window.MOCK = MOCK;

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Üzenetek – AnimeHub</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="css/base.css?v=12">
+  <link rel="stylesheet" href="css/discover.css?v=12">
+  <link rel="stylesheet" href="css/library.css?v=12">
+</head>
+<body data-page="messages">
+  <header id="appTopbar" class="topbar"></header>
+  <div class="layout">
+    <aside id="appSidebar" class="sidebar"></aside>
+    <main class="main">
+      <div class="page-head"><span class="eyebrow">💬 Chat</span><h1>Üzenetek</h1></div>
+      <div class="msg-layout">
+        <div class="msg-list" id="convList"></div>
+        <div class="msg-thread">
+          <div class="thread-head" id="threadHead"></div>
+          <div class="thread-body" id="threadBody"></div>
+          <div class="thread-input">
+            <input type="text" id="msgInput" placeholder="Írj üzenetet…">
+            <button class="btn-primary" id="msgSend">Küldés</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="js/data.js?v=10"></script>
+  <script src="js/layout.js?v=12"></script>
+  <script src="js/effects.js?v=12"></script>
+  <script src="js/main.js?v=10"></script>
+  <script src="js/mock.js?v=12"></script>
+  <script src="js/library.js?v=12"></script>
+  <script src="js/images.js?v=10"></script>
+</body>
+</html>
