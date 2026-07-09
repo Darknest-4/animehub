@@ -99,6 +99,7 @@ function layoutSidebarHTML(activePage, extra) {
     ${item("news", "news.html", "news", "Hírek")}
 
     <div class="sidebar-label">Felfedezés</div>
+    ${item("manga-list", "manga-list.html", "list", "Manga")}
     ${item("top-anime", "top-anime.html", "trending", "Top Anime")}
     ${item("leaderboard", "leaderboard.html", "trophy", "Ranglista")}
     ${item("achievements", "achievements.html", "award", "Eredmények")}
@@ -130,6 +131,7 @@ const BOTTOM_NAV_ITEMS = [
 ];
 
 const MORE_SHEET_ITEMS = [
+  { page: "manga-list",   href: "manga-list.html",   icon: "list",     label: "Manga" },
   { page: "top-anime",    href: "top-anime.html",    icon: "trending", label: "Top Anime" },
   { page: "leaderboard",  href: "leaderboard.html",  icon: "trophy",   label: "Ranglista" },
   { page: "achievements", href: "achievements.html", icon: "award",    label: "Eredmények" },

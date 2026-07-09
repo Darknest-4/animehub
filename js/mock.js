@@ -167,4 +167,28 @@ MOCK.watch = {
   ],
 };
 
+/* ----- Manga szekció (mock) ----- */
+MOCK.manga = [
+  { id: "berserk", title: "Berserk", jp: "ベルセルク", author: "Kentaro Miura", score: 9.47, chapters: 374, status: "Folyamatban", genres: ["Akció", "Dark Fantasy", "Seinen"], cover: "assets/img/poster-attack-on-titan.svg", year: 1989 },
+  { id: "vagabond", title: "Vagabond", jp: "バガボンド", author: "Takehiko Inoue", score: 9.24, chapters: 327, status: "Szünetel", genres: ["Akció", "Történelmi", "Seinen"], cover: "assets/img/poster-demon-slayer.svg", year: 1998 },
+  { id: "one-piece", title: "One Piece", jp: "ワンピース", author: "Eiichiro Oda", score: 9.21, chapters: 1110, status: "Folyamatban", genres: ["Akció", "Kaland", "Shounen"], cover: "assets/img/poster-one-piece.svg", year: 1997 },
+  { id: "jjk", title: "Jujutsu Kaisen", jp: "呪術廻戦", author: "Gege Akutami", score: 8.71, chapters: 271, status: "Befejezett", genres: ["Akció", "Természetfeletti"], cover: "assets/img/poster-jujutsu-kaisen.svg", year: 2018 },
+  { id: "csm", title: "Chainsaw Man", jp: "チェンソーマン", author: "Tatsuki Fujimoto", score: 8.66, chapters: 190, status: "Folyamatban", genres: ["Akció", "Horror"], cover: "assets/img/poster-chainsaw-man.svg", year: 2018 },
+  { id: "solo", title: "Solo Leveling", jp: "나 혼자만 레벨업", author: "Chugong", score: 8.79, chapters: 200, status: "Befejezett", genres: ["Akció", "Fantasy", "Manhwa"], cover: "assets/img/poster-solo-leveling.svg", year: 2018 },
+  { id: "aot", title: "Attack on Titan", jp: "進撃の巨人", author: "Hajime Isayama", score: 9.05, chapters: 139, status: "Befejezett", genres: ["Akció", "Dráma"], cover: "assets/img/poster-attack-on-titan.svg", year: 2009 },
+  { id: "spy", title: "Spy x Family", jp: "スパイファミリー", author: "Tatsuya Endo", score: 8.55, chapters: 98, status: "Folyamatban", genres: ["Vígjáték", "Akció"], cover: "assets/img/poster-spy-family.svg", year: 2019 },
+];
+MOCK.mangaDetail = {
+  synopsis: "Egy sötét, középkori világban egy magányos kardforgató, Guts, a Fekete Kardforgató járja útját bosszúért. Az emberi ambíció, a barátság és az árulás eposzi története, amely a manga műfaj egyik csúcsteljesítménye.",
+  volumes: 42, published: "1989 – jelenleg", serialization: "Young Animal", demographic: "Seinen",
+  chapters: Array.from({ length: 12 }, (_, i) => ({ n: 374 - i, title: `${374 - i}. fejezet`, date: `2024.${String(6 - (i % 6)).padStart(2, "0")}.15.`, read: i > 3 })),
+  characters: [
+    { name: "Guts", role: "Főszereplő", image: "assets/img/avatar-sasuke.svg" },
+    { name: "Griffith", role: "Antagonista", image: "assets/img/avatar-itachi.svg" },
+    { name: "Casca", role: "Főszereplő", image: "assets/img/avatar-sakura.svg" },
+    { name: "Puck", role: "Mellékszereplő", image: "assets/img/avatar-choji.svg" },
+  ],
+};
+MOCK.readerPages = Array.from({ length: 8 }, (_, i) => ({ n: i + 1, img: ["assets/img/backdrop-sasuke.svg", "assets/img/backdrop-naruto.svg", "assets/img/backdrop-solo-leveling.svg", "assets/img/backdrop-profile.svg"][i % 4] }));
+
 if (typeof window !== "undefined") window.MOCK = MOCK;

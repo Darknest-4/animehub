@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manga adatlap – AnimeHub</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="css/base.css?v=12">
+  <link rel="stylesheet" href="css/discover.css?v=12">
+  <link rel="stylesheet" href="css/anime.css?v=12">
+  <link rel="stylesheet" href="css/manga.css?v=12">
+</head>
+<body data-page="manga-detail">
+
+  <header id="appTopbar" class="topbar"></header>
+  <div class="layout">
+    <aside id="appSidebar" class="sidebar"></aside>
+    <main class="main">
+
+      <nav class="breadcrumb">
+        <a href="manga-list.html">Manga</a>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <span class="current" id="mdTitleBc">Adatlap</span>
+      </nav>
+
+      <div class="manga-detail">
+        <div>
+          <div class="md-cover"><img id="mdCover" src="assets/img/poster-attack-on-titan.svg" alt=""></div>
+          <div class="md-actions">
+            <a class="btn-primary" id="readCont" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16v16H4z" opacity="0"/><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/></svg> Olvasás folytatása</a>
+            <a class="btn-secondary" id="readFirst" href="#">Első fejezettől</a>
+            <button class="btn-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg> Listához adom</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="md-head">
+            <h1 id="mdTitle">Berserk</h1>
+            <div class="jp" id="mdJp">ベルセルク</div>
+            <div class="by" id="mdBy">Írta: —</div>
+          </div>
+          <div class="md-badges" id="mdBadges"></div>
+          <div class="md-stats" id="mdStats"></div>
+          <p class="md-synopsis" id="mdSynopsis">Betöltés…</p>
+
+          <section class="ax-section">
+            <div class="ax-head"><h2>Fejezetek</h2><span class="spacer"></span><a class="link-more" href="#">Mind</a></div>
+            <div id="chapterList"></div>
+          </section>
+
+          <section class="ax-section">
+            <div class="ax-head"><h2>Szereplők</h2></div>
+            <div class="char-grid" id="mdCharacters"></div>
+          </section>
+
+          <section class="ax-section">
+            <div class="ax-head"><h2>Információk</h2></div>
+            <dl class="prod-list" id="mdMeta"></dl>
+          </section>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/data.js?v=10"></script>
+  <script src="js/layout.js?v=12"></script>
+  <script src="js/effects.js?v=12"></script>
+  <script src="js/main.js?v=10"></script>
+  <script src="js/mock.js?v=12"></script>
+  <script src="js/manga.js?v=12"></script>
+  <script src="js/images.js?v=10"></script>
+</body>
+</html>

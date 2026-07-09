@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manga olvasó – AnimeHub</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="css/base.css?v=12">
+  <link rel="stylesheet" href="css/manga.css?v=12">
+</head>
+<body data-page="reader">
+
+  <div class="reader-bar">
+    <a class="rb-btn" href="manga.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> <span class="rb-label">Vissza</span></a>
+    <div class="t"><h1 id="rdTitle">Berserk</h1><p id="rdChapter">1. fejezet</p></div>
+    <button class="rb-btn" id="rdPrev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> <span class="rb-label">Előző</span></button>
+    <button class="rb-btn" id="rdNext"><span class="rb-label">Következő</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+    <select class="rb-btn" id="rdMode"><option value="single">Egy oldal</option><option value="double">Két oldal</option></select>
+    <select class="rb-btn" id="rdFit"><option value="fit">Illesztés</option><option value="full">Teljes szélesség</option></select>
+  </div>
+
+  <div class="reader-stage" id="readerStage">
+    <div class="reader-flow" id="readerFlow"></div>
+    <div class="reader-foot">
+      <button class="btn-secondary" id="rdPrevBig">← Előző fejezet</button>
+      <button class="btn-primary" id="rdNextBig">Következő fejezet →</button>
+    </div>
+  </div>
+
+  <script src="js/effects.js?v=12"></script>
+  <script src="js/mock.js?v=12"></script>
+  <script src="js/manga.js?v=12"></script>
+  <script src="js/images.js?v=10"></script>
+</body>
+</html>
