@@ -13,14 +13,14 @@
   function fillCharacters(el) {
     el.innerHTML = D.characters.map((c, i) => `
       <div class="char-card card-fx" data-reveal data-reveal-delay="${(i % 3) * 50}">
-        <div class="side"><img src="${c.image}" alt=""><div><div class="nm">${c.name}</div><div class="rl">${c.role}</div></div></div>
-        <div class="side va"><div><div class="nm">${c.va}</div><div class="rl">Szinkron</div></div><img src="${c.vaImg}" alt=""></div>
+        <a class="side" href="character.html"><img src="${c.image}" alt=""><div><div class="nm">${c.name}</div><div class="rl">${c.role}</div></div></a>
+        <a class="side va" href="va.html"><div><div class="nm">${c.va}</div><div class="rl">Szinkron</div></div><img src="${c.vaImg}" alt=""></a>
       </div>`).join("");
   }
 
   function fillFranchise(el) {
     el.innerHTML = D.franchise.map((f) => `
-      <a class="fr-node${f.current ? " cur" : ""}" href="#" data-reveal="scale">
+      <a class="fr-node${f.current ? " cur" : ""}" href="franchise.html" data-reveal="scale">
         <div class="pic"><img src="${f.image}" alt="">${f.current ? '<span class="now">Most</span>' : ""}</div>
         <h4>${f.title}</h4><p>${f.type} · ${f.year}</p>
       </a>`).join("");
@@ -78,10 +78,10 @@
   function fillStudio() {
     const s = D.studio;
     $("axStudio").innerHTML = `
-      <div class="top">
+      <a class="top" href="studio.html" style="color:inherit">
         <div class="logo">${s.name.slice(0, 2).toUpperCase()}</div>
         <div><h4>${s.name}</h4><div class="sub">Alapítva: ${s.founded} · ${s.country}</div></div>
-      </div>
+      </a>
       <p class="desc">${s.desc}</p>
       <div class="studio-stats">
         <div><b>${s.works}</b> produkció</div>

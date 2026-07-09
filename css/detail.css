@@ -1,0 +1,88 @@
+/* ==========================================================================
+   AnimeHub – detail.css
+   Karakter, Stúdió, Szinkronszínész, Franchise, AI Ajánlások, Watch Party.
+   base.css + discover.css + anime.css komponensekre épül.
+   ========================================================================== */
+
+/* Profilfejléc bannerrel (karakter / VA) */
+.dp-hero { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 22px; }
+.dp-hero .banner { height: 200px; overflow: hidden; }
+.dp-hero .banner img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.55); }
+.dp-hero .body { display: flex; align-items: flex-end; gap: 20px; padding: 0 26px 24px; margin-top: -70px; position: relative; flex-wrap: wrap; }
+.dp-hero .avatar { width: 130px; height: 130px; border-radius: 22px; object-fit: cover; border: 4px solid var(--bg-primary); box-shadow: var(--shadow-glow); flex-shrink: 0; background: var(--bg-card); }
+.dp-hero .who { flex: 1; min-width: 0; padding-bottom: 6px; }
+.dp-hero .who h1 { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; }
+.dp-hero .who .jp { font-size: 15px; color: var(--text-muted); margin-top: 3px; }
+.dp-hero .who .meta { font-size: 13.5px; color: var(--text-soft); margin-top: 8px; }
+.dp-hero .cta { display: flex; gap: 10px; padding-bottom: 8px; flex-wrap: wrap; }
+
+/* Stat sor */
+.dp-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 22px; }
+.dp-stat { padding: 16px; text-align: center; border: 1px solid var(--border); border-radius: 14px; background: var(--bg-card); }
+.dp-stat .v { font-size: 22px; font-weight: 800; color: var(--purple-2); }
+.dp-stat .l { font-size: 11.5px; color: var(--text-muted); margin-top: 3px; }
+
+.dp-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 22px; align-items: start; }
+.dp-bio { font-size: 14px; line-height: 1.7; color: var(--text-soft); }
+.dp-traits { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.dp-traits span { font-size: 12px; font-weight: 600; color: var(--purple-2); background: rgba(139,92,246,0.12); padding: 5px 12px; border-radius: 8px; }
+
+/* Szereplés / szerep kártyák */
+.role-card { display: flex; align-items: center; gap: 12px; padding: 11px; border: 1px solid var(--border); border-radius: 13px; background: var(--bg-card); }
+.role-card img { width: 50px; height: 50px; border-radius: 11px; object-fit: cover; }
+.role-card .r h4 { font-size: 13.5px; font-weight: 700; }
+.role-card .r p { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.role-card .tag { margin-left: auto; font-size: 10.5px; font-weight: 700; padding: 3px 9px; border-radius: 6px; color: var(--purple-2); background: rgba(139,92,246,0.12); }
+.role-card .tag.main { color: var(--success); background: rgba(34,197,94,0.12); }
+
+/* Idővonal (stúdió / franchise) */
+.timeline { position: relative; padding-left: 26px; }
+.timeline::before { content: ""; position: absolute; left: 7px; top: 4px; bottom: 4px; width: 2px; background: linear-gradient(180deg, var(--purple), transparent); }
+.tl-item { position: relative; padding: 0 0 20px 4px; }
+.tl-item::before { content: ""; position: absolute; left: -26px; top: 3px; width: 16px; height: 16px; border-radius: 50%; background: var(--bg-primary); border: 3px solid var(--purple); }
+.tl-item .y { font-size: 12.5px; font-weight: 800; color: var(--purple-2); }
+.tl-item .e { font-size: 13.5px; color: var(--text-soft); margin-top: 2px; }
+
+/* AI Ajánlások */
+.ai-hero { position: relative; overflow: hidden; padding: 30px; border-radius: 20px; border: 1px solid rgba(139,92,246,0.3); background: radial-gradient(120% 140% at 0% 0%, rgba(168,85,247,0.2), transparent 55%), var(--gradient-card); margin-bottom: 24px; }
+.ai-hero .spark { width: 54px; height: 54px; display: grid; place-items: center; color: #fff; background: var(--gradient-primary); border-radius: 15px; box-shadow: 0 0 28px var(--purple-glow); margin-bottom: 14px; }
+.ai-hero h1 { font-size: 27px; font-weight: 800; }
+.ai-hero p { font-size: 14px; color: var(--text-soft); margin-top: 8px; }
+.ai-hero .based { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.ai-hero .based span { font-size: 12px; font-weight: 600; color: var(--text); background: rgba(255,255,255,0.08); padding: 5px 12px; border-radius: 8px; }
+.ai-list { display: flex; flex-direction: column; gap: 14px; }
+.ai-rec { display: flex; gap: 16px; padding: 14px; border: 1px solid var(--border); border-radius: 16px; background: var(--bg-card); }
+.ai-rec img { width: 76px; height: 108px; border-radius: 11px; object-fit: cover; flex-shrink: 0; }
+.ai-rec .c { flex: 1; min-width: 0; }
+.ai-rec .top { display: flex; align-items: center; gap: 10px; }
+.ai-rec .top h3 { font-size: 16px; font-weight: 700; }
+.ai-rec .top .sc { font-size: 12px; font-weight: 800; color: #FFD24A; }
+.ai-rec .match { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 800; color: var(--success); }
+.ai-rec .match .ring { width: 40px; height: 6px; border-radius: 99px; background: var(--bg-card-2); overflow: hidden; }
+.ai-rec .match .ring span { display: block; height: 100%; background: var(--gradient-primary); }
+.ai-rec .why { font-size: 13px; color: var(--text-soft); margin-top: 8px; line-height: 1.55; }
+.ai-rec .why b { color: var(--purple-2); }
+.ai-rec .acts { display: flex; gap: 8px; margin-top: 12px; }
+
+/* Watch Party oldal */
+.wp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.wp-card { padding: 18px; border: 1px solid var(--border); border-radius: 16px; background: var(--bg-card); }
+.wp-card .top { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.wp-card .top img { width: 44px; height: 44px; border-radius: 12px; object-fit: cover; }
+.wp-card .top .h4 { font-size: 14px; font-weight: 700; }
+.wp-card .top .r { font-size: 12px; color: var(--text-muted); }
+.wp-card .live { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 800; color: var(--danger); }
+.wp-card .live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--danger); box-shadow: 0 0 8px var(--danger); }
+.wp-card .live.off { color: var(--text-muted); }
+.wp-card .live.off::before { background: var(--text-muted); box-shadow: none; }
+.wp-card .anime { font-size: 13.5px; font-weight: 600; }
+.wp-card .foot { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; }
+.wp-card .watching { font-size: 12.5px; color: var(--text-muted); }
+
+@media (max-width: 800px) {
+  .dp-grid { grid-template-columns: 1fr; }
+  .dp-stats { grid-template-columns: 1fr 1fr; }
+  .dp-hero .body { margin-top: -50px; padding: 0 16px 18px; }
+  .dp-hero .avatar { width: 100px; height: 100px; }
+  .ai-rec img { width: 60px; height: 88px; }
+}

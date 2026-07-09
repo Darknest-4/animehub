@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Szinkronszínész – AnimeHub</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="css/base.css?v=12">
+  <link rel="stylesheet" href="css/discover.css?v=12">
+  <link rel="stylesheet" href="css/anime.css?v=12">
+  <link rel="stylesheet" href="css/detail.css?v=12">
+</head>
+<body data-page="va">
+  <header id="appTopbar" class="topbar"></header>
+  <div class="layout">
+    <aside id="appSidebar" class="sidebar"></aside>
+    <main class="main">
+      <div class="dp-hero">
+        <div class="banner"><img id="dpBanner" src="assets/img/backdrop-naruto.svg" alt=""></div>
+        <div class="body">
+          <img class="avatar" id="dpAvatar" src="assets/img/avatar-itachi.svg" alt="">
+          <div class="who"><h1 id="dpName">Szinkronszínész</h1><div class="jp" id="dpJp"></div><div class="meta" id="dpMeta"></div></div>
+          <div class="cta"><button class="btn-primary">Követés</button></div>
+        </div>
+      </div>
+      <div class="dp-stats" id="dpStats"></div>
+      <div class="dp-grid">
+        <div>
+          <section class="ax-section" style="margin-top:0"><div class="ax-head"><h2>Életrajz</h2></div><p class="dp-bio" id="dpBio"></p></section>
+          <section class="ax-section"><div class="ax-head"><h2>Szerepek</h2></div><div class="char-grid" id="vaRoles"></div></section>
+        </div>
+        <div>
+          <section class="panel"><div class="panel-head"><h3>Legnépszerűbb szerep</h3></div>
+            <a class="role-card card-fx" href="character.html"><img src="assets/img/avatar-kakashi.svg" alt=""><div class="r"><h4>Satoru Gojo</h4><p>Jujutsu Kaisen</p></div><span class="tag main">Fő</span></a>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="js/data.js?v=10"></script><script src="js/layout.js?v=12"></script><script src="js/effects.js?v=12"></script><script src="js/main.js?v=10"></script><script src="js/mock.js?v=12"></script><script src="js/detail.js?v=12"></script><script src="js/images.js?v=10"></script>
+</body>
+</html>
