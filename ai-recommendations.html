@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Ajánlások – AnimeHub</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="css/base.css?v=13">
+  <link rel="stylesheet" href="css/discover.css?v=12">
+  <link rel="stylesheet" href="css/detail.css?v=12">
+</head>
+<body data-page="ai-recs">
+  <header id="appTopbar" class="topbar"></header>
+  <div class="layout">
+    <aside id="appSidebar" class="sidebar"></aside>
+    <main class="main">
+      <div class="ai-hero" data-reveal>
+        <div class="spark"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg></div>
+        <h1>AI Ajánlások</h1>
+        <p>Az ízlésed alapján generált személyre szabott javaslatok. Ezek alapján:</p>
+        <div class="based" id="aiBased"></div>
+      </div>
+      <div class="ax-head" style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+        <h2 style="font-size:19px;font-weight:800;flex:1">Neked ajánljuk</h2>
+        <button class="btn-secondary" id="aiRefresh">🔄 Új ajánlások</button>
+      </div>
+      <div id="aiList"></div>
+    </main>
+  </div>
+  <script src="js/data.js?v=10"></script><script src="js/layout.js?v=12"></script><script src="js/effects.js?v=12"></script><script src="js/main.js?v=10"></script><script src="js/mock.js?v=12"></script><script src="js/detail.js?v=12"></script><script src="js/images.js?v=10"></script>
+</body>
+</html>

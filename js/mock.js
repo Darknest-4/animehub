@@ -225,4 +225,74 @@ MOCK.messages = {
   ],
 };
 
+/* ----- Adatlap oldalak (mock) ----- */
+MOCK.character = {
+  name: "Satoru Gojo", jp: "五条 悟", image: "assets/img/avatar-kakashi.svg", banner: "assets/img/backdrop-sasuke.svg",
+  anime: "Jujutsu Kaisen", role: "Főszereplő", va: "Yuichi Nakamura", vaImg: "assets/img/avatar-itachi.svg",
+  favorites: "284K", rank: "#1",
+  bio: "A Tokiói Jujutsu Technikai Iskola legerősebb tanára, a Végtelen és a Hat Szem képességek birtokosa. Magabiztos, provokatív, ám tanítványaiért mindent feláldozó karakter.",
+  traits: ["Végtelen", "Hat Szem", "Legerősebb", "Tanár", "Limitless"],
+  stats: [["185 cm", "Magasság"], ["28", "Kor"], ["Dec 7", "Születésnap"], ["Special", "Rang"]],
+  appearances: [
+    { title: "Jujutsu Kaisen", role: "Főszereplő", image: "assets/img/poster-jujutsu-kaisen.svg" },
+    { title: "JJK 0 Movie", role: "Mellékszereplő", image: "assets/img/poster-jujutsu-kaisen.svg" },
+  ],
+  gallery: ["assets/img/backdrop-sasuke.svg", "assets/img/backdrop-naruto.svg", "assets/img/backdrop-solo-leveling.svg"],
+};
+MOCK.studioPage = {
+  name: "MAPPA", jp: "株式会社MAPPA", founded: "2011", country: "Japán 🇯🇵", president: "Manabu Otsuka",
+  desc: "A MAPPA (Maruyama Animation Produce Project Association) egy tokiói animációs stúdió, amelyet 2011-ben alapított Masao Maruyama. Ismert prémium minőségű, filmes látványvilágú produkcióiról.",
+  stats: [["42", "Produkció"], ["2011", "Alapítva"], ["8.6", "Átlag pont"], ["#3", "Rangsor"]],
+  works: MOCK.topAnime.slice(0, 8).map((a) => ({ title: a.title, year: a.year, score: a.score, image: a.image })),
+  timeline: [
+    { year: "2011", event: "A stúdió megalapítása" },
+    { year: "2016", event: "Yuri!!! on Ice – áttörés" },
+    { year: "2020", event: "Jujutsu Kaisen 1. évad" },
+    { year: "2022", event: "Chainsaw Man" },
+    { year: "2023", event: "Attack on Titan Final + JJK 2. évad" },
+  ],
+};
+MOCK.va = {
+  name: "Yuichi Nakamura", jp: "中村 悠一", image: "assets/img/avatar-itachi.svg", banner: "assets/img/backdrop-naruto.svg",
+  born: "1980.02.20.", from: "Kagawa, Japán", agency: "Intention", favorites: "128K",
+  bio: "Népszerű japán szinkronszínész, számos ikonikus szerep hangja. Mély, karizmatikus hangjáról ismert.",
+  stats: [["44", "Kor"], ["320+", "Szerep"], ["1998", "Debütálás"], ["#5", "Rangsor"]],
+  roles: [
+    { char: "Satoru Gojo", anime: "Jujutsu Kaisen", image: "assets/img/avatar-kakashi.svg", main: true },
+    { char: "Bruno Bucciarati", anime: "JoJo's Bizarre Adventure", image: "assets/img/avatar-sasuke.svg", main: true },
+    { char: "Hawks", anime: "My Hero Academia", image: "assets/img/avatar-neji.svg", main: false },
+    { char: "Tetsurou Kuroo", anime: "Haikyuu!!", image: "assets/img/avatar-shino.svg", main: false },
+  ],
+};
+MOCK.franchisePage = {
+  title: "Jujutsu Kaisen", jp: "呪術廻戦", banner: "assets/img/backdrop-sasuke.svg",
+  desc: "A Jujutsu Kaisen franchise Gege Akutami mangáján alapul. Animék, filmek és spin-offok alkotják a modern shounen egyik legnépszerűbb világát.",
+  stats: [["5", "Bejegyzés"], ["78", "Epizód"], ["8.9", "Átlag pont"], ["4.2M", "Rajongó"]],
+  entries: [
+    { title: "JJK 1. évad", type: "TV · 24 ep", year: "2020", score: 8.6, image: "assets/img/poster-jujutsu-kaisen.svg" },
+    { title: "JJK 0 Film", type: "Film", year: "2021", score: 8.8, image: "assets/img/poster-jujutsu-kaisen.svg" },
+    { title: "JJK 2. évad", type: "TV · 23 ep", year: "2023", score: 8.9, image: "assets/img/poster-jujutsu-kaisen.svg", current: true },
+    { title: "JJK Manga", type: "Manga · 271 fej", year: "2018", score: 8.7, image: "assets/img/poster-jujutsu-kaisen.svg" },
+    { title: "JJK 3. évad", type: "TV · Hamarosan", year: "2026", score: 0, image: "assets/img/poster-jujutsu-kaisen.svg" },
+  ],
+};
+MOCK.aiRecs = {
+  match: 94,
+  based: ["Jujutsu Kaisen", "Chainsaw Man", "Attack on Titan"],
+  items: [
+    { title: "Hell's Paradise", score: 8.2, match: 96, reason: "Hasonló sötét-akció hangulat és természetfeletti harcrendszer.", image: "assets/img/poster-hells-paradise.svg" },
+    { title: "Demon Slayer", score: 8.9, match: 93, reason: "Kiváló animáció és démonvadász téma, ami tetszett a Jujutsu Kaisenben.", image: "assets/img/poster-demon-slayer.svg" },
+    { title: "Bleach: TYBW", score: 8.95, match: 91, reason: "Erős shounen harcok és karakterfejlődés.", image: "assets/img/poster-bleach.svg" },
+    { title: "Dandadan", score: 8.4, match: 89, reason: "Modern természetfeletti akció, pörgős tempóval.", image: "assets/img/poster-dandadan.svg" },
+    { title: "Chainsaw Man", score: 8.6, match: 88, reason: "Ha szereted a nyers, felnőtt hangvételű akciót.", image: "assets/img/poster-chainsaw-man.svg" },
+    { title: "Solo Leveling", score: 8.84, match: 86, reason: "Látványos harcok és fokozatos erősödés.", image: "assets/img/poster-solo-leveling.svg" },
+  ],
+};
+MOCK.parties = [
+  { room: "AH-7F3K2", host: "gojo_satoru", anime: "Jujutsu Kaisen 2×18", watching: 4, avatar: "assets/img/avatar-kakashi.svg", live: true },
+  { room: "AH-9X2M1", host: "sakura_h", anime: "Solo Leveling 1×07", watching: 7, avatar: "assets/img/avatar-sakura.svg", live: true },
+  { room: "AH-3K8P0", host: "itachi_uchiha", anime: "Frieren 1×20", watching: 2, avatar: "assets/img/avatar-itachi.svg", live: true },
+  { room: "AH-5Q1L4", host: "kiba_inuzuka", anime: "Chainsaw Man 1×12", watching: 12, avatar: "assets/img/avatar-kiba.svg", live: false },
+];
+
 if (typeof window !== "undefined") window.MOCK = MOCK;

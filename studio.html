@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stúdió adatlap – AnimeHub</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="css/base.css?v=13">
+  <link rel="stylesheet" href="css/discover.css?v=12">
+  <link rel="stylesheet" href="css/anime.css?v=12">
+  <link rel="stylesheet" href="css/detail.css?v=12">
+</head>
+<body data-page="studio">
+  <header id="appTopbar" class="topbar"></header>
+  <div class="layout">
+    <aside id="appSidebar" class="sidebar"></aside>
+    <main class="main">
+      <div class="page-head">
+        <span class="eyebrow">🏢 Stúdió</span>
+        <h1 id="stName">MAPPA</h1>
+        <p class="sub" id="stJp"></p>
+        <p class="sub" id="stMeta" style="margin-top:4px"></p>
+      </div>
+      <div class="dp-stats" id="stStats"></div>
+      <div class="dp-grid">
+        <div>
+          <section class="ax-section" style="margin-top:0"><div class="ax-head"><h2>A stúdióról</h2></div><p class="dp-bio" id="stDesc"></p></section>
+          <section class="ax-section"><div class="ax-head"><h2>Ismert munkák</h2></div><div id="stWorks"></div></section>
+        </div>
+        <div>
+          <section class="panel"><div class="panel-head"><h3>Idővonal</h3></div><div class="timeline" id="stTimeline"></div></section>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="js/data.js?v=10"></script><script src="js/layout.js?v=12"></script><script src="js/effects.js?v=12"></script><script src="js/main.js?v=10"></script><script src="js/mock.js?v=12"></script><script src="js/detail.js?v=12"></script><script src="js/images.js?v=10"></script>
+</body>
+</html>

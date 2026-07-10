@@ -104,6 +104,8 @@ function layoutSidebarHTML(activePage, extra) {
     ${item("leaderboard", "leaderboard.html", "trophy", "Ranglista")}
     ${item("achievements", "achievements.html", "award", "Eredmények")}
     ${item("notifications", "notifications.html", "bell", "Értesítések")}
+    ${item("ai-recs", "ai-recommendations.html", "star", "AI Ajánlások")}
+    ${item("watch-party", "watch-party.html", "users", "Watch Party")}
     ${item("premium", "premium.html", "crown", "Premium")}
 
     <div class="sidebar-label">Könyvtár</div>
@@ -149,6 +151,8 @@ const MORE_SHEET_ITEMS = [
   { page: "history",      href: "history.html",      icon: "clock",    label: "Előzmények" },
   { page: "downloads",    href: "downloads.html",    icon: "list",     label: "Letöltések" },
   { page: "messages",     href: "messages.html",     icon: "feedback", label: "Üzenetek" },
+  { page: "ai-recs",      href: "ai-recommendations.html", icon: "star", label: "AI Ajánlások" },
+  { page: "watch-party",  href: "watch-party.html",  icon: "users",    label: "Watch Party" },
   { page: "watch",     href: "watch.html",     icon: "playCircle", label: "Lejátszó" },
   { page: "watchlist", href: "watchlist.html", icon: "list",       label: "Műsorlista" },
   { page: "favorites", href: "favorites.html", icon: "heart",      label: "Kedvencek" },
