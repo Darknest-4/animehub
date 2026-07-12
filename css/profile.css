@@ -492,3 +492,81 @@
   .chart-bars { gap: 5px; height: 150px; }
   .chart-col .m { font-size: 9px; }
 }
+
+/* ==========================================================================
+   Profil bővítés (profile-extra.js): XP, jelvények, heatmap, műfajok,
+   legnézettebb, idővonal, extra statisztikák
+   ========================================================================== */
+.px-section { margin-top: 22px; }
+.px-section > h3 { display: flex; align-items: center; gap: 9px; font-size: 16px; font-weight: 700; margin-bottom: 14px; }
+.px-section > h3 svg { color: var(--purple-2); }
+
+/* XP / szint */
+.xp-card { padding: 20px; border: 1px solid var(--border); border-radius: 16px; background: radial-gradient(120% 130% at 100% 0%, rgba(139,92,246,.16), transparent 55%), var(--bg-card); }
+.xp-top { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.xp-badge { width: 54px; height: 54px; flex-shrink: 0; display: grid; place-items: center; font-size: 20px; font-weight: 800; color: #fff; background: var(--gradient-primary); border-radius: 15px; box-shadow: 0 0 22px var(--purple-glow); }
+.xp-top .t h4 { font-size: 16px; font-weight: 800; }
+.xp-top .t p { font-size: 12.5px; color: var(--text-muted); margin-top: 2px; }
+.xp-top .amt { margin-left: auto; text-align: right; font-size: 13px; font-weight: 700; color: var(--purple-2); }
+.xp-bar { height: 10px; border-radius: 99px; background: var(--bg-card-2); overflow: hidden; }
+.xp-bar span { display: block; height: 100%; background: var(--gradient-primary); border-radius: 99px; animation: growTrack 1s ease forwards; }
+.xp-next { font-size: 12px; color: var(--text-muted); margin-top: 9px; }
+.xp-next b { color: var(--text-soft); }
+
+/* Jelvények */
+.badge-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 12px; }
+.badge-item { display: flex; flex-direction: column; align-items: center; gap: 7px; padding: 15px 8px; text-align: center; border: 1px solid var(--border); border-radius: 14px; background: var(--bg-card); transition: transform .2s, border-color .2s; }
+.badge-item:hover { transform: translateY(-3px); border-color: rgba(139,92,246,.45); }
+.badge-item.locked { opacity: .45; }
+.badge-item .ic { width: 44px; height: 44px; display: grid; place-items: center; font-size: 22px; border-radius: 13px; background: rgba(139,92,246,.12); border: 1px solid rgba(139,92,246,.3); }
+.badge-item span { font-size: 11.5px; font-weight: 600; }
+
+/* Heatmap */
+.heatmap-wrap { overflow-x: auto; padding-bottom: 6px; scrollbar-width: thin; }
+.heatmap { display: grid; grid-auto-flow: column; grid-template-rows: repeat(7, 1fr); gap: 3px; min-width: 640px; }
+.hm-cell { width: 12px; height: 12px; border-radius: 3px; background: var(--bg-card-2); }
+.hm-cell.l1 { background: rgba(139,92,246,.32); }
+.hm-cell.l2 { background: rgba(139,92,246,.55); }
+.hm-cell.l3 { background: rgba(139,92,246,.78); }
+.hm-cell.l4 { background: var(--primary-light); box-shadow: 0 0 6px var(--purple-glow); }
+.hm-legend { display: flex; align-items: center; gap: 6px; justify-content: flex-end; margin-top: 10px; font-size: 11px; color: var(--text-muted); }
+.hm-legend .hm-cell { width: 11px; height: 11px; }
+
+/* Kedvenc műfajok */
+.genre-bars { display: flex; flex-direction: column; gap: 12px; }
+.genre-bar .top { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px; }
+.genre-bar .top b { color: var(--purple-2); }
+.genre-bar .track { height: 8px; border-radius: 99px; background: var(--bg-card-2); overflow: hidden; }
+.genre-bar .track span { display: block; height: 100%; background: var(--gradient-primary); border-radius: 99px; animation: growTrack 1s ease forwards; }
+
+/* Legnézettebb */
+.tw-row { display: flex; align-items: center; gap: 12px; padding: 9px 0; }
+.tw-row + .tw-row { border-top: 1px solid var(--border-soft); }
+.tw-row .n { width: 18px; font-weight: 800; color: var(--text-muted); }
+.tw-row img { width: 38px; height: 50px; border-radius: 8px; object-fit: cover; }
+.tw-row .t { flex: 1; font-size: 13.5px; font-weight: 600; }
+.tw-row .h { font-size: 12.5px; font-weight: 700; color: var(--purple-2); }
+
+/* Idővonal */
+.p-timeline { position: relative; padding-left: 24px; }
+.p-timeline::before { content: ""; position: absolute; left: 6px; top: 4px; bottom: 4px; width: 2px; background: linear-gradient(180deg, var(--purple), transparent); }
+.pt-item { position: relative; padding: 0 0 16px 6px; }
+.pt-item::before { content: ""; position: absolute; left: -24px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg-card); border: 3px solid var(--purple); }
+.pt-item .tx { font-size: 13px; }
+.pt-item .tx b { font-weight: 700; }
+.pt-item .w { font-size: 11.5px; color: var(--text-muted); margin-top: 2px; }
+
+/* Extra stat kártyák */
+.px-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.px-stat { padding: 15px; text-align: center; border: 1px solid var(--border); border-radius: 13px; background: var(--bg-card); }
+.px-stat .v { font-size: 20px; font-weight: 800; color: var(--purple-2); }
+.px-stat .l { font-size: 11.5px; color: var(--text-muted); margin-top: 3px; }
+
+.px-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+.px-card { padding: 18px; border: 1px solid var(--border); border-radius: 16px; background: var(--bg-card); }
+.px-card > h4 { font-size: 14.5px; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+
+@media (max-width: 720px) {
+  .px-2col { grid-template-columns: 1fr; }
+  .px-stats { grid-template-columns: 1fr 1fr; }
+}

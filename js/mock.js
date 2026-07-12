@@ -295,4 +295,44 @@ MOCK.parties = [
   { room: "AH-5Q1L4", host: "kiba_inuzuka", anime: "Chainsaw Man 1×12", watching: 12, avatar: "assets/img/avatar-kiba.svg", live: false },
 ];
 
+/* ----- Profil bővítés (mock) ----- */
+MOCK.profile = {
+  level: 23, xp: 7850, xpNext: 10000, title: "Anime Veterán",
+  nextReward: "Egyedi profilkeret + arany jelvény",
+  badges: [
+    { name: "Első lépések", icon: "▶", unlocked: true }, { name: "Maratonfutó", icon: "🔥", unlocked: true },
+    { name: "Kritikus", icon: "★", unlocked: true }, { name: "Közösségi", icon: "💬", unlocked: true },
+    { name: "Éjjeli bagoly", icon: "🌙", unlocked: true }, { name: "Gyűjtő", icon: "📚", unlocked: false },
+    { name: "Szezonvadász", icon: "🍂", unlocked: false }, { name: "Legenda", icon: "👑", unlocked: false },
+  ],
+  genres: [
+    { name: "Akció", pct: 92 }, { name: "Természetfeletti", pct: 78 }, { name: "Kaland", pct: 64 },
+    { name: "Dráma", pct: 55 }, { name: "Fantasy", pct: 47 }, { name: "Vígjáték", pct: 33 },
+  ],
+  topWatched: [
+    { title: "One Piece", hours: 412, image: "assets/img/poster-one-piece.svg" },
+    { title: "Naruto Shippuden", hours: 198, image: "assets/img/poster-naruto-shippuden.svg" },
+    { title: "Attack on Titan", hours: 64, image: "assets/img/poster-attack-on-titan.svg" },
+    { title: "Jujutsu Kaisen", hours: 38, image: "assets/img/poster-jujutsu-kaisen.svg" },
+    { title: "Demon Slayer", hours: 34, image: "assets/img/poster-demon-slayer.svg" },
+  ],
+  timeline: [
+    { type: "e", text: "Megnézted: <b>Wind Breaker</b> 2×06", when: "2 órája" },
+    { type: "r", text: "Értékelted: <b>Demon Slayer</b> – 9/10", when: "1 napja" },
+    { type: "v", text: "Elérted a <b>23. szintet</b> 🎉", when: "2 napja" },
+    { type: "a", text: "Megszerezted a <b>Maratonfutó</b> jelvényt", when: "3 napja" },
+    { type: "e", text: "Befejezted: <b>Chainsaw Man</b> 1. évad", when: "4 napja" },
+  ],
+  extraStats: [
+    { v: "342", l: "Nézési nap" }, { v: "89", l: "Leghosszabb sorozat" },
+    { v: "27", l: "Napi átlag (perc)" }, { v: "4.6", l: "Átlag értékelés" },
+  ],
+  // 53 hét × 7 nap intenzitás (0–4) – determinisztikus mock
+  heatmap: (() => {
+    const w = []; let s = 7;
+    for (let d = 0; d < 371; d++) { s = (s * 1103515245 + 12345) & 0x7fffffff; const r = (s >> 16) % 100; w.push(r < 42 ? 0 : r < 62 ? 1 : r < 80 ? 2 : r < 93 ? 3 : 4); }
+    return w;
+  })(),
+};
+
 if (typeof window !== "undefined") window.MOCK = MOCK;
