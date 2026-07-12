@@ -35,7 +35,10 @@ const SVG_PAUSE = '<svg width="20" height="20" viewBox="0 0 24 24" fill="current
 
 /* ----- Idő / állapot lekérdezés (videó vagy szimuláció) ----- */
 const getTime = () => (playerState.hasVideo ? video.currentTime : playerState.simTime);
-const getDuration = () => (playerState.hasVideo && video.duration ? video.duration : playerState.simDuration);
+const getDuration = () =>
+  playerState.hasVideo && isFinite(video.duration) && video.duration
+    ? video.duration
+    : playerState.simDuration;
 const isPlaying = () => (playerState.hasVideo ? !video.paused : playerState.simPlaying);
 
 function seekTo(seconds) {
@@ -65,6 +68,9 @@ function updateUI() {
   if (timeCurrent) timeCurrent.textContent = formatTime(t);
   if (timeTotal) timeTotal.textContent = formatTime(d);
   if (playPauseBtn) playPauseBtn.innerHTML = isPlaying() ? SVG_PAUSE : SVG_PLAY;
+
+  // Nagy középső play gomb: csak szünetben látszik
+  document.getElementById("bigPlay")?.classList.toggle("hidden", isPlaying());
 
   updateSubtitle(t);
 }
@@ -104,30 +110,65 @@ function initVideo() {
     return;
   }
 
-  video.src = sources[srcIndex];
+  const loading = document.getElementById("playerLoading");
+  loading?.classList.add("show");
+
+  /* Helyi fájlt Blob-ként töltünk be: a blob URL minden szerveren teljesen
+     seekelhető (Range-támogatás nélkül is). Külső URL-nél marad a sima src. */
+  function setSource(src) {
+    if (!/^https?:/i.test(src)) {
+      fetch(src)
+        .then((r) => { if (!r.ok) throw new Error("HTTP " + r.status); return r.blob(); })
+        .then((blob) => { video.src = URL.createObjectURL(blob); })
+        .catch(() => { video.src = src; });
+    } else {
+      video.src = src;
+    }
+  }
+  setSource(sources[srcIndex]);
 
   video.addEventListener("loadedmetadata", () => {
     playerState.hasVideo = true;
     video.style.display = "";
+    document.querySelector(".player")?.classList.add("has-video");
+    loading?.classList.remove("show");
     clearInterval(playerState.simTimer);
+
+    // MediaRecorder-rel készült WebM-nél a duration Infinity lehet –
+    // nagy időre seekelve a böngésző kiszámolja a valódi hosszt.
+    if (video.duration === Infinity) {
+      const fixDur = () => {
+        if (isFinite(video.duration)) {
+          video.removeEventListener("durationchange", fixDur);
+          video.currentTime = 0;
+          updateUI();
+        }
+      };
+      video.addEventListener("durationchange", fixDur);
+      video.currentTime = 1e7;
+    }
     updateUI();
   });
 
   video.addEventListener("timeupdate", updateUI);
   video.addEventListener("play", updateUI);
   video.addEventListener("pause", updateUI);
+  video.addEventListener("waiting", () => loading?.classList.add("show"));
+  video.addEventListener("playing", () => loading?.classList.remove("show"));
 
   video.addEventListener("error", () => {
     // Következő forrás próbálása; ha egyik sem megy → szimulált mód + placeholder
     srcIndex += 1;
     if (srcIndex < sources.length) {
       console.warn("Videóforrás nem érhető el, próbálom a következőt:", sources[srcIndex]);
-      video.src = sources[srcIndex];
+      setSource(sources[srcIndex]);
       video.load();
       return;
     }
     playerState.hasVideo = false;
     video.style.display = "none";
+    document.querySelector(".player")?.classList.remove("has-video");
+    loading?.classList.remove("show");
     console.warn("Egyik videóforrás sem tölthető be, szimulált lejátszás fut.");
   });
 
@@ -172,15 +213,28 @@ function initControls() {
   document.getElementById("fwd10")?.addEventListener("click", () => seekTo(getTime() + 10));
   document.getElementById("prevEp")?.addEventListener("click", () => switchEpisode(playerState.epIndex - 1));
 
-  /* Hangerő */
+  /* Nagy középső play gomb */
+  document.getElementById("bigPlay")?.addEventListener("click", togglePlay);
+
+  /* Hangerő + némítás */
   const volume = document.getElementById("volume");
   function applyVolume() {
     const pct = Number(volume.value);
-    if (video) video.volume = pct / 100;
+    if (video) { video.volume = pct / 100; video.muted = pct === 0; }
     volume.style.background = `linear-gradient(90deg, var(--purple-2) ${pct}%, rgba(255,255,255,0.22) ${pct}%)`;
+    const icon = document.getElementById("volIcon");
+    if (icon) icon.style.opacity = pct === 0 || (video && video.muted) ? "0.45" : "1";
   }
   volume?.addEventListener("input", applyVolume);
   if (volume) applyVolume();
+
+  let lastVol = 60;
+  document.getElementById("muteBtn")?.addEventListener("click", () => {
+    if (!volume) return;
+    if (Number(volume.value) > 0) { lastVol = Number(volume.value); volume.value = 0; }
+    else volume.value = lastVol || 60;
+    applyVolume();
+  });
 
   /* CC be/ki + betűméret */
   const ccBtn = document.getElementById("ccBtn");

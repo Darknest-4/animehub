@@ -572,8 +572,11 @@ body.watch-page { background: #09090F; }
 .watch-main.theatre .episodes-panel { display: none; }
 .watch-main.theatre .player { aspect-ratio: 16 / 8; }
 
-/* Skip Intro / Ending overlay gombok */
-.skip-overlay { position: absolute; right: 20px; bottom: 96px; z-index: 6; display: flex; gap: 10px; }
+/* Skip Intro / Ending overlay gombok – csak az intro/ending alatt látszik,
+   és a konténer nem foghatja el a kattintásokat a vezérlők felett */
+.skip-overlay { position: absolute; right: 20px; bottom: 118px; z-index: 6; display: none; gap: 10px; pointer-events: none; }
+.skip-overlay.show { display: flex; }
+.skip-overlay .skip-btn { pointer-events: auto; }
 .skip-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; font-size: 13px; font-weight: 700; color: #fff; background: rgba(9,9,15,0.72); border: 1px solid rgba(255,255,255,0.18); border-radius: 10px; backdrop-filter: blur(8px); transition: transform 0.2s, background 0.2s; }
 .skip-btn:hover { transform: translateY(-2px); background: var(--gradient-primary); border-color: transparent; }
 
@@ -656,3 +659,25 @@ body.watch-page { background: #09090F; }
   .mini-player { width: 220px; right: 12px; bottom: 78px; }
   .sc-grid { grid-template-columns: 1fr; }
 }
+
+/* ==========================================================================
+   Player: nagy középső play gomb + betöltésjelző + poster kezelés
+   ========================================================================== */
+.big-play {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  z-index: 5; width: 84px; height: 84px; display: grid; place-items: center;
+  color: #fff; background: rgba(139, 92, 246, 0.9); border-radius: 50%;
+  box-shadow: 0 0 40px var(--purple-glow), 0 10px 34px rgba(0,0,0,0.5);
+  transition: transform 0.2s, background 0.2s, opacity 0.25s;
+}
+.big-play:hover { transform: translate(-50%, -50%) scale(1.08); background: var(--purple-2); }
+.big-play.hidden { opacity: 0; pointer-events: none; }
+.big-play svg { margin-left: 4px; }
+
+.player-loading { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); z-index: 4; display: none; }
+.player-loading.show { display: block; }
+.player-loading span { display: block; width: 54px; height: 54px; border-radius: 50%; border: 4px solid rgba(139,92,246,0.25); border-top-color: var(--purple-2); animation: pl-spin 0.8s linear infinite; }
+@keyframes pl-spin { to { transform: rotate(360deg); } }
+
+/* Ha fut a videó, a placeholder kép rejtve */
+.player.has-video > img.frame { display: none; }

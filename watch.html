@@ -7,7 +7,7 @@
 
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="stylesheet" href="css/base.css?v=13">
-  <link rel="stylesheet" href="css/watch.css?v=12">
+  <link rel="stylesheet" href="css/watch.css?v=14">
 </head>
 <body class="watch-page" data-page="watch">
 
@@ -89,7 +89,7 @@
         <img class="frame" src="assets/img/backdrop-sasuke.svg" alt="">
         <!-- A videó forrását a js/data.js CONFIG.videoSrc adja – cseréld
              saját fájlra, pl. "assets/video/ep456.mp4" -->
-        <video id="video" class="frame" preload="metadata" playsinline></video>
+        <video id="video" class="frame" preload="auto" playsinline></video>
 
         <div class="player-top">
           <a class="player-back" href="anime.html" aria-label="Vissza">
@@ -113,6 +113,14 @@
         </div>
 
         <p class="player-subtitle" id="subtitle">Az igazi erő nem a testben rejlik,<br>hanem a szívben.</p>
+
+        <!-- Nagy középső lejátszás gomb (szünetben látszik) -->
+        <button class="big-play" id="bigPlay" aria-label="Lejátszás">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+
+        <!-- Betöltés jelző -->
+        <div class="player-loading" id="playerLoading"><span></span></div>
 
         <!-- Skip Intro / Ending overlay -->
         <div class="skip-overlay" id="skipOverlay">
@@ -154,7 +162,9 @@
             </button>
 
             <div class="volume">
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+              <button class="ctrl-btn" id="muteBtn" aria-label="Némítás" style="width:34px;height:34px">
+                <svg id="volIcon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+              </button>
               <input type="range" id="volume" min="0" max="100" value="60" aria-label="Hangerő">
             </div>
 
@@ -290,13 +300,13 @@
   </div>
 
   <!-- ===== Szkriptek ===== -->
-  <script src="js/data.js?v=10"></script>
+  <script src="js/data.js?v=14"></script>
   <script src="js/layout.js?v=10"></script>
   <script src="js/effects.js?v=12"></script>
   <script src="js/main.js?v=10"></script>
-  <script src="js/watch.js?v=10"></script>
+  <script src="js/watch.js?v=14"></script>
   <script src="js/mock.js?v=12"></script>
-  <script src="js/watch-extra.js?v=12"></script>
+  <script src="js/watch-extra.js?v=14"></script>
   <script src="js/images.js?v=10"></script>
 </body>
 </html>
