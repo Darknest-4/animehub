@@ -17,12 +17,49 @@
     return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
   };
 
-  /* ---- Skip Intro / Ending + countdown ---- */
-  $("skipIntro")?.addEventListener("click", () => {
-    if (video && video.duration) video.currentTime = Math.min(video.duration, (video.currentTime || 0) + 85);
-    FX.toast("Intro átugorva ⏩");
-    $("skipOverlay").innerHTML = `<button class="skip-btn" id="skipEnding">Ending átugrása <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M5 4l10 8-10 8V4zm12 0h2v16h-2z"/></svg></button>`;
-    $("skipEnding")?.addEventListener("click", () => { showCountdown(); $("skipOverlay").innerHTML = ""; });
+  /* ---- Skip Intro / Ending – időhöz kötve, nem takarja a vezérlőket ---- */
+  const skipState = { introSkipped: false, endingHandled: false };
+  const skipOverlay = $("skipOverlay");
+
+  function setSkip(mode) {
+    if (!skipOverlay) return;
+    if (!mode) { skipOverlay.classList.remove("show"); return; }
+    const label = mode === "intro" ? "Intro átugrása" : "Ending átugrása";
+    const btn = skipOverlay.querySelector(".skip-btn");
+    if (!btn || btn.dataset.mode !== mode) {
+      skipOverlay.innerHTML = `<button class="skip-btn" data-mode="${mode}">${label} <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M5 4l10 8-10 8V4zm12 0h2v16h-2z"/></svg></button>`;
+    }
+    skipOverlay.classList.add("show");
+  }
+
+  function skipWindows() {
+    const d = video && isFinite(video.duration) ? video.duration : 0;
+    if (!d) return null;
+    return { introEnd: Math.min(90, d * 0.3), endStart: Math.max(d - 90, d * 0.82) };
+  }
+
+  video?.addEventListener("timeupdate", () => {
+    const w = skipWindows(); if (!w) return;
+    const t = video.currentTime;
+    if (!skipState.introSkipped && t > 1 && t < w.introEnd) setSkip("intro");
+    else if (!skipState.endingHandled && t >= w.endStart && t < video.duration - 0.5) setSkip("ending");
+    else setSkip(null);
+  });
+
+  video?.addEventListener("ended", () => { setSkip(null); showCountdown(); });
+
+  skipOverlay?.addEventListener("click", (e) => {
+    const btn = e.target.closest(".skip-btn"); if (!btn) return;
+    const w = skipWindows();
+    if (btn.dataset.mode === "intro") {
+      skipState.introSkipped = true;
+      if (w) video.currentTime = w.introEnd;
+      FX.toast("Intro átugorva ⏩");
+    } else {
+      skipState.endingHandled = true;
+      showCountdown();
+    }
+    setSkip(null);
   });
 
   let cdTimer = null;

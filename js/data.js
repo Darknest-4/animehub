@@ -11,6 +11,7 @@ const CONFIG = {
      "assets/video/ep456.mp4". A lejátszó sorban próbálja a forrásokat,
      amíg az egyik el nem indul (alapból nyílt forrású demóvideók). */
   videoSources: [
+    "assets/video/ep456.webm",
     "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
     "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
     "https://ia800300.us.archive.org/17/items/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
