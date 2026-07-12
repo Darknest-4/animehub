@@ -103,9 +103,36 @@
     shortcuts() { shortcutsModal(); },
     party() { $('.wt-tab[data-tab="party"]')?.click?.(); switchTool("party"); document.querySelector(".watch-tools")?.scrollIntoView({ behavior: "smooth", block: "center" }); },
   };
-  $("watchActions")?.addEventListener("click", (e) => {
-    const btn = e.target.closest(".wa-btn"); if (!btn) return;
+  /* Fogaskerék menü a playerben – itt élnek a funkciók */
+  const settingsMenu = $("playerSettings");
+  $("settingsBtn")?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    settingsMenu?.classList.toggle("open");
+  });
+  document.addEventListener("click", (e) => {
+    if (settingsMenu && !e.target.closest("#playerSettings") && !e.target.closest("#settingsBtn"))
+      settingsMenu.classList.remove("open");
+  });
+  settingsMenu?.addEventListener("click", (e) => {
+    const btn = e.target.closest("button[data-act]"); if (!btn) return;
     (acts[btn.dataset.act] || (() => {}))(btn);
+    // A modalt nyitó akcióknál csukjuk a menüt; a togglék nyitva hagyják
+    if (!["theatre", "ambient", "mini"].includes(btn.dataset.act)) settingsMenu.classList.remove("open");
+  });
+
+  /* AirPlay / átküldés – Safari webkit picker, máshol Remote Playback API */
+  $("airplayBtn")?.addEventListener("click", async () => {
+    try {
+      if (video && typeof video.webkitShowPlaybackTargetPicker === "function") {
+        video.webkitShowPlaybackTargetPicker();
+      } else if (video && video.remote && typeof video.remote.prompt === "function") {
+        await video.remote.prompt();
+      } else {
+        FX.toast("AirPlay / átküldés nem érhető el ezen az eszközön", "warn");
+      }
+    } catch (err) {
+      FX.toast("Nem található elérhető eszköz a közelben", "warn");
+    }
   });
 
   /* ---- Mini player ---- */

@@ -263,12 +263,16 @@ function initControls() {
     if (video) video.playbackRate = parseFloat(v);
   });
 
-  /* Teljes képernyő */
-  document.getElementById("fsBtn")?.addEventListener("click", () => {
+  /* Teljes képernyő – iPhone-on a natív videó-fullscreen a fallback */
+  function toggleFullscreen() {
     const player = document.querySelector(".player");
-    if (document.fullscreenElement) document.exitFullscreen();
-    else player?.requestFullscreen?.();
-  });
+    if (document.fullscreenElement) { document.exitFullscreen(); return; }
+    if (player?.requestFullscreen) player.requestFullscreen();
+    else if (player?.webkitRequestFullscreen) player.webkitRequestFullscreen();
+    else if (video?.webkitEnterFullscreen) video.webkitEnterFullscreen(); // iOS Safari
+  }
+  document.getElementById("fsBtn")?.addEventListener("click", toggleFullscreen);
+  video?.addEventListener("dblclick", toggleFullscreen);
 
   /* Kép a képben */
   document.getElementById("pipBtn")?.addEventListener("click", async () => {
